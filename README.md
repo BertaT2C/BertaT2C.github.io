@@ -46,7 +46,6 @@
 <body>
         <h1></h1>
         <p>Product Owner apaixonada por tecnologia, atuo no gerenciamento e modelagem de projetos em TI. Sempre em busca de aprendizado.</p>
-    </header>
     <nav>
         <a href="#sobre">Sobre Mim</a>
         <a href="#projetos">Projetos</a>
