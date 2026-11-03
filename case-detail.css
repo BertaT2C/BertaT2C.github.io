@@ -1,0 +1,44 @@
+/* Apresentação consistente dos estudos de caso. A fonte de verdade dos dados permanece nos projetos originais. */
+.case-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.case-nav a{display:inline-block;border:1px solid #b5d5c7;border-radius:99px;padding:6px 12px;color:#f1fff8;text-decoration:none;font-size:.84rem;font-weight:650}
+.case-nav a:hover{background:rgba(255,255,255,.13)}
+.case-part{padding:32px 0;border-bottom:1px solid #e2ebe5}
+.stage-layout{display:grid;grid-template-columns:66px minmax(0,1fr);gap:20px;align-items:start}
+.stage-number{display:block;text-align:center;font-size:1.4rem;font-weight:800;color:#155849;background:#e0f1e9;border:1px solid #b9dacf;border-radius:13px;padding:11px}
+.stage-layout>div{min-width:0}
+.stage-layout h2{margin-top:0}
+.stage-lead{max-width:800px;font-size:1.04rem}
+.lead-box{border-left:4px solid #4e9c84;background:#fff;border-radius:8px;padding:16px 20px;margin-bottom:17px;font-size:1.08rem;font-weight:650}
+.step-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.step-box,.stage-panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px}
+.step-box h3{color:var(--green-dark)}
+.step-box p{color:var(--muted);margin-bottom:0}
+.detail-list{padding-left:22px;margin:0 0 17px}
+.detail-list li{margin-bottom:9px}
+.timeline{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:17px 0}
+.timeline span{display:flex;align-items:center;padding:9px 13px;font-weight:650;font-size:.9rem;border:1px solid #c5e1d3;background:#e8f4ed;border-radius:9px}
+.timeline .arrow{background:none;border:none;color:#43705e;padding:6px 3px}
+.case-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:14px 0}
+.case-metric{background:#fff;border:1px solid #d2e4d9;border-radius:12px;padding:16px}
+.case-metric strong{display:block;font-size:1.6rem;line-height:1.3;color:#17594c}
+.case-metric span{font-size:.88rem;color:var(--muted)}
+.detail-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.detail-kv .stage-panel{border-top:3px solid #5aa188}
+.detail-kv p{color:var(--muted)}
+.detail-table{border-collapse:collapse;width:100%;background:#fff;border-radius:12px;overflow:hidden}
+.detail-table th,.detail-table td{padding:11px 13px;border:1px solid #dce9e0;text-align:left;vertical-align:top}
+.detail-table th{background:#e8f3ed}
+.scroll-table{overflow-x:auto}
+.case-visuals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:13px}
+.case-visual{background:#fff;border:1px solid var(--line);padding:12px;border-radius:14px;margin:0}
+.case-visual img{display:block;max-width:100%;height:auto;max-height:360px;object-fit:contain;margin:auto}
+.case-visual figcaption{font-size:.85rem;color:var(--muted);padding:9px 5px 0}
+.case-note{padding:16px 19px;border-left:4px solid #75b5a1;border-radius:8px;background:#fff;color:var(--muted);margin-top:17px}
+.case-note strong{color:var(--ink)}
+.case-subnav{background:#e5f0e9;border-top:1px solid #c8dacf}
+.case-subnav .links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.case-subnav .links a{display:flex;align-items:center;min-height:75px;padding:13px;background:#fff;border:1px solid #c7ded3;border-radius:11px;font-weight:700;text-decoration:none}
+.case-skill-list{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:12px 0;padding:0}
+.case-skill-list li{border-radius:7px;background:#e2f0e8;padding:6px 11px;color:#174f44;font-size:.91rem;font-weight:650}
+@media(max-width:780px){.step-grid,.case-metrics,.case-subnav .links{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.stage-layout{grid-template-columns:1fr;gap:9px}.stage-number{width:60px;padding:6px}.step-grid,.case-metrics,.case-visuals,.detail-kv,.case-subnav .links{grid-template-columns:1fr}.detail-table{font-size:.9rem}}
