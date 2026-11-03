@@ -42,3 +42,17 @@ O site também apresenta um resumo de como trabalho: **Discovery → desenho da 
 </details>
 
 > **Sobre os materiais:** os estudos fictícios e demonstrativos são identificados nos próprios repositórios. Não atribuo a eles implantações ou resultados reais sem documentação de suporte.
+
+
+## Páginas individuais dos projetos
+
+Os seis cartões do site direcionam a páginas internas com visão executiva, evidências e links para a documentação completa, sem alterar os repositórios de origem.
+
+- [Canais Digitais — Miro](./canais-digitais.html)
+- [OKR e qualidade do refinamento](./refinamento.html)
+- [Atendimento por WhatsApp](./whatsapp.html)
+- [CT-e e MDF-e — Processos e RPA](./processos-rpa.html)
+- [Notas fiscais no Oracle R12](./oracle-r12.html)
+- [PDV integrado ao ABS](./pdv.html)
+
+**Publicação:** caso o site ainda não esteja disponível, habilite GitHub Pages em Settings → Pages, usando `main` e `/(root)`. O endereço esperado é https://bertat2c.github.io/.
