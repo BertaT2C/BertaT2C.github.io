@@ -46,9 +46,9 @@ O site também apresenta um resumo de como trabalho: **Discovery → desenho da 
 
 ## Páginas individuais dos projetos
 
-Cada um dos seis cartões oferece **Conhecer projeto**, que abre diretamente o repositório atualizado no GitHub, e **Ver página no portfólio**, que abre a página interna com visão executiva, evidências e documentação completa. Nenhum repositório de projeto foi alterado nesta atualização.
+Cada cartão da página inicial oferece apenas **Conhecer projeto**, que abre a página interna correspondente, com visão executiva, processo, evidências e materiais apresentados. Os links externos para os repositórios foram retirados das páginas de projeto. O acesso ao perfil GitHub ficou centralizado em **Ver meu GitHub** na página inicial do portfólio. Os repositórios de origem e seus documentos não foram modificados.
 
-- [Canais Digitais — Miro](./canais-digitais.html)
+- [Canais digitais](./canais-digitais.html)
 - [OKR e qualidade do refinamento](./refinamento.html)
 - [Atendimento por WhatsApp](./whatsapp.html)
 - [CT-e e MDF-e — Processos e RPA](./processos-rpa.html)
