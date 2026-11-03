@@ -46,7 +46,7 @@ O site também apresenta um resumo de como trabalho: **Discovery → desenho da 
 
 ## Páginas individuais dos projetos
 
-Os seis cartões do site direcionam a páginas internas com visão executiva, evidências e links para a documentação completa, sem alterar os repositórios de origem.
+Cada um dos seis cartões oferece **Conhecer projeto**, que abre diretamente o repositório atualizado no GitHub, e **Ver página no portfólio**, que abre a página interna com visão executiva, evidências e documentação completa. Nenhum repositório de projeto foi alterado nesta atualização.
 
 - [Canais Digitais — Miro](./canais-digitais.html)
 - [OKR e qualidade do refinamento](./refinamento.html)
