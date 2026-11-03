@@ -3,57 +3,240 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jornada de atendimento da Maxpar e Autoglass, Discovery, regras de negócio, MVP, backlog e provas de conceito.">
+  <meta name="description" content="Canais digitais: estudo de caso de Product Owner desde o desafio de assistência automotiva, Discovery, Canvas MVP, jornadas, requisitos e backlog até as provas de conceito.">
   <meta name="theme-color" content="#143b38">
-  <title>Canais Digitais — Miro | Berta Batista</title>
+  <title>Canais digitais | Berta Batista</title>
   <link rel="stylesheet" href="projetos.css">
+  <style>
+    .case-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+    .case-nav a{color:#e7f6ef;text-decoration:none;border:1px solid #9bc5b8;border-radius:99px;padding:5px 12px;font-size:.84rem;font-weight:650}
+    .case-nav a:hover{background:rgba(255,255,255,.13)}
+    .stage{display:grid;grid-template-columns:66px minmax(0,1fr);gap:20px;align-items:start}
+    .stage-number{font-size:1.45rem;font-weight:800;color:#155849;background:#e0f1e9;border:1px solid #b9dacf;border-radius:14px;text-align:center;padding:15px 0}
+    .stage h2{margin-top:0}
+    .stage > div:last-child{min-width:0}
+    .muted{color:var(--muted)}
+    .context-quote{font-size:1.12rem;font-weight:650;border-left:4px solid #93bfae;padding:18px 22px;background:#fff;border-radius:7px}
+    .facts{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+    .fact{border:1px solid #bcd8c8;border-radius:11px;background:#fff;padding:10px 15px;font-size:.91rem}
+    .fact strong{display:block;color:var(--green-dark)}
+    .canvas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .canvas .panel{border-top:4px solid #3d9b7c;box-shadow:none;padding:17px}
+    .canvas .panel:nth-child(3n+2){border-top-color:#e2ad4e}
+    .canvas .panel h3{font-size:.98rem}
+    .canvas .panel p{font-size:.92rem}
+    .metrics{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+    .bar-list{list-style:none;padding:0;margin:0}
+    .bar-list li{margin-bottom:17px}
+    .bar-label{display:flex;justify-content:space-between;gap:12px;margin-bottom:5px;font-size:.94rem;font-weight:650}
+    .bar-track{height:13px;border-radius:99px;background:#e4ece8;overflow:hidden}
+    .bar-fill{display:block;height:100%;border-radius:99px;background:#23758d}
+    .stage-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+    .journey{display:flex;align-items:stretch;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .journey span{background:#e7f1eb;border:1px solid #c6dfd0;border-radius:10px;padding:10px 14px;font-weight:650;font-size:.9rem}
+    .journey b{align-self:center;color:#608b79}
+    .demo{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px}
+    .demo-panel{background:#fff;border:1px solid #c5ddcf;border-radius:16px;padding:23px}
+    .demo-panel .tag{margin-bottom:10px}
+    .case-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .case-links a{display:block;background:#fff;border:1px solid #cee3d5;border-radius:12px;padding:16px;font-weight:700;text-decoration:none}
+    .case-links a small{display:block;font-weight:400;color:var(--muted);margin-top:4px}
+    .case-links a:hover{border-color:var(--green)}
+    .case-section{border-bottom:1px solid #e0eae4}
+    .skills{margin-bottom:10px}
+    @media(max-width:830px){.metrics,.canvas,.demo{grid-template-columns:1fr 1fr}}
+    @media(max-width:680px){.metrics,.canvas,.demo,.case-links{grid-template-columns:1fr}.stage{grid-template-columns:1fr;gap:8px}.stage-number{width:58px;padding:7px 0}.journey b{display:none}}
+  </style>
 </head>
 <body>
   <header class="top"><div class="container top-inner">
     <a class="brand" href="index.html">Berta Batista</a>
     <nav aria-label="Navegação principal">
-      <a href="index.html">Início</a><a href="index.html#projetos">Projetos</a>
-      <a href="index.html#atuacao">Como atuo</a><a href="index.html#contato">Contato</a>
+      <a href="index.html">Início</a>
+      <a href="index.html#projetos">Projetos</a>
+      <a href="index.html#atuacao">Como atuo</a>
+      <a href="index.html#contato">Contato</a>
     </nav>
   </div></header>
   <main>
     <div class="hero"><div class="container">
-      <p class="crumb"><a href="index.html">Início</a> / <a href="index.html#projetos">Projetos</a> / Canais Digitais — Miro</p>
-      <span class="tag">Produto e Discovery</span>
-      <h1>Canais Digitais — Miro</h1>
-      <p class="hero-lead">Jornada de atendimento da Maxpar e Autoglass, Discovery, regras de negócio, MVP, backlog e provas de conceito.</p>
-      <div class="actions"><a class="btn" href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais" target="_blank" rel="noopener noreferrer">Ver documentação completa no GitHub ↗</a>
-      <a class="btn outline" href="index.html#projetos">← Voltar aos projetos</a></div>
+      <p class="crumb"><a href="index.html">Início</a> / <a href="index.html#projetos">Projetos</a> / Canais digitais</p>
+      <span class="tag">Estudo de caso · Product Owner · Discovery ao MVP</span>
+      <h1>Canais digitais</h1>
+      <p class="hero-lead">Da identificação da dependência do Call Center ao desenho de uma jornada de assistência automotiva por autosserviço — com Discovery, Canvas MVP, requisitos, backlog e demonstração por provas de conceito.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais" target="_blank" rel="noopener noreferrer">Estudo completo no GitHub ↗</a>
+        <a class="btn outline" href="https://miro.com/app/board/uXjVNlaxnuE=/" target="_blank" rel="noopener noreferrer">Ver quadro no Miro ↗</a>
+      </div>
+      <nav class="case-nav" aria-label="Etapas deste case">
+        <a href="#desafio">Desafio</a><a href="#discovery">Discovery</a><a href="#mvp">Canvas MVP</a>
+        <a href="#jornada">Jornada</a><a href="#backlog">Backlog &amp; BDD</a><a href="#poc">POC</a>
+        <a href="#indicadores">Indicadores</a><a href="#evidencias">Evidências</a>
+      </nav>
     </div></div>
-    <section aria-labelledby="visao"><div class="container">
-      <h2 id="visao">Visão executiva</h2>
-      <div class="overview"><article class="panel"><h3>Contexto</h3><p>Canais de atendimento relacionados a seguros auto, assistência e compra de peças, com diferentes perfis e opções de encaminhamento.</p></article><article class="panel"><h3>Desafio</h3><p>Organizar a jornada, esclarecer opções para segurados e não segurados e reduzir ambiguidades na navegação.</p></article><article class="panel"><h3>Abordagem</h3><p>Discovery, desenho de AS IS e TO BE, regras, cenários, avaliação de MVP, backlog e protótipos no Miro.</p></article></div>
+
+    <section id="desafio" class="case-section" aria-labelledby="desafio-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">01</span><div>
+      <h2 id="desafio-h">O desafio de negócio</h2>
+      <p class="context-quote">Como permitir que segurados e beneficiários iniciem solicitações de assistência automotiva sem depender exclusivamente de chamadas ao Call Center?</p>
+      <p>O briefing de Product Owner descreve um processo de abertura de assistência — <strong>guincho, carro reserva e motorista amigo</strong> — realizado exclusivamente por telefone, com pouca flexibilidade para o cliente e desvantagem competitiva frente a alternativas digitais.</p>
+      <div class="facts">
+        <div class="fact"><strong>Público</strong>Segurados e beneficiários</div>
+        <div class="fact"><strong>Problema</strong>Dependência do atendimento telefônico</div>
+        <div class="fact"><strong>Direção</strong>Início autônomo do atendimento</div>
+      </div>
+      <p class="muted">O desafio solicitava missão e visão, definição do MVP, backlog, critérios de sucesso, indicadores e, como diferencial, um protótipo básico.</p>
+      </div>
     </div></section>
-    <section aria-labelledby="entregas"><div class="container">
-      <h2 id="entregas">Processo, solução e entregáveis</h2>
-      <ul class="points"><li>Análise do WhatsApp Maxpar, Portal do Segurado, e-commerce Autoglass e atendimento humano.</li><li>Jornada estudada com respostas de menu, direcionamentos e tratamento de opções inválidas.</li><li>Backlog e POCs apresentados como material de análise, sem declaração de implantação efetiva.</li></ul>
-      <p class="note"><strong>Escopo e evidência:</strong> Estudo de jornada e propostas de evolução. As POCs e os materiais não comprovam implantação dos fluxos em produção. O repositório de origem preserva a documentação integral e os arquivos anteriores.</p>
+
+    <section id="discovery" class="case-section" aria-labelledby="discovery-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">02</span><div>
+      <h2 id="discovery-h">Discovery e diagnóstico</h2>
+      <p>A análise inicial reuniu referências de comunicação digital, avaliação da experiência e mapeamento dos pontos de contato no atendimento de seguros.</p>
+      <div class="metrics">
+        <article class="stage-card">
+          <h3>Canais preferidos de comunicação</h3>
+          <ul class="bar-list" aria-label="Dados apresentados no gráfico de referência do desafio">
+            <li><div class="bar-label"><span>WhatsApp</span><span>88%</span></div><div class="bar-track"><span class="bar-fill" style="width:88%"></span></div></li>
+            <li><div class="bar-label"><span>Redes sociais</span><span>77%</span></div><div class="bar-track"><span class="bar-fill" style="width:77%"></span></div></li>
+            <li><div class="bar-label"><span>E-mail</span><span>59%</span></div><div class="bar-track"><span class="bar-fill" style="width:59%"></span></div></li>
+          </ul>
+          <p class="muted"><small>Percentuais exibidos no material de referência compartilhado; amostra, fonte da pesquisa e período não estão especificados. Não são resultados da POC.</small></p>
+        </article>
+        <article class="stage-card">
+          <h3>Pontos de atenção do AS IS</h3>
+          <ul class="points">
+            <li>Dependência do Call Center para abertura do atendimento.</li>
+            <li>Jornadas fragmentadas entre WhatsApp, portal, e-commerce e atendimento humano.</li>
+            <li>Necessidade de orientação clara para segurados e não segurados.</li>
+            <li>Regras para tratamento de respostas incorretas e encaminhamento ao atendente.</li>
+          </ul>
+          <p class="muted"><small>O material traz também um gráfico de referência do Reclame Aqui, sem dados suficientes para atribuir percentuais de satisfação ou resolução ao projeto.</small></p>
+        </article>
+      </div>
+      <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581172626138" target="_blank" rel="noopener noreferrer">Abrir Discovery e referências originais no Miro ↗</a></p>
+      </div>
     </div></section>
-    <section aria-labelledby="materiais"><div class="container">
-      <h2 id="materiais">Documentação e materiais originais</h2>
-      <div class="artifacts"><article class="artifact"><a href="https://miro.com/app/board/uXjVNlaxnuE=/" target="_blank" rel="noopener noreferrer">Abrir quadro completo no Miro ↗</a><p>Fluxos, telas, jornadas e provas de conceito navegáveis.</p></article><article class="artifact"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/FLUXO_MIRO_JORNADA_COMPLETA.md" target="_blank" rel="noopener noreferrer">Jornada completa — documentação ↗</a><p>Detalhamento das etapas e conexões da jornada.</p></article><article class="artifact"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/CENARIOS_E_REGRAS_ORIGINAIS.md" target="_blank" rel="noopener noreferrer">Cenários e regras originais ↗</a><p>Dez cenários com regras registradas no estudo.</p></article><article class="artifact"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/FLUXO_MIRO_BACKLOG_COMPLETO.md" target="_blank" rel="noopener noreferrer">Backlog e jornada — documentação ↗</a><p>Fluxo de backlog e relacionamento entre etapas.</p></article><article class="artifact"><a href="https://youtu.be/u4LxF7WXEUY" target="_blank" rel="noopener noreferrer">Vídeo da POC 01 ↗</a><p>Demonstração vinculada ao estudo no Miro.</p></article><article class="artifact"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/CASE_MAXPAR_AUTOGLASS.md" target="_blank" rel="noopener noreferrer">Case detalhado ↗</a><p>Contexto, comportamento e evidências textuais.</p></article></div>
+
+    <section id="mvp" class="case-section" aria-labelledby="mvp-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">03</span><div>
+      <h2 id="mvp-h">Direção de produto e Canvas MVP</h2>
+      <p>O Canvas organizou público, proposta de valor, jornada, funcionalidades iniciais, premissas e métricas para orientar o recorte do MVP.</p>
+      <div class="canvas">
+        <article class="panel"><h3>Missão proposta</h3><p>Facilitar o início de assistências automotivas, com acesso simples a informações e menor esforço do usuário.</p></article>
+        <article class="panel"><h3>Visão proposta</h3><p>Oferecer uma experiência digital de autosserviço que evolua gradualmente para jornadas mais completas.</p></article>
+        <article class="panel"><h3>Resultado esperado</h3><p>Que segurados e beneficiários possam abrir ou iniciar atendimentos de assistência de forma autônoma.</p></article>
+        <article class="panel"><h3>Personas</h3><p>Pessoas com seguros automotivos e usuários familiarizados com aplicativos e mensagens móveis.</p></article>
+        <article class="panel"><h3>Jornada preliminar</h3><p>Aplicativo/canal → base de clientes → escolha da seguradora → dados da seguradora.</p></article>
+        <article class="panel"><h3>Escopo de MVP</h3><p>Explorar serviços de assistência por canal automatizado, com informação compreensível e orientação do usuário.</p></article>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong>Referência de cronograma</strong>3 semanas no Canvas</div>
+        <div class="fact"><strong>Papéis previstos</strong>Desenvolvedor e Product Owner</div>
+        <div class="fact"><strong>Plataforma mencionada</strong>Zenvia — R$ 700 no Canvas</div>
+      </div>
+      <p class="note"><strong>Premissas, não resultados:</strong> missão e visão acima sintetizam o briefing. Prazo, participantes e valor são referências apresentadas no Canvas; não comprovam contrato, custo incorrido ou implantação.</p>
+      <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581793445322" target="_blank" rel="noopener noreferrer">Abrir Canvas MVP original no Miro ↗</a></p>
+      </div>
     </div></section>
-    <section aria-labelledby="evidencias"><div class="container">
-      <h2 id="evidencias">Imagens e evidências preservadas</h2>
-      <p>Materiais visuais originais vinculados aos repositórios. Clique nas imagens para ampliar a fonte.</p>
-      <div class="gallery"><figure class="figure"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/assets/99225701/6f24e789-c788-4b21-8fab-bcef793fd9ea" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagem original: Imagem original de apresentação do estudo"><img loading="lazy" src="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/assets/99225701/6f24e789-c788-4b21-8fab-bcef793fd9ea" alt="Imagem original de apresentação do estudo"></a><figcaption>Imagem original de apresentação do estudo</figcaption></figure></div>
+
+    <section id="jornada" class="case-section" aria-labelledby="jornada-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">04</span><div>
+      <h2 id="jornada-h">Desenho da jornada: AS IS → TO BE</h2>
+      <p>Com base na descoberta, o estudo organizou a evolução da navegação, diferenciando perfis de atendimento e descrevendo menus, regras, orientações e alternativas de atendimento humano.</p>
+      <div class="journey" aria-label="Resumo funcional da jornada proposta">
+        <span>Entrada pelo WhatsApp</span><b>→</b><span>Saudação e perfil</span><b>→</b><span>Menu de serviços</span><b>→</b><span>Orientação / portal</span><b>→</b><span>Atendente ou encerramento</span>
+      </div>
+      <p><strong>Segurado:</strong> informações de assistência e direcionamento ao portal conforme o serviço e a cobertura. <strong>Não segurado:</strong> orientação para o e-commerce Autoglass quando busca peças automotivas.</p>
+      <p><strong>Tratamento de exceções:</strong> o fluxo registra orientação após resposta inválida, nova tentativa e encerramento após segunda entrada incorreta.</p>
+      <div class="case-links">
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/FLUXO_MIRO_JORNADA_COMPLETA.md" target="_blank" rel="noopener noreferrer">Jornada detalhada ↗<small>43 etapas e 36 ligações documentadas</small></a>
+        <a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581758623044" target="_blank" rel="noopener noreferrer">Fluxograma visual no Miro ↗<small>Transições, mensagens e caminhos originais</small></a>
+      </div>
+      </div>
     </div></section>
-    <section aria-labelledby="competencias"><div class="container">
-      <h2 id="competencias">Competências demonstradas</h2>
-      <ul class="skills"><li>Discovery</li><li>Jornada do Usuário</li><li>Miro</li><li>Requisitos</li><li>BDD</li><li>Backlog</li><li>MVP</li><li>Canais Digitais</li></ul>
+
+    <section id="backlog" class="case-section" aria-labelledby="backlog-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">05</span><div>
+      <h2 id="backlog-h">Backlog, regras de negócio e critérios de aceite</h2>
+      <p>O estudo de evolução considera opções de menu como <strong>Assistência Dia e Noite</strong>, <strong>Seguradoras</strong>, <strong>Oficina</strong> e <strong>Voltar</strong>. A documentação também contém dez cenários de usuário estruturados em BDD.</p>
+      <div class="stage-card">
+        <h3>Exemplo de comportamento documentado — entrada inválida</h3>
+        <p><strong>Dado</strong> que o usuário tenha recebido o menu inicial, <strong>quando</strong> informar uma opção não reconhecida pela primeira vez, <strong>então</strong> o sistema deverá orientá-lo a digitar uma opção válida.</p>
+        <p>Na segunda tentativa inválida, a jornada documentada prevê mensagem de orientação e encerramento.</p>
+        <p class="muted"><small>Exemplo resumido a partir das regras registradas; os dez cenários completos devem ser consultados na fonte.</small></p>
+      </div>
+      <div class="case-links" style="margin-top:14px">
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/CENARIOS_E_REGRAS_ORIGINAIS.md" target="_blank" rel="noopener noreferrer">Histórias, regras e BDD ↗<small>Dez cenários originais preservados</small></a>
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/FLUXO_MIRO_BACKLOG_COMPLETO.md" target="_blank" rel="noopener noreferrer">Estudo completo do backlog ↗<small>34 etapas e 24 ligações documentadas</small></a>
+      </div>
+      </div>
     </div></section>
+
+    <section id="poc" class="case-section" aria-labelledby="poc-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">06</span><div>
+      <h2 id="poc-h">Da proposta à prova de conceito</h2>
+      <p>A etapa final do material apresenta demonstrações para comunicar a experiência antes de uma eventual implementação. O quadro no Miro mantém as telas, os protótipos e suas relações com o backlog.</p>
+      <div class="demo">
+        <article class="demo-panel">
+          <span class="tag">POC 01</span>
+          <h3>Vídeo demonstrativo da jornada</h3>
+          <p>Demonstração relacionada ao MVP, com acesso ao vídeo e ao frame visual do Miro.</p>
+          <p><a href="https://youtu.be/u4LxF7WXEUY" target="_blank" rel="noopener noreferrer">▶ Assistir à POC 01 ↗</a></p>
+          <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764582022045353" target="_blank" rel="noopener noreferrer">Consultar a POC 01 no Miro ↗</a></p>
+        </article>
+        <article class="demo-panel">
+          <span class="tag">POC 02</span>
+          <h3>Sequência de telas do MVP</h3>
+          <p>Referência visual da experiência proposta, mantida no quadro original.</p>
+          <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764582024733080" target="_blank" rel="noopener noreferrer">Explorar telas da POC 02 ↗</a></p>
+        </article>
+      </div>
+      <p class="note" style="margin-top:18px"><strong>Escopo da entrega:</strong> estudo, documentação funcional e provas de conceito. Não há comprovação no material consultado de implantação em produção ou de redução medida das chamadas ao Call Center.</p>
+      </div>
+    </div></section>
+
+    <section id="indicadores" class="case-section" aria-labelledby="indicadores-h"><div class="container stage">
+      <span class="stage-number" aria-hidden="true">07</span><div>
+      <h2 id="indicadores-h">Como medir o sucesso após a implantação</h2>
+      <p>O Canvas prevê instrumentos de validação da experiência, mas o estudo não traz resultados consolidados após a POC.</p>
+      <div class="overview">
+        <article class="panel"><h3>Cliques na automação</h3><p>Medir interação e uso da jornada proposta.</p></article>
+        <article class="panel"><h3>Pesquisa NPS</h3><p>Acompanhar a percepção dos usuários sobre a experiência.</p></article>
+        <article class="panel"><h3>Depoimentos</h3><p>Coletar feedback qualitativo para orientar novas melhorias.</p></article>
+      </div>
+      <p style="margin-top:16px"><strong>Evolução recomendada:</strong> incluir taxa de conclusão da solicitação, abandono da jornada e transferência ao atendimento humano, com linha de base antes/depois, caso o produto seja implantado.</p>
+      </div>
+    </div></section>
+
+    <section id="evidencias" aria-labelledby="evidencias-h"><div class="container">
+      <h2 id="evidencias-h">Evidências, materiais e documentação</h2>
+      <p>Todos os materiais do Miro e do repositório permanecem acessíveis. A imagem abaixo é um artefato original do projeto.</p>
+      <div class="case-links">
+        <a href="https://miro.com/app/board/uXjVNlaxnuE=/" target="_blank" rel="noopener noreferrer">Quadro completo e navegável no Miro ↗<small>Discovery, Canvas MVP, jornadas, backlog e POCs</small></a>
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais" target="_blank" rel="noopener noreferrer">Repositório principal no GitHub ↗<small>README e documentos do estudo de caso</small></a>
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/docs/CASE_MAXPAR_AUTOGLASS.md" target="_blank" rel="noopener noreferrer">Documentação detalhada original ↗<small>Contexto, regras, links e rastreabilidade dos artefatos</small></a>
+        <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/blob/main/Mapeamento%20As%20is_detalhe.png" target="_blank" rel="noopener noreferrer">Mapeamento AS IS em imagem ↗<small>Evidência visual já disponibilizada no repositório</small></a>
+      </div>
+      <div class="gallery" style="margin-top:18px">
+        <figure class="figure"><a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/assets/99225701/6f24e789-c788-4b21-8fab-bcef793fd9ea" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagem original do estudo"><img loading="lazy" src="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais/assets/99225701/6f24e789-c788-4b21-8fab-bcef793fd9ea" alt="Imagem original de apresentação do projeto"></a><figcaption>Imagem de apoio preservada do GitHub original</figcaption></figure>
+      </div>
+    </div></section>
+
+    <section aria-labelledby="skills-h"><div class="container">
+      <h2 id="skills-h">Competências demonstradas</h2>
+      <ul class="skills"><li>Product Owner</li><li>Discovery</li><li>Jornada do Usuário</li><li>Visão de Produto</li><li>MVP</li><li>Miro</li><li>AS IS / TO BE</li><li>Backlog</li><li>BDD</li><li>Critérios de Aceite</li><li>KPIs</li><li>Comunicação com stakeholders</li></ul>
+    </div></section>
+
     <section class="next" aria-labelledby="outras"><div class="container">
       <h2 id="outras">Explore outros projetos</h2>
-      <div class="nextlinks"><a href="refinamento.html">Qualidade do refinamento →</a>
-<a href="whatsapp.html">Atendimento por WhatsApp →</a>
-<a href="processos-rpa.html">CT-e e MDF-e →</a>
-<a href="oracle-r12.html">Notas fiscais no Oracle R12 →</a>
-<a href="pdv.html">PDV integrado ao ABS →</a></div>
+      <div class="nextlinks">
+        <a href="refinamento.html">Qualidade do refinamento →</a>
+        <a href="whatsapp.html">Atendimento por WhatsApp →</a>
+        <a href="processos-rpa.html">CT-e e MDF-e →</a>
+        <a href="oracle-r12.html">Notas fiscais no Oracle R12 →</a>
+        <a href="pdv.html">PDV integrado ao ABS →</a>
+      </div>
       <p style="margin:25px 0 0"><a href="index.html#projetos">← Voltar à página inicial</a></p>
     </div></section>
   </main>
