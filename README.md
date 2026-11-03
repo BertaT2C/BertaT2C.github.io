@@ -41,7 +41,7 @@ O site também apresenta um resumo de como trabalho: **Discovery → desenho da 
 
 </details>
 
-> **Sobre os materiais:** os estudos fictícios e demonstrativos são identificados nos próprios repositórios. Não atribuo a eles implantações ou resultados reais sem documentação de suporte.
+> Por questões de confidencialidade (NDA), alguns projetos deste portfólio foram anonimizados ou recriados com cenários e indicadores ilustrativos. O objetivo aqui é demonstrar meu raciocínio estratégico, metodologia e capacidade de execução; métricas de impacto real podem ser detalhadas em uma conversa direta.
 
 
 ## Páginas individuais dos projetos
