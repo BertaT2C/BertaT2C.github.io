@@ -46,7 +46,7 @@ O site também apresenta um resumo de como trabalho: **Discovery → desenho da 
 
 ## Páginas individuais dos projetos
 
-Cada cartão da página inicial oferece apenas **Conhecer projeto**, que abre a página interna correspondente, com visão executiva, processo, evidências e materiais apresentados. Os links externos para os repositórios foram retirados das páginas de projeto. O acesso ao perfil GitHub ficou centralizado em **Ver meu GitHub** na página inicial do portfólio. Os repositórios de origem e seus documentos não foram modificados.
+Cada cartão da página inicial oferece apenas **Conhecer projeto**, que abre a página interna correspondente. As seis páginas apresentam a história do projeto, do desafio de negócio ao Discovery, processo atual, solução ou estudo de evolução, requisitos, evidências e indicadores. Quando não existe implantação ou POC comprovada na fonte, isso é identificado. O acesso ao perfil GitHub continua centralizado em **Ver meu GitHub** na página inicial, sem redirecionamentos para o GitHub nas páginas dos projetos. Os READMEs dos cinco estudos foram reorganizados para incluir roteiros executivos, preservando o material técnico anterior.
 
 - [Canais digitais](./canais-digitais.html)
 - [OKR e qualidade do refinamento](./refinamento.html)
