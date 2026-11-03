@@ -35,7 +35,10 @@
     section {padding:62px 0}
     .section-intro {max-width:760px;color:var(--muted);margin:0 0 25px}
     .cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .card {display:flex;flex-direction:column;gap:9px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:23px;box-shadow:var(--shadow);min-width:0}
+    .card {display:flex;flex-direction:column;gap:9px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:23px;box-shadow:var(--shadow);min-width:0;position:relative;transition:transform .18s ease,box-shadow .18s ease}
+    .card:hover {transform:translateY(-3px);box-shadow:0 18px 34px rgba(22,61,57,.13)}
+    .card:focus-within {outline:3px solid #e2a449;outline-offset:4px}
+    .card a::after {content:"";position:absolute;inset:0;border-radius:17px}
     .card p {margin:0;color:var(--muted);font-size:.95rem}
     .card a {font-weight:700;margin-top:auto;padding-top:14px}
     .tag {display:inline-flex;align-self:flex-start;border-radius:100px;background:var(--accent);color:var(--green-dark);padding:4px 10px;font-size:.78rem;font-weight:700}
@@ -86,37 +89,37 @@
             <span class="tag">Produto &amp; Discovery</span>
             <h3>Canais Digitais — Miro</h3>
             <p>Jornadas de atendimento, oportunidades, backlog, MVP e provas de conceito para canais digitais.</p>
-            <a href="https://github.com/BertaT2C/Projeto_Miro_CanaisDigitais" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="canais-digitais.html">Conhecer projeto →</a>
           </article>
           <article class="card">
             <span class="tag">OKR &amp; Backlog</span>
             <h3>Qualidade do refinamento</h3>
             <p>Objetivos, resultados-chave, indicadores ilustrativos e iniciativas para melhorar o alinhamento entre equipes.</p>
-            <a href="https://github.com/BertaT2C/OKR_Refinamento_do_backlog_do_produto" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="refinamento.html">Conhecer projeto →</a>
           </article>
           <article class="card">
             <span class="tag">Canais Digitais</span>
             <h3>Atendimento por WhatsApp</h3>
             <p>AS IS/TO BE, requisitos, critérios de aceite e proposta de melhoria da jornada de autosserviço.</p>
-            <a href="https://github.com/BertaT2C/Fluxograma_Automacao_Whatsapp_Chatbot" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="whatsapp.html">Conhecer projeto →</a>
           </article>
           <article class="card">
             <span class="tag">Processos &amp; RPA</span>
             <h3>CT-e e MDF-e</h3>
             <p>Mapeamento BPMN, fluxos operacionais e oportunidades de automação de processos fiscais e logísticos.</p>
-            <a href="https://github.com/BertaT2C/Projeto_modelagem_para_Automacao_RPA" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="processos-rpa.html">Conhecer projeto →</a>
           </article>
           <article class="card">
             <span class="tag">ERP &amp; Automação</span>
             <h3>Notas fiscais no Oracle R12</h3>
             <p>Automação no-code com DataLoad, melhorias de processo e organização de evidências de execução.</p>
-            <a href="https://github.com/BertaT2C/Projeto_Automacao_EmissaodeNF_em_ERP" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="oracle-r12.html">Conhecer projeto →</a>
           </article>
           <article class="card">
             <span class="tag">Regras &amp; BDD</span>
             <h3>PDV integrado ao ABS</h3>
             <p>Estudo fictício de integração, regras de preparo, histórias de usuário e matriz de testes.</p>
-            <a href="https://github.com/BertaT2C/Projeto_estudo_de_caso_PDV_integrado" target="_blank" rel="noopener noreferrer">Ver estudo no GitHub</a>
+            <a href="pdv.html">Conhecer projeto →</a>
           </article>
         </div>
         <p class="note">Alguns materiais são estudos fictícios ou simulações. Indicadores, hipóteses e benefícios esperados são identificados nos respectivos repositórios e não devem ser confundidos com resultados efetivamente medidos.</p>
