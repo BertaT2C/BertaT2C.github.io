@@ -1,151 +1,189 @@
-import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { heroChart } from "@/data/projects";
+import { heroChart, whatsappSuccess } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
 export const AVATAR_URL = "https://avatars.githubusercontent.com/u/99225701?v=4";
-
 
 export function Hero() {
   return (
     <section id="inicio" className="bg-deep-gradient relative overflow-hidden text-deep-foreground">
       <div aria-hidden className="bg-grid-deep fade-mask absolute inset-0" />
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-32 md:grid-cols-[1.1fr_1fr] md:px-8 md:pb-28 md:pt-40">
-        <div>
-          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            <span className="h-px w-8 bg-accent" />
-            Product Owner · Analista de Negócios em TI
-          </p>
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl md:text-[3.6rem]">
-            Da necessidade de negócio à{" "}
-            <span className="text-accent">solução em tecnologia</span>.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-deep-muted">
-            Sou Berta Batista. Analiso processos, dados e jornadas para definir requisitos claros,
-            priorizar o backlog e acompanhar resultados com indicadores.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild variant="hero" size="xl">
-              <a href="#projetos">
-                Ver estudos de caso <ArrowDown />
-              </a>
-            </Button>
-            <Button asChild variant="heroOutline" size="xl">
-              <a href="https://www.linkedin.com/in/bertabatista/" target="_blank" rel="noreferrer">
-                <Linkedin /> LinkedIn
-              </a>
-            </Button>
-            <Button asChild variant="heroOutline" size="xl">
-              <a href="https://github.com/BertaT2C" target="_blank" rel="noreferrer">
-                <Github /> GitHub
-              </a>
-            </Button>
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-36">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-14">
+          <div className="min-w-0 text-center">
+            <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              <span className="h-px w-8 bg-accent" />
+              Product Owner · Analista de Negócios em TI
+              <span className="h-px w-8 bg-accent" />
+            </p>
+            <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
+              Da necessidade de negócio à{" "}
+              <span className="text-accent">solução em tecnologia</span>.
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-deep-muted sm:text-lg">
+              Sou Berta Batista. Analiso processos, dados e jornadas para definir requisitos claros,
+              priorizar o backlog e acompanhar resultados com indicadores.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Button asChild variant="hero" size="xl">
+                <a href="#projetos">Ver estudos de caso <ArrowDown /></a>
+              </Button>
+              <Button asChild variant="heroOutline" size="xl">
+                <a href="https://www.linkedin.com/in/bertabatista/" target="_blank" rel="noreferrer">
+                  <Linkedin /> LinkedIn
+                </a>
+              </Button>
+              <Button asChild variant="heroOutline" size="xl">
+                <a href="https://github.com/BertaT2C" target="_blank" rel="noreferrer">
+                  <Github /> GitHub
+                </a>
+              </Button>
+            </div>
           </div>
-
-          <ul className="mt-12 grid max-w-lg gap-3 border-t border-deep-line pt-5 text-sm text-deep-muted sm:grid-cols-2">
-            {["Eficiência operacional", "Produtividade da equipe", "Automação de processos", "Ganhos mensuráveis"].map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" /> {t}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10">
-            <AnalysisPanel />
-          </div>
+          <Reveal delay={80} className="mx-auto flex justify-center">
+            <img
+              src={AVATAR_URL}
+              alt="Foto de Berta Batista"
+              className="size-48 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-56 lg:size-64"
+            />
+          </Reveal>
         </div>
 
-        <Reveal delay={80} className="flex justify-center self-start md:justify-start">
-          <img
-            src={AVATAR_URL}
-            alt="Foto de Berta Batista"
-            className="size-44 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-52 md:size-56 lg:size-64"
-          />
-        </Reveal>
+        <ul className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-2 gap-x-6 gap-y-4 border-t border-deep-line pt-6 text-center text-sm text-deep-muted md:grid-cols-4">
+          {["Eficiência operacional", "Produtividade da equipe", "Automação de processos", "Ganhos mensuráveis"].map((item) => (
+            <li key={item} className="flex items-center justify-center gap-2">
+              <span className="size-1.5 shrink-0 rounded-full bg-accent" /> {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-12 grid w-full items-stretch gap-6 lg:grid-cols-2 xl:gap-8">
+          <OracleResultsPanel />
+          <WhatsAppResultsPanel />
+        </div>
       </div>
     </section>
   );
 }
 
-function AnalysisPanel() {
+interface ComparisonMetricProps {
+  label: string;
+  before: number;
+  after: number;
+  beforeLabel: string;
+  afterLabel: string;
+  better: "up" | "down";
+  index: number;
+}
+
+function ComparisonMetric({
+  label, before, after, beforeLabel, afterLabel, better, index,
+}: ComparisonMetricProps) {
+  const delta = after - before;
+  const improved = better === "up" ? delta > 0 : delta < 0;
+  const values = [
+    { label: beforeLabel, value: before, tone: "bg-deep-muted/50" },
+    { label: afterLabel, value: after, tone: "bg-accent" },
+  ];
   return (
-    <Reveal delay={150} className="rounded-xl border border-deep-line bg-deep-raised/80 p-6 shadow-lift backdrop-blur-sm md:p-7">
-      <div className="flex items-center gap-4 border-b border-deep-line pb-5">
-        <div className="flex-1">
-          <h2 className="font-display text-lg font-semibold leading-snug text-deep-foreground">{heroChart.caseLabel}</h2>
-          <p className="text-xs text-deep-muted">Discovery · Requisitos · Processos · Automação</p>
-        </div>
-        <span className="hidden rounded border border-deep-line px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-deep-muted sm:inline">
-          Painel de resultados
+    <div className="min-w-0 rounded-lg border border-deep-line bg-deep/30 p-4">
+      <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1">
+        <h3 className="text-sm font-semibold leading-snug">{label}</h3>
+        <span className={improved ? "flex shrink-0 items-center text-xs font-bold text-accent" : "flex shrink-0 items-center text-xs font-semibold text-deep-muted"}>
+          {delta >= 0 ? <ArrowUpRight className="mr-1 size-3.5" /> : <ArrowDownRight className="mr-1 size-3.5" />}
+          {delta > 0 ? "+" : delta < 0 ? "−" : ""}
+          {Math.abs(delta)} p.p.
         </span>
       </div>
-
-      <div className="mt-5 flex items-baseline justify-between gap-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-          Indicadores de desempenho
-        </p>
-        <div className="flex shrink-0 items-center gap-3 text-[0.7rem] text-deep-muted">
-          <span className="flex items-center gap-1.5">
-            <span className="size-2 rounded-sm bg-deep-muted/40" /> {heroChart.before}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="size-2 rounded-sm bg-accent" /> {heroChart.after}
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-5 grid grid-cols-2 gap-5">
-        {heroChart.series.map((s, si) => {
-          const max = Math.max(s.before, s.after) * 1.2;
-          const delta = s.after - s.before;
-          return (
-            <div key={s.label} className="rounded-lg border border-deep-line p-4">
-              <p className="text-sm font-medium">{s.label}</p>
-              <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-accent">
-                {s.better === "up" ? <ArrowUpRight className="size-3.5" /> : <ArrowDownRight className="size-3.5" />}
-                {delta > 0 ? "+" : "−"}
-                {Math.abs(delta)} p.p.
-              </p>
-              <div className="relative mt-4 flex h-32 items-end gap-3 border-b border-deep-line">
-                {[25, 50, 75].map((g) => (
-                  <span
-                    key={g}
-                    aria-hidden
-                    className="absolute inset-x-0 border-t border-dashed border-deep-line"
-                    style={{ bottom: `${g}%` }}
-                  />
-                ))}
-                {[
-                  { v: s.before, cls: "bg-deep-muted/40", label: heroChart.before },
-                  { v: s.after, cls: "bg-accent", label: heroChart.after },
-                ].map((b, bi) => (
-                  <div key={b.label} className="relative flex h-full flex-1 flex-col justify-end">
-                    <span className="tabular mb-1 text-center text-xs font-semibold">{b.v}%</span>
-                    <span
-                      className={`bar-grow block rounded-t-sm ${b.cls}`}
-                      style={
-                        {
-                          height: `${(b.v / max) * 100}%`,
-                          "--bar-delay": `${300 + si * 200 + bi * 150}ms`,
-                        } as React.CSSProperties
-                      }
-                    />
-                  </div>
-                ))}
-              </div>
+      <div className="mt-4 space-y-3" role="img" aria-label={label + ": " + beforeLabel + " " + before + "%; " + afterLabel + " " + after + "%."}>
+        {values.map((bar, i) => (
+          <div key={bar.label}>
+            <div className="mb-1.5 flex items-center justify-between gap-3 text-xs text-deep-muted">
+              <span>{bar.label}</span>
+              <span className="tabular font-semibold text-deep-foreground">{bar.value}%</span>
             </div>
-          );
-        })}
+            <div className="h-2.5 overflow-hidden rounded-full bg-deep-line">
+              <div
+                className={"meter-grow h-full rounded-full " + bar.tone}
+                style={{ width: bar.value + "%", transitionDelay: index * 110 + i * 120 + "ms" }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
+  );
+}
 
-      <div className="mt-5 flex items-center justify-between gap-4 rounded-lg bg-deep/60 px-4 py-3">
-        <span className="text-sm text-deep-muted">{heroChart.highlight.label}</span>
+function OracleResultsPanel() {
+  return (
+    <Reveal delay={150} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
+      <div className="border-b border-deep-line pb-5">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Caso 05 · Automação no ERP</p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
+          {heroChart.caseLabel}
+        </h2>
+        <p className="mt-2 text-sm text-deep-muted">Indicadores de eficiência operacional</p>
+      </div>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        {heroChart.series.map((metric, index) => (
+          <ComparisonMetric
+            key={metric.label}
+            {...metric}
+            beforeLabel={heroChart.before}
+            afterLabel={heroChart.after}
+            index={index}
+          />
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
+        <span className="max-w-xs text-sm text-deep-muted">{heroChart.highlight.label}</span>
         <span className="tabular font-display text-2xl font-semibold text-accent">
           {heroChart.highlight.value}
         </span>
       </div>
-      <p className="mt-3 text-[0.7rem] text-deep-muted">Fonte: {heroChart.source}</p>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+        Fonte: {heroChart.source}
+      </p>
+      <a href="https://bertat2c.github.io/oracle-r12.html" target="_blank" rel="noreferrer"
+         className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+        Ver estudo de caso <ArrowUpRight className="size-4" />
+      </a>
+    </Reveal>
+  );
+}
+
+function WhatsAppResultsPanel() {
+  return (
+    <Reveal delay={240} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
+      <div className="border-b border-deep-line pb-5">
+        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
+          <MessageCircle className="size-4" /> Caso 03 · Canais digitais
+        </p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
+          {whatsappSuccess.caseLabel}
+        </h2>
+        <p className="mt-2 text-sm text-deep-muted">Indicadores de sucesso propostos para o MVP</p>
+      </div>
+      <div className="mt-5 grid gap-3">
+        {whatsappSuccess.series.map((metric, index) => (
+          <ComparisonMetric
+            key={metric.label}
+            {...metric}
+            beforeLabel={whatsappSuccess.before}
+            afterLabel={whatsappSuccess.after}
+            index={index}
+          />
+        ))}
+      </div>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+        {whatsappSuccess.source}
+      </p>
+      <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer"
+         className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+        Ver estudo de caso <ArrowUpRight className="size-4" />
+      </a>
     </Reveal>
   );
 }

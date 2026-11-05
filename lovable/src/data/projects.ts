@@ -309,6 +309,21 @@ export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
   return list.filter((p) => p.skills.some((s) => area.items.includes(s)));
 }
 
+
+/** Caso 03: indicadores planejados do MVP. Valores hipotéticos, nunca resultados obtidos. */
+export const whatsappSuccess = {
+  caseSlug: "whatsapp",
+  caseLabel: "Caso 3: Atendimento por WhatsApp",
+  before: "Base hipotética",
+  after: "Meta do MVP",
+  series: [
+    { label: "Resolução por autosserviço", before: 20, after: 55, better: "up" as const },
+    { label: "Satisfação dos usuários (CSAT)", before: 72, after: 85, better: "up" as const },
+    { label: "Abandono da jornada", before: 28, after: 15, better: "down" as const },
+  ],
+  source: "Cenário hipotético e metas propostas para validação do MVP. Não são resultados medidos.",
+};
+
 /** Gráfico do topo da página: indicadores publicados no estudo Oracle R12. */
 export const heroChart = {
   caseSlug: "oracle-r12",
