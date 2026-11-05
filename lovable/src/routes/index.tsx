@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/portfolio/Header";
 import { Hero, AVATAR_URL } from "@/components/portfolio/Hero";
-import { SkillsMarquee } from "@/components/portfolio/SkillsMarquee";
+import { Competencies } from "@/components/portfolio/Competencies";
 import { Projects } from "@/components/portfolio/Projects";
 import { Steps } from "@/components/portfolio/Steps";
 import { Contact, WhatsAppFab } from "@/components/portfolio/Contact";
 
-const title = "Berta Batista — Product Owner e Análise de Negócios";
+const title = "Berta Batista — Analista de Negócios em TI e Product Owner";
 const description =
-  "Portfólio de Berta Batista: estudos de caso em Discovery, requisitos, backlog, processos e automação, conectando negócio e tecnologia.";
+  "Portfólio de Berta Batista: estudos de caso com análise de processos, requisitos, backlog, automação e indicadores de resultado.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +31,7 @@ function Index() {
     <main>
       <Header />
       <Hero />
-      <SkillsMarquee />
+      <Competencies />
       <Projects />
       <Steps />
       <Contact />
