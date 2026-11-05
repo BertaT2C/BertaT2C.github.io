@@ -10,7 +10,7 @@ export function Hero() {
     <section id="inicio" className="bg-deep-gradient relative overflow-hidden text-deep-foreground">
       <div aria-hidden className="bg-grid-deep fade-mask absolute inset-0" />
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-36">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-14">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
           <div className="min-w-0 text-center">
             <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               <span className="h-px w-8 bg-accent" />
@@ -45,7 +45,7 @@ export function Hero() {
             <img
               src={AVATAR_URL}
               alt="Foto de Berta Batista"
-              className="size-48 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-56 lg:size-64"
+              className="size-56 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-64 lg:size-72 xl:size-80"
             />
           </Reveal>
         </div>
@@ -67,50 +67,68 @@ export function Hero() {
   );
 }
 
-interface ComparisonMetricProps {
+
+type ColumnMetric = {
   label: string;
   before: number;
   after: number;
+  better: "up" | "down";
+};
+
+function ColumnComparison({
+  metric,
+  beforeLabel,
+  afterLabel,
+  index,
+}: {
+  metric: ColumnMetric;
   beforeLabel: string;
   afterLabel: string;
-  better: "up" | "down";
   index: number;
-}
-
-function ComparisonMetric({
-  label, before, after, beforeLabel, afterLabel, better, index,
-}: ComparisonMetricProps) {
-  const delta = after - before;
-  const improved = better === "up" ? delta > 0 : delta < 0;
-  const values = [
-    { label: beforeLabel, value: before, tone: "bg-deep-muted/50" },
-    { label: afterLabel, value: after, tone: "bg-accent" },
+}) {
+  const change = metric.after - metric.before;
+  const scale = Math.min(100, Math.ceil((Math.max(metric.before, metric.after) * 1.2) / 10) * 10);
+  const bars = [
+    { label: beforeLabel, value: metric.before, fill: "bg-deep-muted/50" },
+    { label: afterLabel, value: metric.after, fill: "bg-accent" },
   ];
   return (
     <div className="min-w-0 rounded-lg border border-deep-line bg-deep/30 p-4">
-      <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1">
-        <h3 className="text-sm font-semibold leading-snug">{label}</h3>
-        <span className={improved ? "flex shrink-0 items-center text-xs font-bold text-accent" : "flex shrink-0 items-center text-xs font-semibold text-deep-muted"}>
-          {delta >= 0 ? <ArrowUpRight className="mr-1 size-3.5" /> : <ArrowDownRight className="mr-1 size-3.5" />}
-          {delta > 0 ? "+" : delta < 0 ? "−" : ""}
-          {Math.abs(delta)} p.p.
-        </span>
-      </div>
-      <div className="mt-4 space-y-3" role="img" aria-label={label + ": " + beforeLabel + " " + before + "%; " + afterLabel + " " + after + "%."}>
-        {values.map((bar, i) => (
-          <div key={bar.label}>
-            <div className="mb-1.5 flex items-center justify-between gap-3 text-xs text-deep-muted">
-              <span>{bar.label}</span>
-              <span className="tabular font-semibold text-deep-foreground">{bar.value}%</span>
-            </div>
-            <div className="h-2.5 overflow-hidden rounded-full bg-deep-line">
-              <div
-                className={"meter-grow h-full rounded-full " + bar.tone}
-                style={{ width: bar.value + "%", transitionDelay: index * 110 + i * 120 + "ms" }}
-              />
-            </div>
+      <h3 className="min-h-10 text-center text-sm font-semibold leading-snug">{metric.label}</h3>
+      <p className="mt-1 flex items-center justify-center gap-1 text-xs font-bold text-accent">
+        {change >= 0 ? <ArrowUpRight aria-hidden className="size-3.5" /> : <ArrowDownRight aria-hidden className="size-3.5" />}
+        {change > 0 ? "+" : change < 0 ? "−" : ""}
+        {Math.abs(change)} p.p.
+      </p>
+      <div
+        className="relative mt-5 flex h-40 items-end justify-center gap-5 border-b border-deep-line px-2 sm:gap-7"
+        role="img"
+        aria-label={metric.label + ": " + beforeLabel + " " + metric.before + "%; " + afterLabel + " " + metric.after + "%."}
+      >
+        {[25, 50, 75].map((level) => (
+          <span
+            aria-hidden
+            key={level}
+            className="pointer-events-none absolute inset-x-0 border-t border-dashed border-deep-line/60"
+            style={{ bottom: level + "%" }}
+          />
+        ))}
+        {bars.map((bar, i) => (
+          <div key={bar.label} className="relative z-10 flex h-full w-12 flex-col justify-end sm:w-14">
+            <span aria-hidden className="tabular mb-2 text-center text-xs font-bold">{bar.value}%</span>
+            <div
+              aria-hidden
+              className={"bar-grow w-full rounded-t-md " + bar.fill}
+              style={{
+                height: (bar.value / Math.max(scale, 1)) * 100 + "%",
+                "--bar-delay": 250 + index * 120 + i * 140 + "ms",
+              } as React.CSSProperties}
+            />
           </div>
         ))}
+      </div>
+      <div className="mt-2 flex items-center justify-center gap-8 text-xs text-deep-muted">
+        <span>{beforeLabel}</span><span>{afterLabel}</span>
       </div>
     </div>
   );
@@ -121,33 +139,30 @@ function OracleResultsPanel() {
     <Reveal delay={150} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Caso 05 · Automação no ERP</p>
-        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
-          {heroChart.caseLabel}
-        </h2>
-        <p className="mt-2 text-sm text-deep-muted">Indicadores de eficiência operacional</p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{heroChart.caseLabel}</h2>
+        <p className="mt-2 text-sm text-deep-muted">Indicadores de janeiro e junho · gráficos comparativos</p>
       </div>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {heroChart.series.map((metric, index) => (
-          <ComparisonMetric
-            key={metric.label}
-            {...metric}
-            beforeLabel={heroChart.before}
-            afterLabel={heroChart.after}
-            index={index}
-          />
+          <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel={heroChart.before} afterLabel={heroChart.after} />
         ))}
       </div>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
         <span className="max-w-xs text-sm text-deep-muted">{heroChart.highlight.label}</span>
-        <span className="tabular font-display text-2xl font-semibold text-accent">
-          {heroChart.highlight.value}
-        </span>
+        <span className="tabular font-display text-2xl font-semibold text-accent">{heroChart.highlight.value}</span>
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
-        Fonte: {heroChart.source}
-      </p>
-      <a href="https://bertat2c.github.io/oracle-r12.html" target="_blank" rel="noreferrer"
-         className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        {heroChart.additional.map((metric) => (
+          <div key={metric.label} className="rounded-lg border border-deep-line/80 px-3 py-3">
+            <span className="block text-xs leading-snug text-deep-muted">{metric.label}</span>
+            <span className="tabular mt-1 block text-sm font-semibold text-accent">
+              {metric.before}% → {metric.after}%
+            </span>
+          </div>
+        ))}
+      </div>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">Fonte: {heroChart.source}</p>
+      <a href="https://bertat2c.github.io/oracle-r12.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
       </a>
     </Reveal>
@@ -159,29 +174,24 @@ function WhatsAppResultsPanel() {
     <Reveal delay={240} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
         <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
-          <MessageCircle className="size-4" /> Caso 03 · Canais digitais
+          <MessageCircle aria-hidden className="size-4" /> Caso 03 · Canais digitais
         </p>
-        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
-          {whatsappSuccess.caseLabel}
-        </h2>
-        <p className="mt-2 text-sm text-deep-muted">Indicadores de sucesso propostos para o MVP</p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{whatsappSuccess.caseLabel}</h2>
+        <p className="mt-2 text-sm text-deep-muted">MVP ilustrativo · cenário inicial × metas propostas</p>
       </div>
-      <div className="mt-5 grid gap-3">
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {whatsappSuccess.series.map((metric, index) => (
-          <ComparisonMetric
-            key={metric.label}
-            {...metric}
-            beforeLabel={whatsappSuccess.before}
-            afterLabel={whatsappSuccess.after}
-            index={index}
-          />
+          <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel="Inicial" afterLabel="Meta" />
         ))}
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
-        {whatsappSuccess.source}
-      </p>
-      <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer"
-         className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
+        <span className="text-sm text-deep-muted">{whatsappSuccess.additional.label}</span>
+        <span className="tabular text-lg font-semibold text-accent">
+          {whatsappSuccess.additional.before}% → {whatsappSuccess.additional.after}%
+        </span>
+      </div>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">{whatsappSuccess.source}</p>
+      <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
       </a>
     </Reveal>
