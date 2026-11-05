@@ -1,0 +1,64 @@
+name: Verificar acesso restrito ao Miro
+
+on:
+  push:
+    branches:
+      - main
+      - 'Capa-Interativa-(lovable)'
+    paths:
+      - '*.html'
+      - 'lovable/src/**/*.tsx'
+      - 'lovable/src/**/*.ts'
+      - '.github/workflows/verificar-acesso-miro.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'lovable/src/**/*.tsx'
+      - 'lovable/src/**/*.ts'
+      - '.github/workflows/verificar-acesso-miro.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proteger:
+    name: Impedir links diretos para quadros privados
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+      - name: Inspecionar paginas do portfolio
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          files = list(Path(".").glob("*.html"))
+          src = Path("lovable/src")
+          if src.exists():
+              files += list(src.rglob("*.tsx")) + list(src.rglob("*.ts"))
+
+          pattern = re.compile(r'https?://(?:www\.)?miro\.com/', re.I)
+          issues = []
+          for file in files:
+              content = file.read_text(encoding="utf-8")
+              if pattern.search(content):
+                  issues.append(str(file))
+
+          canal = Path("canais-digitais.html")
+          if canal.exists():
+              content = canal.read_text(encoding="utf-8")
+              if 'id="access-request-dialog"' not in content or 'class="restricted-map"' not in content:
+                  issues.append("canais-digitais.html: formulario de solicitacao de acesso ausente")
+
+          if issues:
+              print("ERRO: acesso Miro nao protegido em:")
+              for item in issues:
+                  print(" -", item)
+              print("Use um formulario de solicitacao; nao exponha links ou iframes de quadros privados.")
+              sys.exit(1)
+
+          print(f"OK: {len(files)} arquivos analisados. Materiais Miro protegidos.")
+          PY
