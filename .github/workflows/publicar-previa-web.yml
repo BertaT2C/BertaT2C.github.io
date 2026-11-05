@@ -47,11 +47,13 @@ jobs:
           echo 'Saída estática validada.'
       - name: Iniciar servidor estático para teste
         run: |
-          nohup python3 -m http.server 4199 --bind 127.0.0.1 --directory dist-capa-preview > /tmp/capa-preview-servidor.log 2>&1 &
+          mkdir -p /tmp/testar-capa-publica
+          ln -s "$GITHUB_WORKSPACE/dist-capa-preview" /tmp/testar-capa-publica/capa-preview
+          nohup python3 -m http.server 4199 --bind 127.0.0.1 --directory /tmp/testar-capa-publica > /tmp/capa-preview-servidor.log 2>&1 &
           echo $! > /tmp/capa-preview-servidor.pid
           for i in $(seq 1 20); do
-            if curl --fail --silent http://127.0.0.1:4199/ -o /tmp/site.html; then
-              echo 'HTTP 200 confirmado para arquivo estático'
+            if curl --fail --silent http://127.0.0.1:4199/capa-preview/ -o /tmp/site.html; then
+              echo 'HTTP 200 confirmado no caminho público /capa-preview/'
               exit 0
             fi
             sleep 1
@@ -62,8 +64,19 @@ jobs:
         run: npm exec --yes --package=playwright@1.57.0 -- playwright install --with-deps chromium
       - name: Verificar renderização no navegador
         run: |
-          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 http://127.0.0.1:4199/ /tmp/capa-preview-validada.png
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 http://127.0.0.1:4199/capa-preview/ /tmp/capa-preview-validada.png
           test -s /tmp/capa-preview-validada.png
+          echo 'Validando os arquivos CSS/JS com base /capa-preview/:'
+          python3 - <<'PY'
+          import re, subprocess
+          from pathlib import Path
+          html=Path('dist-capa-preview/index.html').read_text()
+          urls=re.findall(r'(?:src|href)="(/capa-preview/assets/[^"]+)"',html)
+          assert urls, 'Nenhum asset gerado para a prévia'
+          for url in urls:
+              subprocess.run(['curl','--fail','--silent','--show-error','http://127.0.0.1:4199'+url,'-o','/dev/null'],check=True)
+          print(f'{len(urls)} assets estáticos acessíveis.')
+          PY
       - name: Salvar versão compilada para publicação
         run: |
           cp -a dist-capa-preview /tmp/capa-preview-site
