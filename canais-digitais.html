@@ -62,6 +62,46 @@
     .to-be-map-footer a{color:#135e4d;font-weight:750;text-decoration:underline;text-underline-offset:3px}
     @media(max-width:680px){.to-be-map-frame{height:490px}.to-be-map figcaption{padding:16px}.to-be-map-footer{padding:14px 16px}}
 
+
+    /* Materiais Miro privados: solicitações de acesso, sem iframe ou links públicos. */
+    .request-access{cursor:pointer;font:inherit;text-align:left}
+    .case-links .request-access{display:block;width:100%;background:#fff;border:1px solid #cee3d5;border-radius:12px;padding:16px;font-weight:700;color:var(--green-dark);line-height:1.45}
+    .case-links .request-access small{display:block;font-weight:400;color:var(--muted);margin-top:4px}
+    .case-links .request-access:hover,.case-links .request-access:focus-visible{border-color:#177357;box-shadow:0 0 0 2px #d9eee4}
+    p>.request-access:not(.btn){padding:0;border:0;background:none;color:#176b54;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    .restricted-map{display:grid;grid-template-columns:minmax(140px,.55fr) minmax(0,1.45fr);gap:24px;margin:27px 0;padding:24px;background:linear-gradient(110deg,#eaf4ee,#fff);border:1px solid #c6dfd2;border-radius:18px;box-shadow:0 10px 28px rgba(17,75,53,.07)}
+    .restricted-map-art{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;border-radius:14px;background:#173e35;min-height:220px}
+    .restricted-lock{font-size:3.2rem}
+    .restricted-map-lines{display:flex;align-items:center;gap:9px}.restricted-map-lines i{display:block;width:26px;height:6px;background:#e6bc65;border-radius:8px}.restricted-map-lines i:nth-child(2){width:55px;background:#8fc7ad}
+    .restricted-eyebrow{font-size:.73rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#266b51}
+    .restricted-map h3{margin:9px 0 9px;font-size:1.25rem;color:#143e32}
+    .restricted-map p{font-size:.95rem;line-height:1.6;color:#49645a}
+    .restricted-map .restricted-note{font-weight:650;color:#245746}
+    .restricted-primary{padding:13px 18px;border:0;border-radius:10px;background:#196b50;color:white;font-weight:750;cursor:pointer;line-height:1.4}
+    .restricted-primary:hover{background:#104c39}
+    .access-dialog{border:0;border-radius:18px;padding:0;max-width:520px;width:calc(100% - 28px);background:#fff;color:#203d31;box-shadow:0 22px 80px rgba(0,0,0,.26)}
+    .access-dialog::backdrop{background:rgba(4,28,24,.70);backdrop-filter:blur(3px)}
+    .access-dialog-inner{padding:26px}
+    .access-dialog-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+    .access-dialog h2{font-size:1.38rem;margin:6px 0 9px;color:#164a39}
+    .access-dialog p{font-size:.94rem;line-height:1.55;color:#456355}
+    .access-dialog-close{width:36px;height:36px;border:1px solid #c9ddd1;border-radius:50%;background:white;font-size:1.3rem;cursor:pointer;flex-shrink:0}
+    .access-form{display:grid;gap:13px;margin-top:17px}
+    .access-form label{display:grid;gap:5px;font-size:.86rem;font-weight:700}
+    .access-form input:not([type="checkbox"]),.access-form textarea{box-sizing:border-box;width:100%;font:inherit;border:1px solid #b8d3c5;border-radius:9px;padding:10px 12px;min-height:43px;background:#fff;color:#183c30}
+    .access-form textarea{min-height:65px;resize:vertical}
+    .access-form .access-consent{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;font-weight:500;line-height:1.55;color:#466156}
+    .access-consent input{margin-top:4px}
+    .access-form button[type="submit"]{border:0;border-radius:10px;padding:13px;background:#176747;color:#fff;font:inherit;font-weight:750;cursor:pointer}
+    .access-form button[disabled]{opacity:.65;cursor:wait}
+    .access-status{min-height:1.3em;margin:0;font-size:.87rem!important}
+    .access-status.error{color:#a62c2c}
+    .access-status.success{color:#176747}
+    .access-fallback{display:none;font-size:.86rem;color:#176747;font-weight:700}
+    .access-fallback.visible{display:inline-block}
+    .access-privacy{font-size:.76rem!important;color:#617b6e!important}
+    @media(max-width:680px){.restricted-map{grid-template-columns:1fr;padding:16px}.restricted-map-art{min-height:100px;flex-direction:row}.access-dialog-inner{padding:20px}}
+
 </style>
 </head>
 <body>
@@ -82,7 +122,7 @@
       <p class="hero-lead">Da identificação da dependência do Call Center ao desenho de uma jornada de assistência automotiva por autosserviço — com Discovery, Canvas MVP, requisitos, backlog e demonstração por provas de conceito.</p>
       <div class="actions">
         
-        <a class="btn outline" href="https://miro.com/app/board/uXjVNlaxnuE=/" target="_blank" rel="noopener noreferrer">Ver quadro no Miro ↗</a>
+        <button type="button" class="btn outline request-access" data-material="Ver quadro no Miro">Ver quadro no Miro · solicitar acesso</button>
       </div>
       <nav class="case-nav" aria-label="Etapas deste case">
         <a href="#desafio">Desafio</a><a href="#discovery">Discovery</a><a href="#mvp">Canvas MVP</a>
@@ -160,7 +200,7 @@
         <p><strong>Validação:</strong> Medir a taxa de conclusão da abertura digital, os recontatos pelo mesmo pedido e as transferências para atendimento humano. Comparar os indicadores por canal no piloto.</p>
       </div>
       <div class="viability-block"><h3>Análise de viabilidade e oportunidades de melhoria</h3><p>Proposta de instrumentação da jornada para validar hipóteses antes de ampliar o MVP. Os indicadores abaixo representam <strong>métricas a coletar</strong>, não resultados já medidos.</p><div class="viability-grid"><article><strong>Abandono por etapa</strong><span>Taxa de desistência, etapa de saída e conclusão do fluxo.</span></article><article><strong>Esforço digital</strong><span>Cliques até o abandono, tempo por etapa, retornos e erros de formulário.</span></article><article><strong>Transição de canais</strong><span>Solicitações iniciadas no digital e encaminhadas ao telefone ou WhatsApp; recontatos por motivo.</span></article><article><strong>Eficiência do atendimento</strong><span>Resolução no primeiro contato, tempo médio e custo por solicitação.</span></article></div><h4>Matriz de priorização do MVP</h4><div class="viability-table-wrap"><table class="viability-table"><thead><tr><th>Problema / hipótese</th><th>Indicador de validação</th><th>Melhoria candidata</th><th>Valor esperado</th></tr></thead><tbody><tr><td>Abandono na identificação</td><td>Saídas e erros por campo</td><td>Formulário simplificado e orientações</td><td>Maior conversão</td></tr><tr><td>Excesso de etapas</td><td>Cliques e tempo até conclusão</td><td>Fluxo guiado e redução de passos</td><td>Menor esforço do usuário</td></tr><tr><td>Migração para telefone</td><td>Transferências e recontatos</td><td>Autosserviço no WhatsApp com opção humana</td><td>Menor demanda repetitiva</td></tr><tr><td>Baixa resolução inicial</td><td>FCR, TMA e custo por solicitação</td><td>Orientações contextuais e integração com atendimento</td><td>Mais eficiência operacional</td></tr></tbody></table></div></div>
-      <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581172626138" target="_blank" rel="noopener noreferrer">Abrir Discovery e referências originais no Miro ↗</a></p>
+      <p><button type="button" class="request-access" data-material="Abrir Discovery e referências originais no Miro">Abrir Discovery e referências originais no Miro · solicitar acesso</button></p>
       </div>
     </div></section>
 
@@ -182,7 +222,7 @@
         <div class="fact"><strong>Plataforma mencionada</strong>Zenvia — R$ 700 no Canvas</div>
       </div>
       <p class="note"><strong>Premissas, não resultados:</strong> missão e visão acima sintetizam o briefing. Prazo, participantes e valor são referências apresentadas no Canvas; não comprovam contrato, custo incorrido ou implantação.</p>
-      <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581793445322" target="_blank" rel="noopener noreferrer">Abrir Canvas MVP original no Miro ↗</a></p>
+      <p><button type="button" class="request-access" data-material="Abrir Canvas MVP original no Miro">Abrir Canvas MVP original no Miro · solicitar acesso</button></p>
       </div>
     </div></section>
 
@@ -195,28 +235,23 @@
       </div>
       <p><strong>Segurado:</strong> informações de assistência e direcionamento ao portal conforme o serviço e a cobertura. <strong>Não segurado:</strong> orientação para o e-commerce Autoglass quando busca peças automotivas.</p>
       <p><strong>Tratamento de exceções:</strong> o fluxo registra orientação após resposta inválida, nova tentativa e encerramento após segunda entrada incorreta.</p>
-      <figure class="to-be-map" aria-labelledby="to-be-map-caption">
-        <figcaption id="to-be-map-caption">
-          <strong>Mapeamento TO BE — jornada de atendimento digital</strong>
-          <span>Fluxograma original desenvolvido no Miro: entrada pelo WhatsApp, identificação do perfil, menu de serviços, direcionamentos e exceções.</span>
-        </figcaption>
-        <div class="to-be-map-frame">
-          <iframe
-            src="https://miro.com/app/live-embed/uXjVNlaxnuE=/?embedMode=view_only_without_ui&amp;autoplay=true&amp;moveToWidget=3458764581758623044"
-            title="Fluxograma TO BE: jornada de atendimento ao segurado e não segurado"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
+
+      <div class="restricted-map" aria-labelledby="restricted-map-title">
+        <div class="restricted-map-art" aria-hidden="true">
+          <span class="restricted-lock">🔒</span>
+          <div class="restricted-map-lines"><i></i><i></i><i></i></div>
         </div>
-        <div class="to-be-map-footer">
-          <span>Use o zoom para explorar os detalhes. A visualização respeita as permissões de acesso do quadro no Miro.</span>
-          <a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581758623044" target="_blank" rel="noopener noreferrer">Ampliar mapeamento no Miro ↗</a>
+        <div class="restricted-map-content">
+          <span class="restricted-eyebrow">Evidência de projeto · Acesso controlado</span>
+          <h3 id="restricted-map-title">Mapeamento TO BE — Jornada de atendimento digital</h3>
+          <p>O fluxograma detalhado, com menus, decisões, integrações e tratamento de exceções, está preservado em um quadro privado no Miro.</p>
+          <p class="restricted-note">Este material é disponibilizado mediante solicitação de acesso para recrutadores.</p>
+          <button type="button" class="restricted-primary request-access" data-material="Mapeamento TO BE — Jornada de atendimento digital">Solicitar acesso ao mapeamento →</button>
         </div>
-      </figure>
+      </div>
       <div class="case-links">
         <div class="case-resource"><strong>Jornada detalhada</strong><small>43 etapas e 36 ligações documentadas</small></div>
-        <a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581758623044" target="_blank" rel="noopener noreferrer">Fluxograma visual no Miro ↗<small>Transições, mensagens e caminhos originais</small></a>
+        <button type="button" class="request-access" data-material="Fluxograma visual no Miro">Fluxograma visual no Miro · solicitar acesso<small>Transições, mensagens e caminhos originais</small></button>
       </div>
       </div>
     </div></section>
@@ -248,13 +283,13 @@
           <h3>Vídeo demonstrativo da jornada</h3>
           <p>Demonstração relacionada ao MVP, com acesso ao vídeo e ao frame visual do Miro.</p>
           <p><a href="https://youtu.be/u4LxF7WXEUY" target="_blank" rel="noopener noreferrer">▶ Assistir à POC 01 ↗</a></p>
-          <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764582022045353" target="_blank" rel="noopener noreferrer">Consultar a POC 01 no Miro ↗</a></p>
+          <p><button type="button" class="request-access" data-material="Consultar a POC 01 no Miro">Consultar a POC 01 no Miro · solicitar acesso</button></p>
         </article>
         <article class="demo-panel">
           <span class="tag">POC 02</span>
           <h3>Sequência de telas do MVP</h3>
           <p>Referência visual da experiência proposta, mantida no quadro original.</p>
-          <p><a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764582024733080" target="_blank" rel="noopener noreferrer">Explorar telas da POC 02 ↗</a></p>
+          <p><button type="button" class="request-access" data-material="Explorar telas da POC 02">Explorar telas da POC 02 · solicitar acesso</button></p>
         </article>
       </div>
       <p class="note" style="margin-top:18px"><strong>Escopo da entrega:</strong> estudo, documentação funcional e provas de conceito. Não há comprovação no material consultado de implantação em produção ou de redução medida das chamadas ao Call Center.</p>
@@ -276,9 +311,9 @@
 
     <section id="evidencias" aria-labelledby="evidencias-h"><div class="container">
       <h2 id="evidencias-h">Evidências, materiais e documentação</h2>
-      <p>Os materiais do Miro e do repositório permanecem acessíveis para consulta, incluindo fluxos, telas, Canvas MVP, backlog e POCs.</p>
+      <p>Os materiais do Miro são privados e disponibilizados sob solicitação para recrutadores. O portfólio apresenta as sínteses públicas dos fluxos, Canvas MVP, backlog e POCs.</p>
       <div class="case-links">
-        <a href="https://miro.com/app/board/uXjVNlaxnuE=/" target="_blank" rel="noopener noreferrer">Quadro completo e navegável no Miro ↗<small>Discovery, Canvas MVP, jornadas, backlog e POCs</small></a>
+        <button type="button" class="request-access" data-material="Quadro completo e navegável no Miro">Quadro completo e navegável no Miro · solicitar acesso<small>Discovery, Canvas MVP, jornadas, backlog e POCs</small></button>
         <div class="case-resource"><strong>Repositório principal no GitHub</strong><small>README e documentos do estudo de caso</small></div>
         <div class="case-resource"><strong>Documentação detalhada original</strong><small>Contexto, regras, links e rastreabilidade dos artefatos</small></div>
         <div class="case-resource"><strong>Mapeamento AS IS em imagem</strong><small>Evidência visual já disponibilizada no repositório</small></div>
@@ -303,5 +338,117 @@
     </div></section>
   </main>
   <footer class="container">© 2026 Berta Batista · <a href="index.html">Portfólio</a> · <a href="https://www.linkedin.com/in/bertabatista/" target="_blank" rel="noopener noreferrer">LinkedIn</a></footer>
+
+  <dialog id="access-request-dialog" class="access-dialog" aria-labelledby="access-dialog-title" aria-describedby="access-dialog-desc">
+    <div class="access-dialog-inner">
+      <div class="access-dialog-top">
+        <div>
+          <span class="restricted-eyebrow">Portfólio · Material protegido</span>
+          <h2 id="access-dialog-title">Solicitar liberação de acesso</h2>
+        </div>
+        <button type="button" class="access-dialog-close" aria-label="Fechar janela" data-close-access>×</button>
+      </div>
+      <p id="access-dialog-desc"><strong>Este acesso está restrito para recrutadores.</strong> Por favor, solicite liberação preenchendo os dados abaixo. A autorização será analisada individualmente.</p>
+      <form id="access-request-form" class="access-form">
+        <input type="hidden" name="material" id="access-material" value="Material privado do Miro">
+        <input type="hidden" name="_subject" value="Portfólio — solicitação de acesso ao Miro">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <label for="access-name">Nome completo *
+          <input id="access-name" name="name" autocomplete="name" required maxlength="100" placeholder="Seu nome">
+        </label>
+        <label for="access-email">E-mail profissional *
+          <input id="access-email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="nome@empresa.com">
+        </label>
+        <label for="access-company">Empresa / consultoria *
+          <input id="access-company" name="empresa" required maxlength="120" placeholder="Empresa onde atua">
+        </label>
+        <label for="access-message">Mensagem (opcional)
+          <textarea id="access-message" name="mensagem" maxlength="600" placeholder="Vaga, finalidade ou contexto da solicitação"></textarea>
+        </label>
+        <label class="access-consent" for="access-consent">
+          <input id="access-consent" type="checkbox" required>
+          <span>Concordo com o envio destes dados ao serviço FormSubmit para encaminhamento da solicitação à responsável pelo portfólio. Os dados serão utilizados para avaliar o pedido de acesso.</span>
+        </label>
+        <button type="submit" id="access-submit">Solicitar liberação</button>
+        <p class="access-status" id="access-status" role="status" aria-live="polite"></p>
+        <a id="access-fallback" class="access-fallback" href="mailto:bertareg@hotmail.com">Solicitar por e-mail diretamente</a>
+        <p class="access-privacy">O envio da solicitação não libera o quadro automaticamente. A responsável poderá solicitar informações adicionais e aprovar ou recusar o acesso.</p>
+      </form>
+    </div>
+  </dialog>
+  <script>
+  (() => {
+    const dialog = document.getElementById('access-request-dialog');
+    const form = document.getElementById('access-request-form');
+    const status = document.getElementById('access-status');
+    const fallback = document.getElementById('access-fallback');
+    const submitButton = document.getElementById('access-submit');
+    const material = document.getElementById('access-material');
+    document.querySelectorAll('.request-access').forEach(button => {
+      button.addEventListener('click', () => {
+        material.value = button.dataset.material || 'Material privado do Miro';
+        status.textContent = '';
+        status.className = 'access-status';
+        fallback.classList.remove('visible');
+        dialog.showModal();
+        document.getElementById('access-name').focus();
+      });
+    });
+    document.querySelector('[data-close-access]').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const values = new FormData(form);
+      const name = String(values.get('name') || '').trim();
+      const email = String(values.get('email') || '').trim();
+      const company = String(values.get('empresa') || '').trim();
+      const subject = 'Portfólio — solicitação de acesso ao Miro';
+      const body = [
+        'Solicitação de acesso a material privado do portfólio',
+        'Material: ' + material.value,
+        'Nome: ' + name,
+        'E-mail: ' + email,
+        'Empresa: ' + company,
+        'Mensagem: ' + (values.get('mensagem') || '')
+      ].join('\n');
+      fallback.href = 'mailto:bertareg@hotmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando solicitação…';
+      status.textContent = '';
+      status.className = 'access-status';
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/bertareg@hotmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name, email, empresa: company,
+            material: material.value,
+            mensagem: String(values.get('mensagem') || ''),
+            _subject: subject,
+            _honey: String(values.get('_honey') || ''),
+            _url: 'https://bertat2c.github.io/canais-digitais.html'
+          })
+        });
+        const data = await response.json();
+        if (!response.ok || !(data.success === 'true' || data.success === true)) {
+          throw new Error(data.message || 'Falha no envio');
+        }
+        status.classList.add('success');
+        status.textContent = 'Solicitação encaminhada para processamento. A liberação será avaliada individualmente; o acesso não foi concedido.';
+        form.reset();
+      } catch (err) {
+        status.classList.add('error');
+        status.textContent = 'Não foi possível confirmar o envio automático. Utilize a alternativa por e-mail:';
+        fallback.textContent = 'Abrir e-mail com a solicitação preenchida →';
+        fallback.classList.add('visible');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Solicitar liberação';
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
