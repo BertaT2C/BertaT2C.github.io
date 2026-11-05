@@ -50,6 +50,18 @@
     @media(max-width:830px){.metrics,.canvas,.demo{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.metrics,.canvas,.demo,.case-links{grid-template-columns:1fr}.stage{grid-template-columns:1fr;gap:8px}.stage-number{width:58px;padding:7px 0}.journey b{display:none}}
   .viability-block{margin:26px 0;padding:24px;border:1px solid #c7dfd3;background:#f3faf6;border-radius:16px}.viability-block h3{margin:0 0 10px;color:#174c3e}.viability-block h4{margin:23px 0 10px}.viability-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.viability-grid article{padding:16px;background:#fff;border:1px solid #d5e6db;border-radius:12px}.viability-grid strong,.viability-grid span{display:block}.viability-grid strong{color:#176b54;margin-bottom:6px}.viability-grid span{font-size:.9rem}.viability-table-wrap{overflow-x:auto}.viability-table{width:100%;border-collapse:collapse;background:#fff;font-size:.88rem}.viability-table th,.viability-table td{padding:12px;border:1px solid #dce8e0;text-align:left;vertical-align:top}.viability-table th{background:#dcefe4;color:#174c3e}@media(max-width:680px){.viability-grid{grid-template-columns:1fr}.viability-block{padding:16px}}
+
+    .to-be-map{margin:28px 0;background:#fff;border:1px solid #bfd9cf;border-radius:18px;overflow:hidden;box-shadow:0 10px 34px rgba(16,62,50,.09)}
+    .to-be-map figcaption{display:grid;gap:6px;padding:20px 23px;background:#f1f8f4;border-bottom:1px solid #d7e9df}
+    .to-be-map figcaption strong{font-size:1.06rem;color:#174f42}
+    .to-be-map figcaption span{color:#546d61;font-size:.92rem;line-height:1.5}
+    .to-be-map-frame{height:640px;background:#f6faf8}
+    .to-be-map iframe{display:block;width:100%;height:100%;border:0}
+    .to-be-map-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 22px;background:#fff;font-size:.87rem}
+    .to-be-map-footer span{color:#5a6e65;flex:1 1 250px}
+    .to-be-map-footer a{color:#135e4d;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:680px){.to-be-map-frame{height:490px}.to-be-map figcaption{padding:16px}.to-be-map-footer{padding:14px 16px}}
+
 </style>
 </head>
 <body>
@@ -183,6 +195,25 @@
       </div>
       <p><strong>Segurado:</strong> informações de assistência e direcionamento ao portal conforme o serviço e a cobertura. <strong>Não segurado:</strong> orientação para o e-commerce Autoglass quando busca peças automotivas.</p>
       <p><strong>Tratamento de exceções:</strong> o fluxo registra orientação após resposta inválida, nova tentativa e encerramento após segunda entrada incorreta.</p>
+      <figure class="to-be-map" aria-labelledby="to-be-map-caption">
+        <figcaption id="to-be-map-caption">
+          <strong>Mapeamento TO BE — jornada de atendimento digital</strong>
+          <span>Fluxograma original desenvolvido no Miro: entrada pelo WhatsApp, identificação do perfil, menu de serviços, direcionamentos e exceções.</span>
+        </figcaption>
+        <div class="to-be-map-frame">
+          <iframe
+            src="https://miro.com/app/live-embed/uXjVNlaxnuE=/?embedMode=view_only_without_ui&amp;autoplay=true&amp;moveToWidget=3458764581758623044"
+            title="Fluxograma TO BE: jornada de atendimento ao segurado e não segurado"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+        <div class="to-be-map-footer">
+          <span>Use o zoom para explorar os detalhes. A visualização respeita as permissões de acesso do quadro no Miro.</span>
+          <a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581758623044" target="_blank" rel="noopener noreferrer">Ampliar mapeamento no Miro ↗</a>
+        </div>
+      </figure>
       <div class="case-links">
         <div class="case-resource"><strong>Jornada detalhada</strong><small>43 etapas e 36 ligações documentadas</small></div>
         <a href="https://miro.com/app/board/uXjVNlaxnuE=/?moveToWidget=3458764581758623044" target="_blank" rel="noopener noreferrer">Fluxograma visual no Miro ↗<small>Transições, mensagens e caminhos originais</small></a>
