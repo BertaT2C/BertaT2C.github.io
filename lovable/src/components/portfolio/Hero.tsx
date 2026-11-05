@@ -1,22 +1,17 @@
 import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { competencyAreas, heroChart, projects, steps } from "@/data/projects";
+import { heroChart } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
 export const AVATAR_URL = "https://avatars.githubusercontent.com/u/99225701?v=4";
 
-const stats = [
-  { value: projects.length, label: "estudos de caso documentados" },
-  { value: competencyAreas.length, label: "áreas de competência" },
-  { value: steps.length, label: "etapas de método" },
-];
 
 export function Hero() {
   return (
     <section id="inicio" className="bg-deep-gradient relative overflow-hidden text-deep-foreground">
       <div aria-hidden className="bg-grid-deep fade-mask absolute inset-0" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-32 md:px-8 lg:grid-cols-[1.1fr_1fr] lg:pb-28 lg:pt-40">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-32 md:grid-cols-[1.1fr_1fr] md:px-8 md:pb-28 md:pt-40">
         <div>
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             <span className="h-px w-8 bg-accent" />
@@ -48,20 +43,26 @@ export function Hero() {
             </Button>
           </div>
 
-          <dl className="mt-12 grid max-w-lg grid-cols-3 border-t border-deep-line">
-            {stats.map((s) => (
-              <div key={s.label} className="border-r border-deep-line pr-4 pt-5 last:border-r-0 [&:not(:first-child)]:pl-4">
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="tabular font-display text-3xl font-semibold">
-                  {String(s.value).padStart(2, "0")}
-                </dd>
-                <dd className="mt-1 text-xs leading-snug text-deep-muted">{s.label}</dd>
-              </div>
+          <ul className="mt-12 grid max-w-lg gap-3 border-t border-deep-line pt-5 text-sm text-deep-muted sm:grid-cols-2">
+            {["Eficiência operacional", "Produtividade da equipe", "Automação de processos", "Ganhos mensuráveis"].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-accent" /> {t}
+              </li>
             ))}
-          </dl>
+          </ul>
+
+          <div className="mt-10">
+            <AnalysisPanel />
+          </div>
         </div>
 
-        <AnalysisPanel />
+        <Reveal delay={80} className="flex justify-center self-start md:justify-start">
+          <img
+            src={AVATAR_URL}
+            alt="Foto de Berta Batista"
+            className="size-44 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-52 md:size-56 lg:size-64"
+          />
+        </Reveal>
       </div>
     </section>
   );
@@ -71,13 +72,6 @@ function AnalysisPanel() {
   return (
     <Reveal delay={150} className="rounded-xl border border-deep-line bg-deep-raised/80 p-6 shadow-lift backdrop-blur-sm md:p-7">
       <div className="flex items-center gap-4 border-b border-deep-line pb-5">
-        <img
-          src={AVATAR_URL}
-          alt="Foto de Berta Batista"
-          width={48}
-          height={48}
-          className="size-12 rounded-full object-cover ring-2 ring-accent"
-        />
         <div className="flex-1">
           <p className="font-display font-semibold">Berta Batista</p>
           <p className="text-xs text-deep-muted">Discovery · Requisitos · Processos · Automação</p>

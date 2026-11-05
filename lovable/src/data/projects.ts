@@ -129,7 +129,7 @@ export const projects: Project[] = [
     tag: "Processos & RPA",
     group: "processos",
     summary:
-      "Do levantamento com usuários ao BPMN do processo e à solução de automação com quatro robôs RPA.",
+      "Do levantamento com usuários ao BPMN do processo e à automação da emissão de CT-e.",
     question:
       "Como tornar mais eficiente e rastreável a emissão de documentos fiscais de transporte, reduzindo etapas repetitivas e inconsistências?",
     context: [
@@ -141,9 +141,10 @@ export const projects: Project[] = [
     highlights: [
       "Reuniões de refinamento com usuários para entender a operação real.",
       "Modelagem BPMN no Bizagi como evidência central do entendimento.",
-      "Solução com planilhas auxiliares, integração de dados e 4 robôs RPA.",
+      "Solução com planilhas auxiliares, integração de dados e automação da emissão de CT-e.",
     ],
-    metrics: [{ value: "4", label: "robôs RPA na solução" }],
+    metrics: [{ value: "−60%", label: "tempo de emissão manual (informado)" }],
+    metricsNote: "Indicador informado, sujeito à validação documental.",
     skills: ["BPMN", "Bizagi", "RPA", "Protheus", "Integrações"],
     url: `${base}/processos-rpa.html`,
   },
@@ -172,6 +173,7 @@ export const projects: Project[] = [
       { value: "11% → 6%", label: "taxa de erros" },
       { value: "35% → 72%", label: "cumprimento de prazos" },
       { value: "−60%", label: "tempo estimado de emissão" },
+      { value: "25 → 10 min", label: "por lote de 10 notas (estimado)" },
     ],
     metricsNote: "Comparação de janeiro e junho publicada no material original.",
     skills: ["Oracle R12", "No-code", "DataLoad", "Implantação", "KPIs"],
@@ -317,6 +319,6 @@ export const heroChart = {
     { label: "Cumprimento de prazos", before: 35, after: 72, better: "up" as const },
     { label: "Taxa de erros", before: 11, after: 6, better: "down" as const },
   ],
-  highlight: { value: "−60%", label: "tempo estimado de emissão" },
+  highlight: { value: "25 → 10 min", label: "Lote de 10 notas · redução estimada de 60%" },
   source: "Comparação publicada no material original do estudo.",
 };
