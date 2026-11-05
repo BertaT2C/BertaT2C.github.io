@@ -87,7 +87,8 @@ jobs:
           git fetch origin main
           git switch -C main origin/main
           BEFORE=$(git hash-object index.html)
-          rm -rf capa-preview
+          # Preserve arquivos de versões anteriores para não quebrar
+          # a capa oficial, que usa os hashes publicados anteriormente.
           mkdir -p capa-preview
           cp -a /tmp/capa-preview-site/. capa-preview/
           git add capa-preview
