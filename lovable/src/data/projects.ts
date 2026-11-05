@@ -30,7 +30,7 @@ export const projects: Project[] = [
   {
     slug: "canais-digitais",
     number: "01",
-    title: "Canais digitais",
+    title: "Assistência automotiva digital",
     tag: "Produto & Discovery",
     group: "produto",
     summary:
@@ -60,7 +60,7 @@ export const projects: Project[] = [
   {
     slug: "refinamento",
     number: "02",
-    title: "Qualidade do refinamento",
+    title: "Melhoria do refinamento do backlog",
     tag: "OKR & Backlog",
     group: "backlog",
     summary:
@@ -89,7 +89,7 @@ export const projects: Project[] = [
   {
     slug: "whatsapp",
     number: "03",
-    title: "Atendimento por WhatsApp",
+    title: "Autosserviço pelo WhatsApp",
     tag: "Canais Digitais",
     group: "produto",
     summary:
@@ -125,7 +125,7 @@ export const projects: Project[] = [
   {
     slug: "processos-rpa",
     number: "04",
-    title: "CT-e e MDF-e",
+    title: "Automação de documentos de transporte (CT-e e MDF-e)",
     tag: "Processos & RPA",
     group: "processos",
     summary:
@@ -151,7 +151,7 @@ export const projects: Project[] = [
   {
     slug: "oracle-r12",
     number: "05",
-    title: "Notas fiscais no Oracle R12",
+    title: "RPA na emissão de faturas no Oracle R12",
     tag: "ERP & Automação",
     group: "processos",
     summary:
@@ -182,7 +182,7 @@ export const projects: Project[] = [
   {
     slug: "pdv",
     number: "06",
-    title: "PDV integrado ao ABS",
+    title: "Integração do ponto de venda com o ABS",
     tag: "Regras & BDD",
     group: "backlog",
     summary:
@@ -313,7 +313,7 @@ export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
 /** Caso 03: indicadores planejados do MVP. Valores hipotéticos, nunca resultados obtidos. */
 export const whatsappSuccess = {
   caseSlug: "whatsapp",
-  caseLabel: "Caso 3: Atendimento por WhatsApp",
+  caseLabel: "Caso 3: Autosserviço pelo WhatsApp",
   before: "Base hipotética",
   after: "Meta do MVP",
   series: [

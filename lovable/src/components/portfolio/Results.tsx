@@ -96,8 +96,8 @@ export function Results() {
 
         <Reveal delay={100} className="mt-8 grid gap-6 rounded-xl border border-border bg-card p-6 shadow-sm md:grid-cols-[1fr_1.2fr] md:p-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">Caso 04 · CT-e e MDF-e</p>
-            <p className="mt-3 font-display text-xl font-semibold">Automação da emissão de CT-e</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">Caso 04 · Automação de documentos de transporte (CT-e e MDF-e)</p>
+            <p className="mt-3 font-display text-xl font-semibold">Automação de documentos de transporte (CT-e e MDF-e)</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Processo mapeado em BPMN, integrando Protheus, Chronus e SEFAZ para reduzir etapas repetitivas.
             </p>
