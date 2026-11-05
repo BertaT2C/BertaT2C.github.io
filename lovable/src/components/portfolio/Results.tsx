@@ -1,115 +1,192 @@
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Eye } from "lucide-react";
+import { projects, type Project } from "@/data/projects";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-
-const story = [
-  { k: "Problema", t: "Emissão manual e repetitiva de notas no Oracle R12, em operação just-in-time." },
-  { k: "Solução", t: "Automação no-code com templates DataLoad, contingência e máquinas dedicadas." },
-  { k: "Resultado", t: "Redução estimada de 60% no tempo: de 25 para 10 minutos por lote de 10 notas." },
-  { k: "Benefício", t: "Menos esforço manual, menos erros e mais prazos cumpridos na operação." },
-];
-
-function Bars({ items, unit }: { items: { label: string; v: number; hi?: boolean }[]; unit: string }) {
-  const max = Math.max(...items.map((i) => i.v));
-  return (
-    <div className="space-y-3">
-      {items.map((i, idx) => (
-        <div key={i.label}>
-          <div className="flex justify-between text-xs">
-            <span className="text-muted-foreground">{i.label}</span>
-            <span className="tabular font-semibold">{i.v} {unit}</span>
-          </div>
-          <div className="mt-1 h-3 rounded-sm bg-muted">
-            <div
-              className={`bar-grow h-full rounded-sm ${i.hi ? "bg-accent" : "bg-primary/40"}`}
-              style={{ width: `${(i.v / max) * 100}%`, "--bar-delay": `${200 + idx * 150}ms` } as React.CSSProperties}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+import { ProjectDialog } from "./ProjectDialog";
+import { cn } from "@/lib/utils";
 
 export function Results() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [preview, setPreview] = useState<Project | null>(null);
+  const touchX = useRef<number | null>(null);
+  const current = projects[activeIndex];
+  const total = projects.length;
+
+  const change = (step: number) => {
+    setActiveIndex((index) => (index + step + total) % total);
+  };
+
   return (
     <section id="resultados" className="border-t border-border bg-background py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <SectionHeading index="02" eyebrow="Indicadores de negócio" title="Eficiência, produtividade e automação.">
-          Indicadores documentados em cada estudo, apresentados por caso, sem misturar projetos. Estimativas são
-          sinalizadas como tal.
+          Explore os seis estudos de caso em um carrossel. Cada projeto apresenta seus próprios
+          indicadores, contexto e entregáveis.
         </SectionHeading>
 
-        <Reveal className="mt-12 rounded-xl border border-border bg-card p-6 shadow-sm md:p-8">
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">Caso 05 · Notas fiscais no Oracle R12</p>
-          <ol className="mt-5 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-4">
-            {story.map((s, i) => (
-              <li key={s.k} className="bg-card p-4">
-                <p className="tabular text-xs font-semibold text-accent">0{i + 1} · {s.k}</p>
-                <p className="mt-2 text-sm leading-snug">{s.t}</p>
-              </li>
+        <Reveal className="mt-10">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+            <div className="text-sm text-muted-foreground" aria-live="polite">
+              <span className="tabular font-display font-bold text-primary">
+                {String(activeIndex + 1).padStart(2, "0")}
+              </span>
+              {" "}de{" "}
+              <span className="tabular">{String(total).padStart(2, "0")}</span>
+              {" "}· Selecione um estudo para explorar
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => change(-1)}
+                aria-label="Ver estudo anterior"
+                className="grid size-11 place-items-center rounded-full border bg-card text-primary shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <ArrowLeft aria-hidden className="size-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => change(1)}
+                aria-label="Ver próximo estudo"
+                className="grid size-11 place-items-center rounded-full border bg-card text-primary shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <ArrowRight aria-hidden className="size-5" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            className="rounded-2xl border bg-card shadow-soft focus-visible:outline-2 focus-visible:outline-primary"
+            role="region"
+            aria-label="Carrossel dos seis estudos de caso"
+            aria-roledescription="carrossel"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowRight") {
+                event.preventDefault();
+                change(1);
+              } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                change(-1);
+              }
+            }}
+            onTouchStart={(event) => { touchX.current = event.touches[0]?.clientX ?? null; }}
+            onTouchEnd={(event) => {
+              if (touchX.current === null) return;
+              const endX = event.changedTouches[0]?.clientX ?? touchX.current;
+              const distance = touchX.current - endX;
+              if (Math.abs(distance) > 60) change(distance > 0 ? 1 : -1);
+              touchX.current = null;
+            }}
+          >
+            <article key={current.slug} className="card-in overflow-hidden rounded-2xl">
+              <div className="border-b bg-secondary/40 px-5 py-6 sm:px-8">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="tabular text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                    Caso {current.number} · {current.tag}
+                  </span>
+                  <span className="rounded-full border border-primary/20 bg-card px-3 py-1 text-xs font-semibold text-primary">
+                    {activeIndex + 1} / {total}
+                  </span>
+                </div>
+                <h3 className="mt-3 max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground sm:text-3xl">
+                  {current.title}
+                </h3>
+                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {current.summary}
+                </p>
+              </div>
+
+              <div className="grid gap-8 p-5 sm:p-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+                <div className="flex flex-col">
+                  <p className="text-xs font-bold uppercase tracking-wider text-primary">Desafio de negócio</p>
+                  <p className="mt-3 font-display text-lg font-semibold leading-relaxed text-foreground">{current.question}</p>
+                  <p className="mt-7 text-xs font-bold uppercase tracking-wider text-primary">Etapas e entregáveis</p>
+                  <ol className="mt-3 flex flex-wrap gap-2">
+                    {current.flow.map((step, index) => (
+                      <li key={index} className="rounded-md border bg-muted/60 px-3 py-2 text-xs font-medium">
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="mt-7 text-xs font-bold uppercase tracking-wider text-primary">Valor para a operação</p>
+                  <ul className="mt-3 space-y-3">
+                    {current.highlights.slice(0, 2).map((line, index) => (
+                      <li key={index} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex min-w-0 flex-col">
+                  <p className="text-xs font-bold uppercase tracking-wider text-primary">
+                    {current.slug === "pdv" ? "Escopo de validação" : current.slug === "processos-rpa" ? "Solução implementada" : "Indicadores do estudo"}
+                  </p>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    {current.metrics?.map((metric) => (
+                      <div
+                        key={metric.label}
+                        className="flex min-h-24 flex-col justify-between rounded-xl border border-border bg-muted/45 p-4"
+                      >
+                        <span className="text-sm leading-snug text-muted-foreground">{metric.label}</span>
+                        <strong className="tabular mt-2 font-display text-xl font-semibold text-primary sm:text-2xl">
+                          {metric.value}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                  {current.metricsNote && (
+                    <p className="mt-4 text-xs leading-relaxed text-muted-foreground">{current.metricsNote}</p>
+                  )}
+                  <div className="mt-auto flex flex-wrap gap-4 pt-8">
+                    <button
+                      type="button"
+                      onClick={() => setPreview(current)}
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+                    >
+                      <Eye className="size-4" aria-hidden /> Pré-visualizar
+                    </button>
+                    <a
+                      href={current.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-semibold text-primary hover:bg-secondary"
+                    >
+                      Estudo completo <ArrowUpRight className="size-4" aria-hidden />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Selecionar estudo de caso">
+            {projects.map((project, index) => (
+              <button
+                key={project.slug}
+                type="button"
+                aria-label={"Ir para caso " + project.number + ": " + project.title}
+                aria-current={activeIndex === index ? "true" : undefined}
+                onClick={() => setActiveIndex(index)}
+                className={cn(
+                  "tabular grid size-10 place-items-center rounded-full border text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                  activeIndex === index
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-primary hover:text-primary",
+                )}
+              >
+                {project.number}
+              </button>
             ))}
-          </ol>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-3">
-            <div>
-              <p className="font-display font-semibold">Tempo por lote de 10 notas</p>
-              <p className="mb-4 text-xs text-muted-foreground">Redução estimada de 60%</p>
-              <Bars unit="min" items={[{ label: "Manual", v: 25 }, { label: "Automatizado (estimado)", v: 10, hi: true }]} />
-            </div>
-            <div>
-              <p className="font-display font-semibold">Cumprimento de prazos</p>
-              <p className="mb-4 text-xs text-muted-foreground">Janeiro × junho (material original)</p>
-              <Bars unit="%" items={[{ label: "Jan", v: 35 }, { label: "Jun", v: 72, hi: true }]} />
-            </div>
-            <div>
-              <p className="font-display font-semibold">Taxa de erros</p>
-              <p className="mb-4 text-xs text-muted-foreground">Janeiro × junho (material original)</p>
-              <Bars unit="%" items={[{ label: "Jan", v: 11 }, { label: "Jun", v: 6, hi: true }]} />
-            </div>
           </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-lg border border-border p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Tempo por lote</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Mede quanto tempo um lote de 10 notas leva para ser emitido em uma máquina.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Capacidade operacional</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Cresce com o processamento simultâneo em máquinas dedicadas — é um ganho distinto da redução por lote.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Contexto operacional</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Mais de 100 notas emitidas por dia em dois turnos — volume da operação, não atribuído apenas à automação.
-              </p>
-            </div>
-          </div>
-          <p className="mt-4 text-xs italic text-muted-foreground">
-            Estimativa: o resultado pode variar conforme a complexidade das notas, o volume processado e a quantidade
-            de máquinas dedicadas à automação.
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Use as setas, os números dos casos ou deslize no celular para navegar.
           </p>
         </Reveal>
-
-        <Reveal delay={100} className="mt-8 grid gap-6 rounded-xl border border-border bg-card p-6 shadow-sm md:grid-cols-[1fr_1.2fr] md:p-8">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">Caso 04 · Automação de documentos de transporte (CT-e e MDF-e)</p>
-            <p className="mt-3 font-display text-xl font-semibold">Automação de documentos de transporte (CT-e e MDF-e)</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Processo mapeado em BPMN, integrando Protheus, Chronus e SEFAZ para reduzir etapas repetitivas.
-            </p>
-          </div>
-          <div>
-            <p className="font-display font-semibold">Tempo de emissão manual</p>
-            <p className="mb-4 text-xs text-muted-foreground">Redução de 60% (indicador informado)</p>
-            <Bars unit="%" items={[{ label: "Antes (base)", v: 100 }, { label: "Após automação (informado)", v: 40, hi: true }]} />
-            <p className="mt-3 text-xs italic text-muted-foreground">Indicador informado, sujeito à validação documental.</p>
-          </div>
-        </Reveal>
       </div>
+      <ProjectDialog project={preview} onOpenChange={(open) => !open && setPreview(null)} />
     </section>
   );
 }
