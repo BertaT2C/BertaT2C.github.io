@@ -1,0 +1,92 @@
+name: Publicar prévia da capa na Web
+
+on:
+  push:
+    branches:
+      - 'Capa-Interativa-(lovable)'
+    paths:
+      - 'lovable/src/**'
+      - 'lovable/preview/**'
+      - 'lovable/vite.preview.config.ts'
+      - '.github/workflows/publicar-previa-web.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar-previa-capa-web
+  cancel-in-progress: false
+
+jobs:
+  publica:
+    name: Compila e publica em URL separada
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obter a branch React
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Instalar Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Instalar dependências
+        working-directory: lovable
+        run: bun install --frozen-lockfile
+      - name: Validar testes do React
+        working-directory: lovable
+        run: bun run test
+      - name: Construir versão estática independente do servidor
+        working-directory: lovable
+        run: bun x vite build --config vite.preview.config.ts
+      - name: Conferir conteúdo gerado
+        run: |
+          test -s dist-capa-preview/index.html
+          test -d dist-capa-preview/assets
+          grep -q 'Prévia do Portfólio' dist-capa-preview/index.html
+          echo 'Saída estática validada.'
+      - name: Iniciar servidor estático para teste
+        run: |
+          nohup python3 -m http.server 4199 --bind 127.0.0.1 --directory dist-capa-preview > /tmp/capa-preview-servidor.log 2>&1 &
+          echo $! > /tmp/capa-preview-servidor.pid
+          for i in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:4199/ -o /tmp/site.html; then
+              echo 'HTTP 200 confirmado para arquivo estático'
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/capa-preview-servidor.log
+          exit 1
+      - name: Instalar Chrome para teste visual
+        run: npm exec --yes --package=playwright@1.57.0 -- playwright install --with-deps chromium
+      - name: Verificar renderização no navegador
+        run: |
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 http://127.0.0.1:4199/ /tmp/capa-preview-validada.png
+          test -s /tmp/capa-preview-validada.png
+      - name: Salvar versão compilada para publicação
+        run: |
+          cp -a dist-capa-preview /tmp/capa-preview-site
+      - name: Publicar apenas na subpasta capa-preview da branch main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git switch -C main origin/main
+          BEFORE=$(git hash-object index.html)
+          rm -rf capa-preview
+          mkdir -p capa-preview
+          cp -a /tmp/capa-preview-site/. capa-preview/
+          git add capa-preview
+          test "$(git hash-object index.html)" = "$BEFORE"
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária na prévia."
+          else
+            git commit -m "Atualiza prévia independente da capa React"
+            git push origin HEAD:main
+          fi
+      - name: Link da prévia
+        run: |
+          echo '### Prévia Web interativa' >> "$GITHUB_STEP_SUMMARY"
+          echo 'https://bertat2c.github.io/capa-preview/' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A página index.html oficial não foi modificada. Para o retorno à versão anterior, restaure ou exclua apenas a pasta capa-preview.' >> "$GITHUB_STEP_SUMMARY"
