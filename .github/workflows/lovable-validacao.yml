@@ -6,10 +6,14 @@ on:
       - 'Capa-Interativa-(lovable)'
     paths:
       - 'lovable/**'
+      - 'abrir-capa.sh'
+      - '.vscode/**'
       - '.github/workflows/lovable-validacao.yml'
   pull_request:
     paths:
       - 'lovable/**'
+      - 'abrir-capa.sh'
+      - '.vscode/**'
       - '.github/workflows/lovable-validacao.yml'
 
 permissions:
@@ -34,3 +38,22 @@ jobs:
         run: bun run test
       - name: Compilar aplicacao
         run: bun run build
+      - name: Validar servidor e porta fixa do Codespaces
+        working-directory: .
+        run: |
+          bash -n abrir-capa.sh
+          bash abrir-capa.sh > /tmp/preview-codespaces.log 2>&1 &
+          pid=$!
+          for i in $(seq 1 45); do
+            if curl -fsS --max-time 3 http://127.0.0.1:5173/ -o /tmp/preview-codespaces.html 2>/dev/null; then
+              echo "Previa acessivel na porta 5173."
+              exit 0
+            fi
+            if ! kill -0 "$pid" 2>/dev/null; then
+              echo "O servidor encerrou inesperadamente."
+              break
+            fi
+            sleep 2
+          done
+          cat /tmp/preview-codespaces.log
+          exit 1
