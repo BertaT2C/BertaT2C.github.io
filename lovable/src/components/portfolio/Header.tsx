@@ -3,7 +3,8 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { id: "projetos", label: "Projetos" },
+  { id: "competencias", label: "Competências" },
+  { id: "projetos", label: "Estudos de caso" },
   { id: "como-atuo", label: "Como atuo" },
   { id: "contato", label: "Contato" },
 ];
@@ -40,40 +41,43 @@ export function Header() {
     };
   }, []);
 
-  const onDeep = !scrolled;
-
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "bg-background/85 shadow-soft backdrop-blur-md" : "bg-transparent",
+        "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300",
+        scrolled
+          ? "border-deep-line bg-deep/95 backdrop-blur-md"
+          : "border-transparent bg-transparent",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
-        <a
-          href="#inicio"
-          className={cn(
-            "font-display text-xl font-semibold transition-colors",
-            onDeep ? "text-deep-foreground" : "text-foreground",
-          )}
-        >
-          Berta Batista<span className="text-accent">.</span>
+        <a href="#inicio" className="flex items-center gap-3 text-deep-foreground">
+          <span className="flex size-9 items-center justify-center rounded-md bg-accent font-display text-sm font-bold text-accent-foreground">
+            BB
+          </span>
+          <span className="leading-tight">
+            <span className="block font-display text-[0.95rem] font-semibold">Berta Batista</span>
+            <span className="block text-xs text-deep-muted">Análise de Negócios · Produto</span>
+          </span>
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
               className={cn(
-                "relative rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                onDeep
-                  ? "text-deep-muted hover:text-deep-foreground"
-                  : "text-muted-foreground hover:text-foreground",
-                active === l.id && "bg-secondary text-secondary-foreground hover:text-secondary-foreground",
+                "relative py-2 text-sm font-medium transition-colors",
+                active === l.id ? "text-deep-foreground" : "text-deep-muted hover:text-deep-foreground",
               )}
             >
               {l.label}
+              <span
+                className={cn(
+                  "absolute inset-x-0 -bottom-0.5 h-0.5 origin-left bg-accent transition-transform duration-300",
+                  active === l.id ? "scale-x-100" : "scale-x-0",
+                )}
+              />
             </a>
           ))}
         </nav>
@@ -81,23 +85,20 @@ export function Header() {
         <button
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           onClick={() => setOpen((v) => !v)}
-          className={cn(
-            "rounded-full p-2 md:hidden",
-            onDeep && !open ? "text-deep-foreground" : "text-foreground",
-          )}
+          className="rounded-md p-2 text-deep-foreground md:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {open && (
-        <nav className="card-in mx-4 mb-3 flex flex-col rounded-2xl border bg-card p-2 shadow-lift md:hidden">
+        <nav className="card-in mx-4 mb-3 flex flex-col rounded-lg border bg-card p-2 shadow-lift md:hidden">
           {links.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 font-semibold text-foreground hover:bg-muted"
+              className="rounded-md px-4 py-3 font-medium text-foreground hover:bg-muted"
             >
               {l.label}
             </a>

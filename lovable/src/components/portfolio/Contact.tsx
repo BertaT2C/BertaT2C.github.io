@@ -1,7 +1,8 @@
-import { Copy, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Copy, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { SectionHeading } from "./SectionHeading";
 
 const EMAIL = "bertareg@hotmail.com";
 export const WHATSAPP_URL = "https://wa.me/5515991814440";
@@ -16,58 +17,84 @@ export function Contact() {
     }
   };
 
-  return (
-    <section id="contato" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
-      <Reveal className="rounded-[2.5rem] border bg-card p-8 shadow-soft md:p-16">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Contato</p>
-        <h2 className="mt-4 max-w-3xl text-4xl font-medium md:text-6xl">
-          Vamos conversar sobre <span className="marker italic">produtos</span> e tecnologia?
-        </h2>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          Tenho interesse em oportunidades de Product Owner, Análise de Negócios, Análise de Produtos
-          e projetos de transformação digital.
-        </p>
+  const rowCls =
+    "group flex items-center gap-4 border-b px-1 py-5 transition-colors last:border-b-0 hover:bg-muted/50";
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+  return (
+    <section id="contato" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+        <Reveal>
+          <SectionHeading
+            index="04"
+            eyebrow="Contato"
+            title={
+              <>
+                Vamos conversar sobre <span className="marker">produto e tecnologia</span>?
+              </>
+            }
+          >
+            Tenho interesse em oportunidades de Product Owner, Análise de Negócios, Análise de
+            Produtos e projetos de transformação digital.
+          </SectionHeading>
+        </Reveal>
+
+        <Reveal delay={120} className="rounded-xl border bg-card px-5 shadow-soft md:px-7">
           <a
             href="https://www.linkedin.com/in/bertabatista/"
             target="_blank"
             rel="noreferrer"
-            className="group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lift"
+            className={rowCls}
           >
-            <Linkedin className="size-6 text-primary" />
-            <p className="mt-4 font-display text-xl">LinkedIn</p>
-            <p className="text-sm text-muted-foreground">/in/bertabatista</p>
+            <span className="flex size-11 items-center justify-center rounded-md bg-secondary text-primary">
+              <Linkedin className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                LinkedIn
+              </span>
+              <span className="block font-medium">/in/bertabatista</span>
+            </span>
+            <ArrowUpRight className="size-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
           </a>
-          <div className="rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lift">
-            <Mail className="size-6 text-primary" />
-            <p className="mt-4 font-display text-xl">E-mail</p>
-            <p className="text-sm text-muted-foreground">{EMAIL}</p>
-            <div className="mt-4 flex gap-2">
+
+          <div className={rowCls}>
+            <span className="flex size-11 items-center justify-center rounded-md bg-secondary text-primary">
+              <Mail className="size-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                E-mail
+              </span>
+              <span className="block truncate font-medium">{EMAIL}</span>
+            </span>
+            <div className="flex gap-2">
               <Button asChild variant="pill" size="sm">
                 <a href={`mailto:${EMAIL}`}>Escrever</a>
               </Button>
-              <Button variant="pillOutline" size="sm" onClick={copyEmail}>
-                <Copy /> Copiar
+              <Button variant="pillOutline" size="sm" onClick={copyEmail} aria-label="Copiar e-mail">
+                <Copy />
               </Button>
             </div>
           </div>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lift"
-          >
-            <MessageCircle className="size-6 text-primary" />
-            <p className="mt-4 font-display text-xl">WhatsApp</p>
-            <p className="text-sm text-muted-foreground">(15) 99181-4440</p>
-          </a>
-        </div>
-      </Reveal>
 
-      <footer className="mt-16 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-        <p>© {new Date().getFullYear()} Berta Batista</p>
-        <a href="#inicio" className="font-semibold hover:text-foreground">
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className={rowCls}>
+            <span className="flex size-11 items-center justify-center rounded-md bg-secondary text-primary">
+              <MessageCircle className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                WhatsApp
+              </span>
+              <span className="tabular block font-medium">(15) 99181-4440</span>
+            </span>
+            <ArrowUpRight className="size-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+          </a>
+        </Reveal>
+      </div>
+
+      <footer className="mt-20 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm text-muted-foreground md:flex-row">
+        <p>© {new Date().getFullYear()} Berta Batista · Product Owner & Análise de Negócios</p>
+        <a href="#inicio" className="font-medium hover:text-foreground">
           Voltar ao topo ↑
         </a>
       </footer>
@@ -82,10 +109,10 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noreferrer"
       aria-label="Conversar pelo WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-whatsapp p-4 text-whatsapp-foreground shadow-lift transition-all duration-300 hover:pr-6"
+      className="group fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-whatsapp p-3.5 text-whatsapp-foreground shadow-lift transition-all duration-300 hover:pr-5"
     >
-      <MessageCircle className="size-6" />
-      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-bold transition-all duration-300 group-hover:max-w-40">
+      <MessageCircle className="size-5" />
+      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-40">
         Vamos conversar?
       </span>
     </a>
