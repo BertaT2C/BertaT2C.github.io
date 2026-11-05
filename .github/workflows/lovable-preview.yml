@@ -1,0 +1,64 @@
+name: Previa visual Lovable
+
+on:
+  push:
+    branches:
+      - 'Capa-Interativa-(lovable)'
+    paths:
+      - 'lovable/**'
+      - '.github/workflows/lovable-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capturar:
+    name: Gerar imagens da capa
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: lovable
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+      - name: Configurar Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Instalar dependencias
+        run: bun install --frozen-lockfile
+      - name: Iniciar aplicacao de teste
+        run: |
+          nohup bun run dev -- --host 127.0.0.1 > /tmp/lovable-preview.log 2>&1 &
+          echo $! > /tmp/lovable-preview.pid
+      - name: Aguardar pagina carregar
+        run: |
+          for i in $(seq 1 45); do
+            if curl -fsS --max-time 3 http://127.0.0.1:5173/ -o /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/lovable-preview.log
+          exit 1
+      - name: Instalar navegador de teste
+        run: |
+          npm exec --yes --package=playwright@1.57.0 -- playwright install --with-deps chromium
+      - name: Gerar imagens desktop e celular
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/preview"
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 http://127.0.0.1:5173/ "$GITHUB_WORKSPACE/preview/portfolio-desktop.png"
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="390,844" --full-page --wait-for-timeout=1800 http://127.0.0.1:5173/ "$GITHUB_WORKSPACE/preview/portfolio-celular.png"
+      - name: Disponibilizar imagens para visualizacao
+        uses: actions/upload-artifact@v4
+        with:
+          name: previa-visual-portfolio
+          path: preview/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Orientacao para abrir a previa
+        run: |
+          echo "### Prévia visual gerada" >> "$GITHUB_STEP_SUMMARY"
+          echo "Abra a seção **Artifacts** desta execução e baixe **previa-visual-portfolio**. O ZIP contém imagens desktop e celular." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Esta é uma prévia em imagem, não uma publicação interativa. A branch main e o site oficial não foram alterados." >> "$GITHUB_STEP_SUMMARY"
