@@ -73,7 +73,7 @@ function AnalysisPanel() {
     <Reveal delay={150} className="rounded-xl border border-deep-line bg-deep-raised/80 p-6 shadow-lift backdrop-blur-sm md:p-7">
       <div className="flex items-center gap-4 border-b border-deep-line pb-5">
         <div className="flex-1">
-          <p className="font-display font-semibold">Berta Batista</p>
+          <h2 className="font-display text-lg font-semibold leading-snug text-deep-foreground">{heroChart.caseLabel}</h2>
           <p className="text-xs text-deep-muted">Discovery · Requisitos · Processos · Automação</p>
         </div>
         <span className="hidden rounded border border-deep-line px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-deep-muted sm:inline">
@@ -83,7 +83,7 @@ function AnalysisPanel() {
 
       <div className="mt-5 flex items-baseline justify-between gap-4">
         <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-          {heroChart.caseLabel}
+          Indicadores de desempenho
         </p>
         <div className="flex shrink-0 items-center gap-3 text-[0.7rem] text-deep-muted">
           <span className="flex items-center gap-1.5">

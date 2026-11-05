@@ -312,7 +312,7 @@ export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
 /** Gráfico do topo da página: indicadores publicados no estudo Oracle R12. */
 export const heroChart = {
   caseSlug: "oracle-r12",
-  caseLabel: "Caso 05 · Notas fiscais no Oracle R12",
+  caseLabel: "Caso 5: RPA na emissão de faturas no Oracle R12",
   before: "Jan",
   after: "Jun",
   series: [
