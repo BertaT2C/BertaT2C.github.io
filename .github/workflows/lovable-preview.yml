@@ -34,9 +34,12 @@ jobs:
       - name: Aguardar pagina carregar
         run: |
           for i in $(seq 1 45); do
-            if curl -fsS --max-time 3 http://127.0.0.1:5173/ -o /dev/null; then
-              exit 0
-            fi
+            for port in 3000 5173 4173 8080; do
+              if curl -fsS --max-time 2 "http://127.0.0.1:${port}/" -o /dev/null; then
+                echo "PREVIEW_URL=http://127.0.0.1:${port}/" >> "$GITHUB_ENV"
+                exit 0
+              fi
+            done
             sleep 2
           done
           cat /tmp/lovable-preview.log
@@ -47,8 +50,8 @@ jobs:
       - name: Gerar imagens desktop e celular
         run: |
           mkdir -p "$GITHUB_WORKSPACE/preview"
-          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 http://127.0.0.1:5173/ "$GITHUB_WORKSPACE/preview/portfolio-desktop.png"
-          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="390,844" --full-page --wait-for-timeout=1800 http://127.0.0.1:5173/ "$GITHUB_WORKSPACE/preview/portfolio-celular.png"
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="1440,900" --full-page --wait-for-timeout=1800 "$PREVIEW_URL" "$GITHUB_WORKSPACE/preview/portfolio-desktop.png"
+          npm exec --yes --package=playwright@1.57.0 -- playwright screenshot --browser chromium --viewport-size="390,844" --full-page --wait-for-timeout=1800 "$PREVIEW_URL" "$GITHUB_WORKSPACE/preview/portfolio-celular.png"
       - name: Disponibilizar imagens para visualizacao
         uses: actions/upload-artifact@v4
         with:
