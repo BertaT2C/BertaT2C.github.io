@@ -16,12 +16,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "rounded-full bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift",
+        hero: "rounded-md bg-accent text-accent-foreground font-semibold transition-all duration-300 hover:bg-accent/90 hover:shadow-lift",
         heroOutline:
-          "rounded-full border border-deep-line text-deep-foreground font-semibold transition-all duration-300 hover:bg-deep-foreground/10 hover:-translate-y-0.5",
-        pill: "rounded-full bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift",
+          "rounded-md border border-deep-line text-deep-foreground font-semibold transition-all duration-300 hover:border-deep-muted hover:bg-deep-foreground/5",
+        pill: "rounded-md bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:bg-primary/90 hover:shadow-lift",
         pillOutline:
-          "rounded-full border border-border bg-card text-foreground font-semibold transition-all duration-300 hover:border-primary hover:-translate-y-0.5",
+          "rounded-md border border-border bg-card text-foreground font-semibold transition-all duration-300 hover:border-primary",
       },
       size: {
         default: "h-9 px-4 py-2",
