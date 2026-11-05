@@ -349,9 +349,11 @@
         <button type="button" class="access-dialog-close" aria-label="Fechar janela" data-close-access>×</button>
       </div>
       <p id="access-dialog-desc"><strong>Acesso restrito.</strong> Por favor, solicite liberação preenchendo os dados abaixo. A autorização será analisada individualmente.</p>
-      <form id="access-request-form" class="access-form">
+      <form id="access-request-form" class="access-form" action="https://formsubmit.co/bertareg@hotmail.com" method="POST" target="_blank">
         <input type="hidden" name="material" id="access-material" value="Material privado do Miro">
         <input type="hidden" name="_subject" value="Portfólio — solicitação de acesso ao Miro">
+        <input type="hidden" name="_url" value="https://bertat2c.github.io/canais-digitais.html">
+        <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <label for="access-name">Nome completo *
           <input id="access-name" name="name" autocomplete="name" required maxlength="100" placeholder="Seu nome">
@@ -369,10 +371,10 @@
           <input id="access-consent" type="checkbox" required>
           <span>Concordo com o envio destes dados ao serviço FormSubmit para encaminhamento da solicitação à responsável pelo portfólio. Os dados serão utilizados para avaliar o pedido de acesso.</span>
         </label>
-        <button type="submit" id="access-submit">Solicitar liberação</button>
+        <button type="submit" id="access-submit">Enviar solicitação de acesso</button>
         <p class="access-status" id="access-status" role="status" aria-live="polite"></p>
-        <a id="access-fallback" class="access-fallback" href="mailto:bertareg@hotmail.com">Solicitar por e-mail diretamente</a>
-        <p class="access-privacy">O envio da solicitação não libera o quadro automaticamente. A responsável poderá solicitar informações adicionais e aprovar ou recusar o acesso.</p>
+        <a id="access-fallback" class="access-fallback visible" href="mailto:bertareg@hotmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20acesso%20ao%20Miro">Prefiro solicitar diretamente pelo meu e-mail →</a>
+        <p class="access-privacy">O envio abre uma nova aba para validação pelo FormSubmit. A solicitação somente estará concluída após a confirmação nessa aba. O acesso ao Miro não será liberado automaticamente.</p>
       </form>
     </div>
   </dialog>
@@ -382,71 +384,49 @@
     const form = document.getElementById('access-request-form');
     const status = document.getElementById('access-status');
     const fallback = document.getElementById('access-fallback');
-    const submitButton = document.getElementById('access-submit');
     const material = document.getElementById('access-material');
+    const subject = 'Portfólio — solicitação de acesso ao Miro';
+
+    function refreshAlternative() {
+      const values = new FormData(form);
+      const lines = [
+        'Solicitação de acesso a material privado do portfólio',
+        'Material: ' + (material.value || 'Material privado do Miro'),
+        'Nome: ' + String(values.get('name') || ''),
+        'E-mail: ' + String(values.get('email') || ''),
+        'Empresa: ' + String(values.get('empresa') || ''),
+        'Mensagem: ' + String(values.get('mensagem') || '')
+      ];
+      fallback.href = 'mailto:bertareg@hotmail.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    }
+
     document.querySelectorAll('.request-access').forEach(button => {
       button.addEventListener('click', () => {
         material.value = button.dataset.material || 'Material privado do Miro';
         status.textContent = '';
         status.className = 'access-status';
-        fallback.classList.remove('visible');
+        refreshAlternative();
         dialog.showModal();
         document.getElementById('access-name').focus();
       });
     });
+
     document.querySelector('[data-close-access]').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-    form.addEventListener('submit', async event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const values = new FormData(form);
-      const name = String(values.get('name') || '').trim();
-      const email = String(values.get('email') || '').trim();
-      const company = String(values.get('empresa') || '').trim();
-      const subject = 'Portfólio — solicitação de acesso ao Miro';
-      const body = [
-        'Solicitação de acesso a material privado do portfólio',
-        'Material: ' + material.value,
-        'Nome: ' + name,
-        'E-mail: ' + email,
-        'Empresa: ' + company,
-        'Mensagem: ' + (values.get('mensagem') || '')
-      ].join('\n');
-      fallback.href = 'mailto:bertareg@hotmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando solicitação…';
-      status.textContent = '';
-      status.className = 'access-status';
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/bertareg@hotmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name, email, empresa: company,
-            material: material.value,
-            mensagem: String(values.get('mensagem') || ''),
-            _subject: subject,
-            _honey: String(values.get('_honey') || ''),
-            _url: 'https://bertat2c.github.io/canais-digitais.html'
-          })
-        });
-        const data = await response.json();
-        if (!response.ok || !(data.success === 'true' || data.success === true)) {
-          throw new Error(data.message || 'Falha no envio');
-        }
-        status.classList.add('success');
-        status.textContent = 'Solicitação encaminhada para processamento. A liberação será avaliada individualmente; o acesso não foi concedido.';
-        form.reset();
-      } catch (err) {
-        status.classList.add('error');
-        status.textContent = 'Não foi possível confirmar o envio automático. Utilize a alternativa por e-mail:';
-        fallback.textContent = 'Abrir e-mail com a solicitação preenchida →';
-        fallback.classList.add('visible');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Solicitar liberação';
+    form.addEventListener('input', refreshAlternative);
+    form.addEventListener('submit', event => {
+      if (!form.reportValidity()) {
+        event.preventDefault();
+        return;
       }
+      refreshAlternative();
+      status.className = 'access-status';
+      status.textContent = 'A confirmação do envio será exibida em uma nova aba. Conclua a verificação do FormSubmit nessa aba; o acesso ao Miro ainda depende de aprovação.';
+      // Deixa o navegador realizar o POST HTML nativo. Assim o FormSubmit
+      // pode exibir reCAPTCHA e mensagens de ativação, sem bloqueios de AJAX.
     });
+    refreshAlternative();
   })();
   </script>
 
