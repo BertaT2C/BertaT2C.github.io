@@ -1,161 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfólio profissional de Berta Batista: Product Owner, Análise de Negócios, produtos digitais, processos e automação.">
-  <meta name="theme-color" content="#143b38">
-  <title>Berta Batista | Produto, Negócios e Tecnologia</title>
-  <style>
-    :root { color-scheme: light; --ink:#1c3436; --muted:#51666a; --green:#196b63; --green-dark:#103d39; --bg:#f5f8f6; --paper:#ffffff; --line:#d9e6df; --accent:#e3f4e9; --shadow:0 14px 30px rgba(22,61,57,.07); }
-    * {box-sizing:border-box}
-    html {scroll-behavior:smooth}
-    body {margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
-    a {color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}
-    a:focus-visible {outline:3px solid #e2a449;outline-offset:4px;border-radius:3px}
-    .container {width:min(1120px,calc(100% - 40px));margin-inline:auto}
-    .top {background:#fff;border-bottom:1px solid var(--line)}
-    .top-inner {min-height:70px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-    .brand {font-size:1.1rem;font-weight:800;text-decoration:none;color:var(--green-dark)}
-    nav {display:flex;gap:19px;align-items:center;flex-wrap:wrap}
-    nav a {color:var(--muted);text-decoration:none;font-size:.93rem;font-weight:600}
-    nav a:hover {color:var(--green)}
-    .hero {background:radial-gradient(circle at 85% 15%,rgba(148,216,186,.27),transparent 36%),linear-gradient(125deg,#113d3a,#1c6258);color:#fff;padding:70px 0}
-    .hero-grid {display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:44px;align-items:center}
-    .eyebrow {text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:700;color:#beded2;margin:0 0 14px}
-    h1 {font-size:clamp(2.25rem,5vw,4.1rem);line-height:1.12;letter-spacing:-.035em;margin:0 0 16px}
-    h2 {font-size:clamp(1.45rem,3vw,2.1rem);letter-spacing:-.02em;margin:0 0 10px;line-height:1.3}
-    h3 {font-size:1.11rem;margin:0 0 8px;line-height:1.35}
-    .lead {font-size:1.13rem;max-width:720px;color:#e4f1ec;margin:0 0 26px}
-    .avatar {width:350px;height:350px;object-fit:cover;border-radius:50%;border:5px solid rgba(255,255,255,.35);box-shadow:0 18px 45px rgba(0,0,0,.18)}
-    .actions {display:flex;gap:12px;flex-wrap:wrap}
-    .btn {display:inline-block;padding:11px 17px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #c8eee0;background:#fff;color:#154a41}
-    .btn.alt {background:transparent;color:#fff;border-color:#a8cfbf}
-    .btn:hover {transform:translateY(-1px)}
-    section {padding:62px 0}
-    .section-intro {max-width:760px;color:var(--muted);margin:0 0 25px}
-    .cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .card {display:flex;flex-direction:column;gap:9px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:23px;box-shadow:var(--shadow);min-width:0;position:relative;transition:transform .18s ease,box-shadow .18s ease}
-    .card:hover {transform:translateY(-3px);box-shadow:0 18px 34px rgba(22,61,57,.13)}
-    .card:focus-within {outline:3px solid #e2a449;outline-offset:4px}
-    .card .project-link::after {content:"";position:absolute;inset:0;border-radius:17px}
-    .card p {margin:0;color:var(--muted);font-size:.95rem}
-    .card a {font-weight:700;margin-top:auto;padding-top:14px}
-    .tag {display:inline-flex;align-self:flex-start;border-radius:100px;background:var(--accent);color:var(--green-dark);padding:4px 10px;font-size:.78rem;font-weight:700}
-    .steps {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}
-    .step {background:#e9f2ed;border-radius:13px;padding:18px}
-    .step strong {display:block;margin-bottom:5px}
-    .step p {font-size:.91rem;margin:0;color:var(--muted)}
-    .contact {background:#e5f0e9;border-top:1px solid #c8dacf;border-bottom:1px solid #c8dacf}
-    .contact p {margin:0 0 20px;color:var(--muted)}
-    .note {margin:28px 0 0;padding:16px 18px;border-left:3px solid #7ab6a2;background:#fff;color:var(--muted);border-radius:5px}
-    footer {padding:26px 0;color:var(--muted);font-size:.88rem}
-    @media(max-width:800px) {.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:560px) {.hero{padding:48px 0}.hero-grid{grid-template-columns:1fr}.avatar{width:240px;height:240px;grid-row:1}.cards,.steps{grid-template-columns:1fr}nav{gap:12px}.top-inner{padding:13px 0}}
-  
-    .whatsapp-float{position:fixed;right:24px;bottom:24px;z-index:1000;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.24);transition:transform .2s ease,box-shadow .2s ease}
-    .whatsapp-float:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
-    .whatsapp-float svg{width:34px;height:34px;fill:currentColor}
-    @media(max-width:560px){.whatsapp-float{right:16px;bottom:16px;width:56px;height:56px}.whatsapp-float svg{width:30px;height:30px}}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#103d39">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Portfólio profissional de Berta Batista: Product Owner, Análise de Negócios, Discovery, gestão de backlog, indicadores, automação e estudos de caso.">
+  <title>Berta Batista | Product Owner e Analista de Negócios</title>
+  <link rel="canonical" href="https://bertat2c.github.io/">
+  <meta name="author" content="Berta Batista">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Berta Batista | Product Owner e Analista de Negócios">
+  <meta property="og:description" content="Estudos de caso em produtos digitais, automação, requisitos e indicadores de negócio.">
+  <meta property="og:url" content="https://bertat2c.github.io/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/99225701?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/capa-preview/assets/index-B3XkHJy7.js"></script>
+  <link rel="stylesheet" crossorigin href="/capa-preview/assets/index-C08ocKYE.css">
 </head>
 <body>
-  <header class="top">
-    <div class="container top-inner">
-      <a class="brand" href="#inicio">Berta Batista</a>
-      <nav aria-label="Navegação principal">
-        <a href="#projetos">Projetos</a>
-        <a href="#atuacao">Como atuo</a>
-        <a href="#contato">Contato</a>
+  <div id="root"></div>
+  <noscript>
+    <main style="max-width:760px;margin:3rem auto;padding:1.5rem;font:16px/1.6 Arial,sans-serif">
+      <h1>Berta Batista — Portfólio profissional</h1>
+      <p>Para visualizar a capa interativa, habilite o JavaScript. Os estudos de caso estão disponíveis nos links abaixo.</p>
+      <nav aria-label="Estudos de caso">
+        <a href="canais-digitais.html">Assistência automotiva digital</a> ·
+        <a href="refinamento.html">Melhoria do refinamento do backlog</a> ·
+        <a href="whatsapp.html">Autosserviço pelo WhatsApp</a> ·
+        <a href="processos-rpa.html">Automação de documentos de transporte</a> ·
+        <a href="oracle-r12.html">Oracle R12</a> ·
+        <a href="pdv.html">PDV e ABS</a>
       </nav>
-    </div>
-  </header>
-  <main id="inicio">
-    <div class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Portfólio profissional</p>
-          <h1>Negócios, produtos digitais e tecnologia.</h1>
-          <p class="lead">Sou Berta Batista. Atuo conectando necessidades de negócio e equipes de tecnologia por meio de Discovery, requisitos, gestão de backlog, modelagem de processos e melhoria contínua.</p>
-          <div class="actions">
-            <a class="btn" href="#projetos">Explorar estudos de caso</a>
-            <a class="btn alt" href="https://www.linkedin.com/in/bertabatista/" target="_blank" rel="noopener noreferrer">LinkedIn profissional</a>
-            <a class="btn alt" href="https://github.com/BertaT2C" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-        </div>
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/99225701?v=4" alt="Foto do perfil público de Berta no GitHub" width="350" height="350">
-      </div>
-    </div>
-    <section id="projetos" aria-labelledby="projetos-titulo">
-      <div class="container">
-        <h2 id="projetos-titulo">Projetos e estudos de caso</h2>
-        <p class="section-intro">Exemplos de análise de negócios, evolução de jornadas digitais, automação, especificação funcional e acompanhamento de resultados.</p>
-        <div class="cards">
-          <article class="card">
-            <span class="tag">Produto &amp; Discovery</span>
-            <h3>Assistência automotiva digital</h3>
-            <p>Case de Product Owner: do desafio e Discovery ao Canvas MVP, requisitos, backlog e demonstração por POCs.</p>
-            <a class="project-link" href="canais-digitais.html">Conhecer projeto →</a>
-          </article>
-          <article class="card">
-            <span class="tag">OKR &amp; Backlog</span>
-            <h3>Melhoria do refinamento do backlog</h3>
-            <p>Da identificação de gargalos no refinamento à proposta de OKRs, nova rotina colaborativa e indicadores.</p>
-            <a class="project-link" href="refinamento.html">Conhecer projeto →</a>
-          </article>
-          <article class="card">
-            <span class="tag">Canais Digitais</span>
-            <h3>Autosserviço pelo WhatsApp</h3>
-            <p>Do Discovery do atendimento atual ao desenho do autosserviço no WhatsApp, MVP, BDD e métricas.</p>
-            <a class="project-link" href="whatsapp.html">Conhecer projeto →</a>
-          </article>
-          <article class="card">
-            <span class="tag">Processos &amp; RPA</span>
-            <h3>Automação de documentos de transporte (CT-e e MDF-e)</h3>
-            <p>Do levantamento com usuários ao BPMN do processo e à solução de automação com quatro robôs RPA.</p>
-            <a class="project-link" href="processos-rpa.html">Conhecer projeto →</a>
-          </article>
-          <article class="card">
-            <span class="tag">ERP &amp; Automação</span>
-            <h3>RPA na emissão de faturas no Oracle R12</h3>
-            <p>Da rotina manual no Oracle R12 à automação no-code, implantação, contingência e indicadores.</p>
-            <a class="project-link" href="oracle-r12.html">Conhecer projeto →</a>
-          </article>
-          <article class="card">
-            <span class="tag">Regras &amp; BDD</span>
-            <h3>Integração do ponto de venda com o ABS</h3>
-            <p>Da necessidade de integração PDV–ABS à especificação de regras, histórias, BDD e testes planejados.</p>
-            <a class="project-link" href="pdv.html">Conhecer projeto →</a>
-          </article>
-        </div>
-        <p class="note">Por questões de confidencialidade (NDA), alguns projetos deste portfólio foram anonimizados ou recriados com cenários e indicadores ilustrativos. O objetivo aqui é demonstrar meu raciocínio estratégico, metodologia e capacidade de execução; métricas de impacto real podem ser detalhadas em uma conversa direta.</p>
-      </div>
-    </section>
-    <section id="atuacao" aria-labelledby="atuacao-titulo">
-      <div class="container">
-        <h2 id="atuacao-titulo">Como contribuo para uma entrega</h2>
-        <p class="section-intro">Minha atuação combina visão de negócio, clareza funcional e colaboração com tecnologia, do entendimento do problema à validação da solução.</p>
-        <div class="steps">
-          <div class="step"><strong>1. Discovery</strong><p>Objetivo, usuários, stakeholders, dores e processo atual.</p></div>
-          <div class="step"><strong>2. Solução</strong><p>Fluxos futuros, requisitos, regras de negócio e dependências.</p></div>
-          <div class="step"><strong>3. Backlog</strong><p>Priorização, histórias, critérios de aceite e refinamentos.</p></div>
-          <div class="step"><strong>4. Evolução</strong><p>Testes de usuário, indicadores e melhoria contínua.</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="contact" id="contato" aria-labelledby="contato-titulo">
-      <div class="container">
-        <h2 id="contato-titulo">Vamos conversar sobre produtos e tecnologia?</h2>
-        <p>Tenho interesse em oportunidades de Product Owner, Análise de Negócios, Análise de Produtos e projetos de transformação digital.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.linkedin.com/in/bertabatista/" target="_blank" rel="noopener noreferrer">Entrar em contato no LinkedIn</a>
-          <a class="btn" href="mailto:bertareg@hotmail.com">E-mail: bertareg@hotmail.com</a>
-          <a class="btn" href="https://wa.me/5515991814440" target="_blank" rel="noopener noreferrer">WhatsApp: (15) 99181-4440</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="container"><span>© 2026 Berta Batista — Portfólio profissional.</span></footer>
-  <a class="whatsapp-float" href="https://wa.me/5515991814440" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Berta pelo WhatsApp" title="Conversar pelo WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M16 .8A15.1 15.1 0 0 0 3 23.6L.8 31.2l7.8-2.1A15.2 15.2 0 1 0 16 .8zm0 27.5c-2.4 0-4.7-.7-6.7-2l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.2-1.1-2.6-1.2-.3-.1-.6-.2-.8.2-.3.4-1 1.2-1.2 1.4-.2.2-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.2.1-.5 0-.7l-1.2-2.8c-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.3c.2.3 2.9 4.5 7.1 6.1 1 .4 1.8.6 2.4.8 1 .3 1.9.2 2.6.2.8-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg></a>
+    </main>
+  </noscript>
 </body>
 </html>
