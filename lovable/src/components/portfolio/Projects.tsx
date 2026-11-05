@@ -15,7 +15,7 @@ export function Projects() {
     <section id="projetos" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
       <Reveal className="flex flex-col gap-8">
         <SectionHeading
-          index="02"
+          index="03"
           eyebrow="Estudos de caso"
           title={
             <>

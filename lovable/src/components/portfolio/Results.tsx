@@ -20,7 +20,7 @@ export function Results() {
   return (
     <section id="resultados" className="border-t border-border bg-background py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionHeading index="02" eyebrow="Indicadores de negócio" title="Eficiência, produtividade e automação.">
+        <SectionHeading index="01" eyebrow="Indicadores de negócio" title="Eficiência, produtividade e automação.">
           Explore os seis estudos de caso em um carrossel. Cada projeto apresenta seus próprios
           indicadores, contexto e entregáveis.
         </SectionHeading>

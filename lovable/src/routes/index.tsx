@@ -32,8 +32,8 @@ function Index() {
     <main>
       <Header />
       <Hero />
-      <Competencies />
       <Results />
+      <Competencies />
       <Projects />
       <Steps />
       <Contact />

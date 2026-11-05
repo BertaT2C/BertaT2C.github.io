@@ -18,7 +18,7 @@ export function Competencies() {
       <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
         <Reveal>
           <SectionHeading
-            index="01"
+            index="02"
             eyebrow="Competências por área"
             title={
               <>

@@ -25,7 +25,7 @@ export function Contact() {
       <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
         <Reveal>
           <SectionHeading
-            index="04"
+            index="05"
             eyebrow="Contato"
             title={
               <>

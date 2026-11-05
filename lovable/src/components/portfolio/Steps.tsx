@@ -16,7 +16,7 @@ export function Steps() {
       <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
         <Reveal>
           <SectionHeading
-            index="03"
+            index="04"
             tone="deep"
             eyebrow="Como atuo"
             title={
