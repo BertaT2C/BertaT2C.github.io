@@ -258,3 +258,65 @@ export const steps = [
     example: "oracle-r12",
   },
 ] as const;
+
+export interface CompetencyArea {
+  code: string;
+  title: string;
+  description: string;
+  items: string[];
+}
+
+export const competencyAreas: CompetencyArea[] = [
+  {
+    code: "A.01",
+    title: "Produto & Discovery",
+    description: "Entender o problema, priorizar o valor e definir como medir o sucesso.",
+    items: ["Discovery", "Canvas MVP", "MVP", "Priorização", "POC", "Jornada do usuário", "OKR", "KPIs"],
+  },
+  {
+    code: "A.02",
+    title: "Requisitos & Backlog",
+    description: "Transformar decisões de negócio em histórias claras, testáveis e rastreáveis.",
+    items: [
+      "Product Backlog",
+      "Refinamento",
+      "Histórias de usuário",
+      "Regras de negócio",
+      "BDD",
+      "Rastreabilidade",
+      "Testes",
+      "QA",
+    ],
+  },
+  {
+    code: "A.03",
+    title: "Processos",
+    description: "Mapear a operação real, desenhar o fluxo futuro e implantar com segurança.",
+    items: ["AS IS / TO BE", "BPMN", "Bizagi", "Implantação", "LGPD"],
+  },
+  {
+    code: "A.04",
+    title: "Sistemas & Automação",
+    description: "Reduzir trabalho manual com integrações, ERP e automação de tarefas.",
+    items: ["RPA", "No-code", "DataLoad", "Oracle R12", "Protheus", "Integrações"],
+  },
+];
+
+/** Estudos de caso que aplicam pelo menos uma competência da área. */
+export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
+  return list.filter((p) => p.skills.some((s) => area.items.includes(s)));
+}
+
+/** Gráfico do topo da página: indicadores publicados no estudo Oracle R12. */
+export const heroChart = {
+  caseSlug: "oracle-r12",
+  caseLabel: "Caso 05 · Notas fiscais no Oracle R12",
+  before: "Jan",
+  after: "Jun",
+  series: [
+    { label: "Cumprimento de prazos", before: 35, after: 72, better: "up" as const },
+    { label: "Taxa de erros", before: 11, after: 6, better: "down" as const },
+  ],
+  highlight: { value: "−60%", label: "tempo estimado de emissão" },
+  source: "Comparação publicada no material original do estudo.",
+};
