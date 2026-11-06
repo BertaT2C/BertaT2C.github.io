@@ -6,6 +6,7 @@ const links = [
   { id: "resultados", label: "Resultados" },
   { id: "projetos", label: "Estudos de caso" },
   { id: "como-atuo", label: "Como atuo" },
+  { id: "gmo", label: "Acompanhe as mudanças", href: "/gestao-de-mudancas.html" },
   { id: "contato", label: "Contato" },
 ];
 
@@ -65,13 +66,16 @@ export function Header() {
           {links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={"href" in l ? l.href : `#${l.id}`}
               className={cn(
                 "relative py-2 text-sm font-medium transition-colors",
                 active === l.id ? "text-deep-foreground" : "text-deep-muted hover:text-deep-foreground",
               )}
             >
               {l.label}
+              {l.id === "gmo" && (
+                <span className="ml-1.5 rounded-full bg-accent px-1.5 py-0.5 text-[10px] font-extrabold text-accent-foreground">Novo</span>
+              )}
               <span
                 className={cn(
                   "absolute inset-x-0 -bottom-0.5 h-0.5 origin-left bg-accent transition-transform duration-300",
@@ -96,11 +100,14 @@ export function Header() {
           {links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={"href" in l ? l.href : `#${l.id}`}
               onClick={() => setOpen(false)}
               className="rounded-md px-4 py-3 font-medium text-foreground hover:bg-muted"
             >
               {l.label}
+              {l.id === "gmo" && (
+                <span className="ml-1.5 rounded-full bg-accent px-1.5 py-0.5 text-[10px] font-extrabold text-accent-foreground">Novo</span>
+              )}
             </a>
           ))}
         </nav>

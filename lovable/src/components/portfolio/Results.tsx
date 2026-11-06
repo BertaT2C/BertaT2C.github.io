@@ -185,6 +185,34 @@ export function Results() {
             Use as setas, os números dos casos ou deslize no celular para navegar.
           </p>
         </Reveal>
+
+        <Reveal className="mt-12">
+          <a
+            href="/gestao-de-mudancas.html"
+            className="group flex flex-col gap-5 rounded-2xl border border-deep-line bg-deep-gradient p-6 text-deep-foreground shadow-soft transition-transform hover:-translate-y-0.5 hover:shadow-lift sm:p-9 md:flex-row md:items-center md:justify-between"
+            aria-label="Acompanhe as mudanças deste portfólio"
+          >
+            <div className="max-w-2xl">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-xs font-extrabold uppercase tracking-[0.15em] text-accent">
+                  Portfólio em evolução
+                </span>
+                <span className="rounded-full border border-accent/50 px-3 py-1 text-xs text-accent">
+                  Em breve: vídeos das evoluções
+                </span>
+              </div>
+              <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-deep-foreground sm:text-3xl">
+                Veja o que mudou. Entenda por que evoluímos.
+              </h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-deep-muted">
+                Conheça as mudanças implementadas, os próximos gráficos e insights, o mapeamento AS-IS/TO-BE e o processo de gestão de mudanças.
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-bold text-accent-foreground transition-colors group-hover:bg-accent/90">
+              Acompanhe as mudanças <ArrowUpRight className="size-4" aria-hidden />
+            </span>
+          </a>
+        </Reveal>
       </div>
       <ProjectDialog project={preview} onOpenChange={(open) => !open && setPreview(null)} />
     </section>
