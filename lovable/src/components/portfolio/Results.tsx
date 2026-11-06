@@ -20,8 +20,9 @@ export function Results() {
   return (
     <section id="resultados" className="border-t border-border bg-background py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <Reveal className="mb-12">
-          <a
+        <div style={{ paddingBottom: "clamp(48px, 6vw, 80px)" }}>
+          <Reveal>
+            <a
             href="/gestao-de-mudancas.html"
             className="group flex flex-col gap-5 rounded-2xl border border-deep-line bg-deep-gradient p-6 text-deep-foreground shadow-soft transition-transform hover:-translate-y-0.5 hover:shadow-lift sm:p-9 md:flex-row md:items-center md:justify-between"
             aria-label="Acompanhe as mudanças deste portfólio"
@@ -46,7 +47,8 @@ export function Results() {
               Acompanhe as mudanças <ArrowUpRight className="size-4" aria-hidden />
             </span>
           </a>
-        </Reveal>
+          </Reveal>
+        </div>
 
         <SectionHeading index="01" eyebrow="Indicadores de negócio" title="Eficiência, produtividade e automação.">
           Explore os seis estudos de caso em um carrossel. Cada projeto apresenta seus próprios
