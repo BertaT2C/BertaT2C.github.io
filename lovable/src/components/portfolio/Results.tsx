@@ -37,7 +37,7 @@ export function Results() {
                 </span>
               </div>
               <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-deep-foreground sm:text-3xl">
-                Veja o que mudou. Entenda por que evoluímos.
+                Veja o que mudou.
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-deep-muted">
                 Conheça as mudanças implementadas, as próximas melhorias e novos insights, os vídeos em preparação e o processo de gestão de mudanças.
