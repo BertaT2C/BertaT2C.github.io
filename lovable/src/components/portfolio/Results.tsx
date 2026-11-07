@@ -36,7 +36,7 @@ export function Results() {
                   Em breve: vídeos das evoluções
                 </span>
               </div>
-              <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-deep-foreground sm:text-3xl">
+              <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-accent sm:text-3xl">
                 Veja o que mudou.
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-deep-muted">
