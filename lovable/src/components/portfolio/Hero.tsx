@@ -140,7 +140,7 @@ function OracleResultsPanel() {
   return (
     <Reveal delay={150} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Caso 05 · Automação no ERP</p>
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Automação no ERP</p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{heroChart.caseLabel}</h2>
         <p className="mt-2 text-sm text-deep-muted">Indicadores de janeiro e junho · gráficos comparativos</p>
       </div>
@@ -149,6 +149,9 @@ function OracleResultsPanel() {
           <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel={heroChart.before} afterLabel={heroChart.after} />
         ))}
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-deep-muted">
+        Leitura: mais entregas no prazo e menos erros na comparação.
+      </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
         <span className="max-w-xs text-sm text-deep-muted">{heroChart.highlight.label}</span>
         <span className="tabular font-display text-2xl font-semibold text-accent">{heroChart.highlight.value}</span>
@@ -176,7 +179,7 @@ function WhatsAppResultsPanel() {
     <Reveal delay={240} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
         <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
-          <MessageCircle aria-hidden className="size-4" /> Caso 03 · Canais digitais
+          <MessageCircle aria-hidden className="size-4" /> Canais digitais
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{whatsappSuccess.caseLabel}</h2>
         <p className="mt-2 text-sm text-deep-muted">MVP ilustrativo · cenário inicial × metas propostas</p>
@@ -186,6 +189,9 @@ function WhatsAppResultsPanel() {
           <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel="Inicial" afterLabel="Meta" />
         ))}
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-deep-muted">
+        Leitura: metas simuladas de mais autosserviço e menos abandono.
+      </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
         <span className="text-sm text-deep-muted">{whatsappSuccess.additional.label}</span>
         <span className="tabular text-lg font-semibold text-accent">
@@ -222,7 +228,7 @@ function ChannelDiscoveryPanel() {
     >
       <div className="border-b border-deep-line pb-5">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
-          Caso 01 · Produto &amp; Discovery
+          Produto &amp; Discovery
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
           Assistência automotiva · preferência por canais
@@ -264,6 +270,9 @@ function ChannelDiscoveryPanel() {
         <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
           <span>0%</span><span>10%</span><span>20%</span><span>30%</span>
         </div>
+        <p className="text-xs leading-relaxed text-deep-muted">
+          Leitura: WhatsApp e telefone lideram a preferência na pesquisa.
+        </p>
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
@@ -295,7 +304,7 @@ function PdvQualityPanel() {
     >
       <div className="border-b border-deep-line pb-5">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
-          Caso 06 · Regras de negócio &amp; BDD
+          Regras de negócio &amp; BDD
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
           Integração PDV–ABS · especificação e testes
@@ -337,6 +346,9 @@ function PdvQualityPanel() {
         <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
           <span>0</span><span>5</span><span>10</span><span>15 itens</span>
         </div>
+        <p className="text-xs leading-relaxed text-deep-muted">
+          Leitura: escopo de testes planejado, ainda sem execução.
+        </p>
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">

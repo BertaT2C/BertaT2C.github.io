@@ -318,7 +318,7 @@ export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
 /** Caso 03: indicadores planejados do MVP. Valores hipotéticos, nunca resultados obtidos. */
 export const whatsappSuccess = {
   caseSlug: "whatsapp",
-  caseLabel: "Caso 3: Autosserviço pelo WhatsApp",
+  caseLabel: "Autosserviço pelo WhatsApp",
   before: "Base hipotética",
   after: "Meta do MVP",
   series: [
@@ -333,7 +333,7 @@ export const whatsappSuccess = {
 /** Gráfico do topo da página: indicadores publicados no estudo Oracle R12. */
 export const heroChart = {
   caseSlug: "oracle-r12",
-  caseLabel: "Caso 5: RPA na emissão de faturas no Oracle R12",
+  caseLabel: "RPA na emissão de faturas no Oracle R12",
   before: "Jan",
   after: "Jun",
   series: [
