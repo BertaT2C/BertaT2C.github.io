@@ -141,8 +141,8 @@ function OracleResultsPanel() {
     <Reveal delay={150} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Automação no ERP</p>
-        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{heroChart.caseLabel}</h2>
-        <p className="mt-2 text-sm text-deep-muted">Indicadores de janeiro e junho · gráficos comparativos</p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">RPA na emissão de faturas no Oracle R12</h2>
+        <p className="mt-2 text-sm text-deep-muted">Automação de tarefas manuais no ERP, com indicadores comparados entre janeiro e junho.</p>
       </div>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {heroChart.series.map((metric, index) => (
@@ -181,8 +181,8 @@ function WhatsAppResultsPanel() {
         <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
           <MessageCircle aria-hidden className="size-4" /> Canais digitais
         </p>
-        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">{whatsappSuccess.caseLabel}</h2>
-        <p className="mt-2 text-sm text-deep-muted">MVP ilustrativo · cenário inicial × metas propostas</p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">Autosserviço pelo WhatsApp</h2>
+        <p className="mt-2 text-sm text-deep-muted">Atendimento direto pelo WhatsApp, com cenário inicial simulado e metas propostas para o MVP.</p>
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {whatsappSuccess.series.map((metric, index) => (
@@ -234,7 +234,7 @@ function ChannelDiscoveryPanel() {
           Assistência automotiva · preferência por canais
         </h2>
         <p className="mt-2 text-sm text-deep-muted">
-          Pesquisa de mercado · primeiro canal escolhido para atendimento
+          Pesquisa externa sobre o canal preferido para iniciar um atendimento.
         </p>
       </div>
 
@@ -310,7 +310,7 @@ function PdvQualityPanel() {
           Integração PDV–ABS · especificação e testes
         </h2>
         <p className="mt-2 text-sm text-deep-muted">
-          Volume do escopo de validação planejado · não executado
+          Regras de integração PDV–ABS e testes planejados, ainda não executados.
         </p>
       </div>
 
