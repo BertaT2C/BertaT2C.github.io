@@ -61,6 +61,8 @@ export function Hero() {
         <div className="mt-12 grid w-full items-stretch gap-6 lg:grid-cols-2 xl:gap-8">
           <OracleResultsPanel />
           <WhatsAppResultsPanel />
+          <ChannelDiscoveryPanel />
+          <PdvQualityPanel />
         </div>
       </div>
     </section>
@@ -193,6 +195,164 @@ function WhatsAppResultsPanel() {
       <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">{whatsappSuccess.source}</p>
       <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
+      </a>
+    </Reveal>
+  );
+}
+
+
+const channelPreferences = [
+  { label: "WhatsApp", value: 30 },
+  { label: "Telefone", value: 30 },
+  { label: "Chat no site", value: 20 },
+  { label: "Aplicativo da empresa", value: 12 },
+] as const;
+
+const pdvValidationScope = [
+  { label: "Cenários BDD", value: 12 },
+  { label: "Verificações funcionais", value: 15 },
+  { label: "Combinações ponta a ponta", value: 4 },
+] as const;
+
+function ChannelDiscoveryPanel() {
+  return (
+    <Reveal
+      delay={300}
+      className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7"
+    >
+      <div className="border-b border-deep-line pb-5">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
+          Caso 01 · Produto &amp; Discovery
+        </p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
+          Assistência automotiva · preferência por canais
+        </h2>
+        <p className="mt-2 text-sm text-deep-muted">
+          Pesquisa de mercado · primeiro canal escolhido para atendimento
+        </p>
+      </div>
+
+      <div
+        className="mt-6 space-y-5"
+        role="group"
+        aria-label="Pesquisa de preferência de canais: WhatsApp 30%, telefone 30%, chat no site 20%, aplicativo da empresa 12%"
+      >
+        {channelPreferences.map((channel, index) => (
+          <div key={channel.label}>
+            <div className="mb-2 flex items-baseline justify-between gap-3">
+              <span className="text-sm font-medium">{channel.label}</span>
+              <strong className="tabular font-display text-lg font-semibold text-accent">
+                {channel.value}%
+              </strong>
+            </div>
+            <div
+              className="h-3 overflow-hidden rounded-full bg-deep/80"
+              role="meter"
+              aria-label={channel.label}
+              aria-valuenow={channel.value}
+              aria-valuemin={0}
+              aria-valuemax={30}
+              aria-valuetext={channel.value + "% dos entrevistados"}
+            >
+              <div
+                className={"h-full rounded-full " + (index === 0 ? "bg-accent" : "bg-deep-muted/70")}
+                style={{ width: (channel.value / 30) * 100 + "%" }}
+              />
+            </div>
+          </div>
+        ))}
+        <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
+          <span>0%</span><span>10%</span><span>20%</span><span>30%</span>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
+        <span className="text-sm text-deep-muted">Canais líderes na pesquisa</span>
+        <span className="tabular font-display text-lg font-semibold text-accent">
+          WhatsApp e telefone · 30% cada
+        </span>
+      </div>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+        Fonte: Mobile Time / Opinion Box, 2024, 1.176 respondentes. Pesquisa externa sobre atendimento em geral; não é resultado do projeto.
+      </p>
+      <a
+        href="https://bertat2c.github.io/canais-digitais.html"
+        target="_blank"
+        rel="noreferrer"
+        className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+      >
+        Ver estudo de caso <ArrowUpRight className="size-4" aria-hidden />
+      </a>
+    </Reveal>
+  );
+}
+
+function PdvQualityPanel() {
+  return (
+    <Reveal
+      delay={360}
+      className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7"
+    >
+      <div className="border-b border-deep-line pb-5">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
+          Caso 06 · Regras de negócio &amp; BDD
+        </p>
+        <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
+          Integração PDV–ABS · especificação e testes
+        </h2>
+        <p className="mt-2 text-sm text-deep-muted">
+          Volume do escopo de validação planejado · não executado
+        </p>
+      </div>
+
+      <div
+        className="mt-6 space-y-5"
+        role="group"
+        aria-label="Escopo proposto: 12 cenários BDD, 15 verificações funcionais e 4 combinações ponta a ponta"
+      >
+        {pdvValidationScope.map((item, index) => (
+          <div key={item.label}>
+            <div className="mb-2 flex items-baseline justify-between gap-3">
+              <span className="text-sm font-medium">{item.label}</span>
+              <strong className="tabular font-display text-lg font-semibold text-accent">
+                {item.value}
+              </strong>
+            </div>
+            <div
+              className="h-3 overflow-hidden rounded-full bg-deep/80"
+              role="meter"
+              aria-label={item.label}
+              aria-valuenow={item.value}
+              aria-valuemin={0}
+              aria-valuemax={15}
+              aria-valuetext={String(item.value) + " itens planejados"}
+            >
+              <div
+                className={"h-full rounded-full " + (index === 1 ? "bg-accent" : "bg-deep-muted/70")}
+                style={{ width: (item.value / 15) * 100 + "%" }}
+              />
+            </div>
+          </div>
+        ))}
+        <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
+          <span>0</span><span>5</span><span>10</span><span>15 itens</span>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
+        <span className="text-sm text-deep-muted">Dimensões das regras</span>
+        <strong className="tabular font-display text-2xl font-semibold text-accent">06</strong>
+      </div>
+      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+        Categoria, sabor, copo, gelo, tamanho e modalidade. Contagens do estudo: cenários e verificações propostos, sem taxa de sucesso aferida.
+      </p>
+      <a
+        href="https://bertat2c.github.io/pdv.html"
+        target="_blank"
+        rel="noreferrer"
+        className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+      >
+        Ver estudo de caso <ArrowUpRight className="size-4" aria-hidden />
       </a>
     </Reveal>
   );
