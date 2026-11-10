@@ -19,7 +19,7 @@ export function Results() {
 
   return (
     <section id="resultados" className="border-t border-border bg-background py-24">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10 2xl:px-12">
         <div style={{ paddingBottom: "clamp(48px, 6vw, 80px)" }}>
           <Reveal>
             <a

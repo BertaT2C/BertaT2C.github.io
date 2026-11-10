@@ -51,7 +51,7 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-10 2xl:px-12">
         <a href="#inicio" className="flex items-center gap-3 text-deep-foreground">
           <span className="flex size-9 items-center justify-center rounded-md bg-accent font-display text-sm font-bold text-accent-foreground">
             BB

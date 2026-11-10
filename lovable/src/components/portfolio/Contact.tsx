@@ -21,7 +21,7 @@ export function Contact() {
     "group flex items-center gap-4 border-b px-1 py-5 transition-colors last:border-b-0 hover:bg-muted/50";
 
   return (
-    <section id="contato" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
+    <section id="contato" className="mx-auto w-full max-w-[1440px] px-5 py-24 sm:px-8 lg:px-10 2xl:px-12 md:py-28">
       <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
         <Reveal>
           <SectionHeading

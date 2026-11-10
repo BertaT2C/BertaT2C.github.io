@@ -15,7 +15,7 @@ export function Competencies() {
   return (
     <section id="competencias" className="relative border-b">
       <div aria-hidden className="bg-grid absolute inset-0" />
-      <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
+      <div className="relative mx-auto w-full max-w-[1440px] px-5 py-24 sm:px-8 lg:px-10 2xl:px-12 md:py-28">
         <Reveal>
           <SectionHeading
             index="02"

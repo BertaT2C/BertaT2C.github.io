@@ -9,8 +9,8 @@ export function Hero() {
   return (
     <section id="inicio" className="bg-deep-gradient relative overflow-hidden text-deep-foreground">
       <div aria-hidden className="bg-grid-deep fade-mask absolute inset-0" />
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-36">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
+      <div className="relative mx-auto w-full max-w-[1440px] px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-36 2xl:px-12">
+        <div className="mx-auto grid max-w-[1360px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
           <div className="min-w-0 text-center">
             <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               <span className="h-px w-8 bg-accent" />
@@ -50,7 +50,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <ul className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-2 gap-x-6 gap-y-4 border-t border-deep-line pt-6 text-center text-sm text-deep-muted md:grid-cols-4">
+        <ul className="mx-auto mt-12 grid w-full max-w-[1360px] grid-cols-2 gap-x-6 gap-y-4 border-t border-deep-line pt-6 text-center text-sm text-deep-muted md:grid-cols-4">
           {["Eficiência operacional", "Produtividade da equipe", "Automação de processos", "Ganhos mensuráveis"].map((item) => (
             <li key={item} className="flex items-center justify-center gap-2">
               <span className="size-1.5 shrink-0 rounded-full bg-accent" /> {item}

@@ -12,7 +12,7 @@ export function Projects() {
   const list = filterProjects(projects, group);
 
   return (
-    <section id="projetos" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
+    <section id="projetos" className="mx-auto w-full max-w-[1440px] px-5 py-24 sm:px-8 lg:px-10 2xl:px-12 md:py-28">
       <Reveal className="flex flex-col gap-8">
         <SectionHeading
           index="02"
