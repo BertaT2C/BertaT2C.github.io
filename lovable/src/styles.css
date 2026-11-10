@@ -278,48 +278,44 @@
     animation: none;
   }
 }
-/* Cartões compactos: profundidade no suporte, marcas preservadas. */
-.company-stage {
+/* Órbita circular em 3D: posição acumulada mantém a volta contínua. */
+.company-orbit-stage {
   position: relative;
-  display: grid;
-  place-items: center;
-  width: 164px;
-  height: 94px;
-  perspective: 700px;
+  height: 148px;
+  width: 100%;
+  overflow: hidden;
+  perspective: 750px;
+  mask-image: linear-gradient(to right, transparent, black 9%, black 91%, transparent);
 }
-.company-card-back {
+.company-orbit-ring {
   position: absolute;
-  inset: 16px 2px 7px;
-  border: 1px solid oklch(1 0 0 / 18%);
-  border-radius: 14px;
-  background: linear-gradient(140deg, oklch(1 0 0 / 12%), oklch(1 0 0 / 3%));
-  transform: translate(5px, 4px) rotateY(-9deg) rotateX(8deg);
-  box-shadow: 0 20px 22px -12px oklch(0.1 0.03 215 / 75%);
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.company-logo-card {
-  position: relative;
+.company-orbit-card {
+  position: absolute;
+  top: -44px;
+  left: -76px;
   display: grid;
   place-items: center;
-  width: 156px;
-  height: 72px;
-  padding: 16px;
+  width: 152px;
+  height: 88px;
   border: 1px solid oklch(1 0 0 / 75%);
   border-radius: 12px;
   background: linear-gradient(145deg, white 35%, oklch(0.93 0.012 210));
   box-shadow: inset 0 2px 1px oklch(1 0 0 / 85%), 0 5px 0 oklch(0.72 0.02 210), 0 18px 24px -10px oklch(0.1 0.03 215 / 70%);
-  transform: rotateX(7deg) rotateY(-9deg);
-  animation: company-arrive 650ms var(--ease-out) both;
   backface-visibility: hidden;
+  transition: opacity 900ms ease;
 }
 .company-logo-card-dark {
   border-color: oklch(1 0 0 / 30%);
   background: linear-gradient(145deg, oklch(0.42 0.04 213), var(--deep-raised));
   box-shadow: inset 0 2px 1px oklch(1 0 0 / 18%), 0 5px 0 oklch(0.2 0.03 214), 0 18px 24px -10px oklch(0.1 0.03 215 / 70%);
 }
-@keyframes company-arrive {
-  from { opacity: 0; transform: translateX(16px) rotateX(7deg) rotateY(-32deg) scale(0.94); }
-  to { opacity: 1; transform: translateX(0) rotateX(7deg) rotateY(-9deg) scale(1); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .company-logo-card { animation: none; }
+  .company-orbit-ring, .company-orbit-card { transition: none; }
 }
