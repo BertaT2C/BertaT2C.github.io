@@ -62,13 +62,13 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {links.map((l) => (
             <a
               key={l.id}
               href={"href" in l ? l.href : `#${l.id}`}
               className={cn(
-                "relative py-2 text-sm md:text-base lg:text-lg font-medium transition-colors",
+                "relative py-2 text-base font-medium transition-colors",
                 active === l.id ? "text-deep-foreground" : "text-deep-muted hover:text-deep-foreground",
               )}
             >
@@ -89,14 +89,14 @@ export function Header() {
         <button
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           onClick={() => setOpen((v) => !v)}
-          className="rounded-md p-2 text-deep-foreground md:hidden"
+          className="rounded-md p-2 text-deep-foreground xl:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {open && (
-        <nav className="card-in mx-4 mb-3 flex flex-col rounded-lg border bg-card p-2 shadow-lift md:hidden">
+        <nav className="card-in mx-4 mb-3 flex flex-col rounded-lg border bg-card p-2 shadow-lift xl:hidden">
           {links.map((l) => (
             <a
               key={l.id}
