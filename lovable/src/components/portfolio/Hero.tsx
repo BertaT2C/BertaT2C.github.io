@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { careerCompanies } from "@/data/companies";
 import { heroChart, whatsappSuccess } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
@@ -22,11 +23,11 @@ export function Hero() {
               Da necessidade de negócio à{" "}
               <span className="text-accent">solução em tecnologia</span>.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-2xl">
+            <p className="mx-auto mt-6 max-w-3xl text-justify [hyphens:auto] text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-2xl">
               Transformo necessidades de negócio em <strong className="font-semibold text-accent">processos claros,
               requisitos bem definidos</strong> e soluções digitais orientadas a valor.
             </p>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-deep-muted sm:text-lg lg:text-xl">
+            <p className="mx-auto mt-4 max-w-3xl text-justify [hyphens:auto] text-base leading-relaxed text-deep-muted sm:text-lg lg:text-xl">
               Conecto pessoas, operações e tecnologia em projetos de <strong className="font-semibold text-deep-foreground">energia,
               seguros, consultoria e indústria</strong>, do Discovery à validação das entregas,
               com foco na evolução de produtos, automação e melhoria contínua.
@@ -47,12 +48,23 @@ export function Hero() {
               </Button>
             </div>
           </div>
-          <Reveal delay={80} className="mx-auto flex justify-center">
+          <Reveal delay={80} className="mx-auto flex w-full max-w-[340px] flex-col items-center gap-6">
             <img
               src={AVATAR_URL}
               alt="Foto de Berta Batista"
               className="size-56 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-64 lg:size-72 xl:size-80"
             />
+            <div className="w-full">
+              <p className="text-center text-sm font-medium leading-snug text-deep-muted">Empresas e projetos da minha trajetória</p>
+              <ul className="mt-3 grid grid-cols-2 gap-2" aria-label="Empresas da trajetória profissional">
+                {careerCompanies.map((company) => (
+                  <li key={company.name} className={`flex min-h-16 flex-col items-center justify-center gap-1 rounded-lg border border-deep-line px-3 py-2 ${company.dark ? "bg-deep-raised" : "bg-white"}`} title={company.context ?? company.name}>
+                    <img src={company.logo} alt={company.name} className="h-9 w-full object-contain" />
+                    {company.context && <span className={`text-center text-[11px] leading-tight ${company.dark ? "text-deep-muted" : "text-slate-600"}`}>{company.context}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
         </div>
 
@@ -244,42 +256,10 @@ function ChannelDiscoveryPanel() {
         </p>
       </div>
 
-      <div
-        className="mt-6 space-y-5"
-        role="group"
-        aria-label="Pesquisa de preferência de canais: WhatsApp 30%, telefone 30%, chat no site 20%, aplicativo da empresa 12%"
-      >
-        {channelPreferences.map((channel, index) => (
-          <div key={channel.label}>
-            <div className="mb-2 flex items-baseline justify-between gap-3">
-              <span className="text-sm md:text-base lg:text-lg font-medium">{channel.label}</span>
-              <strong className="tabular font-display text-lg font-semibold text-accent">
-                {channel.value}%
-              </strong>
-            </div>
-            <div
-              className="h-3 overflow-hidden rounded-full bg-deep/80"
-              role="meter"
-              aria-label={channel.label}
-              aria-valuenow={channel.value}
-              aria-valuemin={0}
-              aria-valuemax={30}
-              aria-valuetext={channel.value + "% dos entrevistados"}
-            >
-              <div
-                className={"h-full rounded-full " + (index === 0 ? "bg-accent" : "bg-deep-muted/70")}
-                style={{ width: (channel.value / 30) * 100 + "%" }}
-              />
-            </div>
-          </div>
-        ))}
-        <div className="flex justify-between text-xs lg:text-sm tabular text-deep-muted" aria-hidden>
-          <span>0%</span><span>10%</span><span>20%</span><span>30%</span>
-        </div>
-        <p className="text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
-          Leitura: WhatsApp e telefone lideram a preferência na pesquisa.
-        </p>
-      </div>
+      <VerticalBarChart items={channelPreferences} max={40} unit="%" label="Preferência por canais de atendimento" />
+      <p className="mt-3 text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
+        Leitura: WhatsApp e telefone lideram a preferência na pesquisa.
+      </p>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
         <span className="text-sm md:text-base lg:text-lg text-deep-muted">Canais líderes na pesquisa</span>
@@ -320,42 +300,10 @@ function PdvQualityPanel() {
         </p>
       </div>
 
-      <div
-        className="mt-6 space-y-5"
-        role="group"
-        aria-label="Escopo proposto: 12 cenários BDD, 15 verificações funcionais e 4 combinações ponta a ponta"
-      >
-        {pdvValidationScope.map((item, index) => (
-          <div key={item.label}>
-            <div className="mb-2 flex items-baseline justify-between gap-3">
-              <span className="text-sm md:text-base lg:text-lg font-medium">{item.label}</span>
-              <strong className="tabular font-display text-lg font-semibold text-accent">
-                {item.value}
-              </strong>
-            </div>
-            <div
-              className="h-3 overflow-hidden rounded-full bg-deep/80"
-              role="meter"
-              aria-label={item.label}
-              aria-valuenow={item.value}
-              aria-valuemin={0}
-              aria-valuemax={15}
-              aria-valuetext={String(item.value) + " itens planejados"}
-            >
-              <div
-                className={"h-full rounded-full " + (index === 1 ? "bg-accent" : "bg-deep-muted/70")}
-                style={{ width: (item.value / 15) * 100 + "%" }}
-              />
-            </div>
-          </div>
-        ))}
-        <div className="flex justify-between text-xs lg:text-sm tabular text-deep-muted" aria-hidden>
-          <span>0</span><span>5</span><span>10</span><span>15 itens</span>
-        </div>
-        <p className="text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
-          Leitura: escopo de testes planejado, ainda sem execução.
-        </p>
-      </div>
+      <VerticalBarChart items={pdvValidationScope} max={20} label="Escopo de testes planejados para a integração PDV–ABS" />
+      <p className="mt-3 text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
+        Leitura: escopo de testes planejado, ainda sem execução.
+      </p>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
         <span className="text-sm md:text-base lg:text-lg text-deep-muted">Dimensões das regras</span>
@@ -373,5 +321,36 @@ function PdvQualityPanel() {
         Ver estudo de caso <ArrowUpRight className="size-4" aria-hidden />
       </a>
     </Reveal>
+  );
+}
+
+function VerticalBarChart({ items, max, unit = "", label }: {
+  items: readonly { label: string; value: number }[];
+  max: number;
+  unit?: string;
+  label: string;
+}) {
+  return (
+    <div className="mt-6 rounded-lg border border-deep-line bg-deep/30 p-3 sm:p-5" role="img"
+      aria-label={`${label}: ${items.map((item) => `${item.label}: ${item.value}${unit}`).join("; ")}`}>
+      <div className="relative ml-8 h-56 border-b border-deep-line">
+        {[0.25, 0.5, 0.75, 1].map((level) => (
+          <div key={level} className="absolute inset-x-0 border-t border-dashed border-deep-line/60" style={{ bottom: `${level * 100}%` }} aria-hidden>
+            <span className="absolute -left-9 -top-2.5 w-7 text-right text-xs tabular text-deep-muted">{max * level}{unit}</span>
+          </div>
+        ))}
+        <div className="relative grid h-full items-end gap-3 sm:gap-5" style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }} aria-hidden>
+          {items.map((item, index) => (
+            <div key={item.label} className="relative mx-auto w-full max-w-16 rounded-t-md bg-accent bar-grow"
+              style={{ height: `${item.value / max * 100}%`, "--bar-delay": `${index * 120}ms` } as React.CSSProperties}>
+              <strong className="absolute -top-8 inset-x-0 text-center text-base font-bold tabular text-deep-foreground">{item.value}{unit}</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="ml-8 mt-3 grid gap-2" style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }} aria-hidden>
+        {items.map((item) => <span key={item.label} className="min-w-0 text-center text-xs sm:text-sm leading-snug [overflow-wrap:anywhere] text-deep-muted">{item.label}</span>)}
+      </div>
+    </div>
   );
 }
