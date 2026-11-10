@@ -15,7 +15,7 @@ export function SectionHeading({ index, eyebrow, title, children, tone = "light"
     <div className="max-w-2xl">
       <p
         className={cn(
-          "flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em]",
+          "flex items-center gap-3 text-xs lg:text-sm font-semibold uppercase tracking-[0.2em]",
           deep ? "text-accent" : "text-primary",
         )}
       >

@@ -21,7 +21,7 @@ export function ProjectDialog({ project, onOpenChange }: Props) {
         {project && (
           <>
             <div className="bg-deep-gradient rounded-t-xl p-8 text-deep-foreground">
-              <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+              <div className="flex items-center gap-3 text-xs lg:text-sm font-bold uppercase tracking-[0.2em] text-accent">
                 <span>Caso {project.number}</span>
                 <span className="h-px w-8 bg-accent" />
                 <span>{project.tag}</span>
@@ -30,7 +30,7 @@ export function ProjectDialog({ project, onOpenChange }: Props) {
                 <DialogTitle className="font-display text-2xl font-semibold md:text-3xl">
                   {project.title}
                 </DialogTitle>
-                <DialogDescription className="pt-2 text-base leading-relaxed text-deep-muted">
+                <DialogDescription className="pt-2 text-base lg:text-lg leading-relaxed text-deep-muted">
                   {project.question}
                 </DialogDescription>
               </DialogHeader>
@@ -40,21 +40,21 @@ export function ProjectDialog({ project, onOpenChange }: Props) {
               <div className="grid gap-3 sm:grid-cols-3">
                 {project.context.map((c) => (
                   <div key={c.label} className="rounded-lg border-l-2 border-accent bg-muted p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-primary">{c.label}</p>
-                    <p className="mt-1 text-sm font-semibold">{c.text}</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-wider text-primary">{c.label}</p>
+                    <p className="mt-1 text-sm lg:text-base font-semibold">{c.text}</p>
                   </div>
                 ))}
               </div>
 
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <p className="text-xs lg:text-sm font-bold uppercase tracking-wider text-muted-foreground">
                   Fluxo
                 </p>
                 <ol className="mt-3 flex flex-wrap items-center gap-2">
                   {project.flow.map((f, i) => (
                     <li key={f} className="flex items-center gap-2">
                       <span
-                        className="card-in rounded-md border bg-card px-3 py-1.5 text-sm font-medium"
+                        className="card-in rounded-md border bg-card px-3 py-1.5 text-sm lg:text-base font-medium"
                         style={{ animationDelay: `${i * 90}ms` }}
                       >
                         {f}
@@ -82,19 +82,19 @@ export function ProjectDialog({ project, onOpenChange }: Props) {
                     {project.metrics.map((m) => (
                       <div key={m.label} className="rounded-lg border p-4">
                         <p className="tabular font-display text-2xl font-semibold text-primary">{m.value}</p>
-                        <p className="mt-1 text-sm text-muted-foreground">{m.label}</p>
+                        <p className="mt-1 text-sm lg:text-base text-muted-foreground">{m.label}</p>
                       </div>
                     ))}
                   </div>
                   {project.metricsNote && (
-                    <p className="mt-3 text-xs italic text-muted-foreground">{project.metricsNote}</p>
+                    <p className="mt-3 text-xs lg:text-sm italic text-muted-foreground">{project.metricsNote}</p>
                   )}
                 </div>
               )}
 
               <div className="flex flex-wrap gap-1.5">
                 {project.skills.map((s) => (
-                  <span key={s} className="rounded border px-2.5 py-1 text-xs font-medium text-secondary-foreground">
+                  <span key={s} className="rounded border px-2.5 py-1 text-xs lg:text-sm font-medium text-secondary-foreground">
                     {s}
                   </span>
                 ))}

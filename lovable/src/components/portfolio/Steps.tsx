@@ -34,7 +34,7 @@ export function Steps() {
           <ol className="flex flex-col items-stretch md:flex-row md:items-center">
             <li className="flex items-center gap-3 md:flex-col md:gap-2" aria-hidden>
               <span className="size-9 rounded-full border-2 border-deep-muted" />
-              <span className="text-xs text-deep-muted">Demanda</span>
+              <span className="text-xs lg:text-sm text-deep-muted">Demanda</span>
             </li>
 
             {steps.map((s, i) => (
@@ -55,7 +55,7 @@ export function Steps() {
                   >
                     <span
                       className={cn(
-                        "tabular text-xs font-semibold",
+                        "tabular text-xs lg:text-sm font-semibold",
                         active === i ? "text-accent" : "text-deep-muted",
                       )}
                     >
@@ -75,7 +75,7 @@ export function Steps() {
                   active === steps.length - 1 ? "border-accent" : "border-deep-muted",
                 )}
               />
-              <span className="text-xs text-deep-muted">Resultado</span>
+              <span className="text-xs lg:text-sm text-deep-muted">Resultado</span>
             </li>
           </ol>
         </Reveal>
@@ -87,7 +87,7 @@ export function Steps() {
             className="card-in grid gap-8 rounded-xl bg-card p-7 text-card-foreground shadow-lift md:grid-cols-[1fr_1.3fr] md:p-10"
           >
             <div className="flex flex-col">
-              <p className="tabular text-xs font-semibold uppercase tracking-wider text-primary">
+              <p className="tabular text-xs lg:text-sm font-semibold uppercase tracking-wider text-primary">
                 Etapa {step.n} de {steps.length}
               </p>
               <h3 className="mt-3 text-3xl font-semibold">{step.title}</h3>
@@ -113,7 +113,7 @@ export function Steps() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <p className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Atividades
               </p>
               <ul className="mt-4 divide-y border-y">
@@ -135,7 +135,7 @@ export function Steps() {
                   className="group mt-6 flex items-center justify-between gap-4 rounded-lg border bg-muted/60 p-4 transition-colors hover:border-primary"
                 >
                   <span>
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    <span className="block text-xs lg:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                       Exemplo aplicado · Caso {example.number}
                     </span>
                     <span className="mt-1 block font-display text-lg font-semibold">{example.title}</span>

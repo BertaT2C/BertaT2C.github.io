@@ -12,7 +12,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-[1440px] px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-36 2xl:px-12">
         <div className="mx-auto grid max-w-[1360px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
           <div className="min-w-0 text-center">
-            <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            <p className="flex items-center justify-center gap-3 text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] text-accent">
               <span className="h-px w-8 bg-accent" />
               Product Owner · Analista de Negócios em TI
               <span className="h-px w-8 bg-accent" />
@@ -21,7 +21,7 @@ export function Hero() {
               Da necessidade de negócio à{" "}
               <span className="text-accent">solução em tecnologia</span>.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-deep-muted sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base lg:text-lg leading-relaxed text-deep-muted sm:text-lg">
               Sou Berta Batista. Analiso processos, dados e jornadas para definir requisitos claros,
               priorizar o backlog e acompanhar resultados com indicadores.
             </p>
@@ -50,7 +50,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <ul className="mx-auto mt-12 grid w-full max-w-[1360px] grid-cols-2 gap-x-6 gap-y-4 border-t border-deep-line pt-6 text-center text-sm text-deep-muted md:grid-cols-4">
+        <ul className="mx-auto mt-12 grid w-full max-w-[1360px] grid-cols-2 gap-x-6 gap-y-4 border-t border-deep-line pt-6 text-center text-sm lg:text-base text-deep-muted md:grid-cols-4">
           {["Eficiência operacional", "Produtividade da equipe", "Automação de processos", "Ganhos mensuráveis"].map((item) => (
             <li key={item} className="flex items-center justify-center gap-2">
               <span className="size-1.5 shrink-0 rounded-full bg-accent" /> {item}
@@ -96,8 +96,8 @@ function ColumnComparison({
   ];
   return (
     <div className="min-w-0 rounded-lg border border-deep-line bg-deep/30 p-4">
-      <h3 className="min-h-10 text-center text-sm font-semibold leading-snug">{metric.label}</h3>
-      <p className="mt-1 flex items-center justify-center gap-1 text-xs font-bold text-accent">
+      <h3 className="min-h-10 text-center text-sm lg:text-base font-semibold leading-snug">{metric.label}</h3>
+      <p className="mt-1 flex items-center justify-center gap-1 text-xs lg:text-sm font-bold text-accent">
         {change >= 0 ? <ArrowUpRight aria-hidden className="size-3.5" /> : <ArrowDownRight aria-hidden className="size-3.5" />}
         {change > 0 ? "+" : change < 0 ? "−" : ""}
         {Math.abs(change)} p.p.
@@ -117,7 +117,7 @@ function ColumnComparison({
         ))}
         {bars.map((bar, i) => (
           <div key={bar.label} className="relative z-10 flex h-full w-12 flex-col justify-end sm:w-14">
-            <span aria-hidden className="tabular mb-2 text-center text-xs font-bold">{bar.value}%</span>
+            <span aria-hidden className="tabular mb-2 text-center text-xs lg:text-sm font-bold">{bar.value}%</span>
             <div
               aria-hidden
               className={"bar-grow w-full rounded-t-md " + bar.fill}
@@ -129,7 +129,7 @@ function ColumnComparison({
           </div>
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-center gap-8 text-xs text-deep-muted">
+      <div className="mt-2 flex items-center justify-center gap-8 text-xs lg:text-sm text-deep-muted">
         <span>{beforeLabel}</span><span>{afterLabel}</span>
       </div>
     </div>
@@ -140,34 +140,34 @@ function OracleResultsPanel() {
   return (
     <Reveal delay={150} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Automação no ERP</p>
+        <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.16em] text-accent">Automação no ERP</p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">RPA na emissão de faturas no Oracle R12</h2>
-        <p className="mt-2 text-sm text-deep-muted">Automação de tarefas manuais no ERP, com indicadores comparados entre janeiro e junho.</p>
+        <p className="mt-2 text-sm lg:text-base text-deep-muted">Automação de tarefas manuais no ERP, com indicadores comparados entre janeiro e junho.</p>
       </div>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {heroChart.series.map((metric, index) => (
           <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel={heroChart.before} afterLabel={heroChart.after} />
         ))}
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-deep-muted">
+      <p className="mt-3 text-xs lg:text-sm leading-relaxed text-deep-muted">
         Leitura: mais entregas no prazo e menos erros na comparação.
       </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
-        <span className="max-w-xs text-sm text-deep-muted">{heroChart.highlight.label}</span>
+        <span className="max-w-xs text-sm lg:text-base text-deep-muted">{heroChart.highlight.label}</span>
         <span className="tabular font-display text-2xl font-semibold text-accent">{heroChart.highlight.value}</span>
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         {heroChart.additional.map((metric) => (
           <div key={metric.label} className="rounded-lg border border-deep-line/80 px-3 py-3">
-            <span className="block text-xs leading-snug text-deep-muted">{metric.label}</span>
-            <span className="tabular mt-1 block text-sm font-semibold text-accent">
+            <span className="block text-xs lg:text-sm leading-snug text-deep-muted">{metric.label}</span>
+            <span className="tabular mt-1 block text-sm lg:text-base font-semibold text-accent">
               {metric.before}% → {metric.after}%
             </span>
           </div>
         ))}
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">Fonte: {heroChart.source}</p>
-      <a href="https://bertat2c.github.io/oracle-r12.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+      <p className="mt-auto pt-5 text-xs lg:text-sm leading-relaxed text-deep-muted">Fonte: {heroChart.source}</p>
+      <a href="https://bertat2c.github.io/oracle-r12.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm lg:text-base font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
       </a>
     </Reveal>
@@ -178,28 +178,28 @@ function WhatsAppResultsPanel() {
   return (
     <Reveal delay={240} className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7">
       <div className="border-b border-deep-line pb-5">
-        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">
+        <p className="flex items-center gap-2 text-xs lg:text-sm font-bold uppercase tracking-[0.16em] text-accent">
           <MessageCircle aria-hidden className="size-4" /> Canais digitais
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">Autosserviço pelo WhatsApp</h2>
-        <p className="mt-2 text-sm text-deep-muted">Atendimento direto pelo WhatsApp, com cenário inicial simulado e metas propostas para o MVP.</p>
+        <p className="mt-2 text-sm lg:text-base text-deep-muted">Atendimento direto pelo WhatsApp, com cenário inicial simulado e metas propostas para o MVP.</p>
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {whatsappSuccess.series.map((metric, index) => (
           <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel="Inicial" afterLabel="Meta" />
         ))}
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-deep-muted">
+      <p className="mt-3 text-xs lg:text-sm leading-relaxed text-deep-muted">
         Leitura: metas simuladas de mais autosserviço e menos abandono.
       </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
-        <span className="text-sm text-deep-muted">{whatsappSuccess.additional.label}</span>
+        <span className="text-sm lg:text-base text-deep-muted">{whatsappSuccess.additional.label}</span>
         <span className="tabular text-lg font-semibold text-accent">
           {whatsappSuccess.additional.before}% → {whatsappSuccess.additional.after}%
         </span>
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">{whatsappSuccess.source}</p>
-      <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+      <p className="mt-auto pt-5 text-xs lg:text-sm leading-relaxed text-deep-muted">{whatsappSuccess.source}</p>
+      <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm lg:text-base font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
       </a>
     </Reveal>
@@ -227,13 +227,13 @@ function ChannelDiscoveryPanel() {
       className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7"
     >
       <div className="border-b border-deep-line pb-5">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
+        <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.16em] text-accent">
           Produto &amp; Discovery
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
           Assistência automotiva · preferência por canais
         </h2>
-        <p className="mt-2 text-sm text-deep-muted">
+        <p className="mt-2 text-sm lg:text-base text-deep-muted">
           Pesquisa externa sobre o canal preferido para iniciar um atendimento.
         </p>
       </div>
@@ -246,7 +246,7 @@ function ChannelDiscoveryPanel() {
         {channelPreferences.map((channel, index) => (
           <div key={channel.label}>
             <div className="mb-2 flex items-baseline justify-between gap-3">
-              <span className="text-sm font-medium">{channel.label}</span>
+              <span className="text-sm lg:text-base font-medium">{channel.label}</span>
               <strong className="tabular font-display text-lg font-semibold text-accent">
                 {channel.value}%
               </strong>
@@ -270,25 +270,25 @@ function ChannelDiscoveryPanel() {
         <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
           <span>0%</span><span>10%</span><span>20%</span><span>30%</span>
         </div>
-        <p className="text-xs leading-relaxed text-deep-muted">
+        <p className="text-xs lg:text-sm leading-relaxed text-deep-muted">
           Leitura: WhatsApp e telefone lideram a preferência na pesquisa.
         </p>
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
-        <span className="text-sm text-deep-muted">Canais líderes na pesquisa</span>
+        <span className="text-sm lg:text-base text-deep-muted">Canais líderes na pesquisa</span>
         <span className="tabular font-display text-lg font-semibold text-accent">
           WhatsApp e telefone · 30% cada
         </span>
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+      <p className="mt-auto pt-5 text-xs lg:text-sm leading-relaxed text-deep-muted">
         Fonte: Mobile Time / Opinion Box, 2024, 1.176 respondentes. Pesquisa externa sobre atendimento em geral; não é resultado do projeto.
       </p>
       <a
         href="https://bertat2c.github.io/canais-digitais.html"
         target="_blank"
         rel="noreferrer"
-        className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+        className="mt-3 inline-flex w-fit items-center gap-2 text-sm lg:text-base font-semibold text-accent underline-offset-4 hover:underline"
       >
         Ver estudo de caso <ArrowUpRight className="size-4" aria-hidden />
       </a>
@@ -303,13 +303,13 @@ function PdvQualityPanel() {
       className="flex h-full min-w-0 flex-col rounded-xl border border-deep-line bg-deep-raised/80 p-5 shadow-lift backdrop-blur-sm sm:p-7"
     >
       <div className="border-b border-deep-line pb-5">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">
+        <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.16em] text-accent">
           Regras de negócio &amp; BDD
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">
           Integração PDV–ABS · especificação e testes
         </h2>
-        <p className="mt-2 text-sm text-deep-muted">
+        <p className="mt-2 text-sm lg:text-base text-deep-muted">
           Regras de integração PDV–ABS e testes planejados, ainda não executados.
         </p>
       </div>
@@ -322,7 +322,7 @@ function PdvQualityPanel() {
         {pdvValidationScope.map((item, index) => (
           <div key={item.label}>
             <div className="mb-2 flex items-baseline justify-between gap-3">
-              <span className="text-sm font-medium">{item.label}</span>
+              <span className="text-sm lg:text-base font-medium">{item.label}</span>
               <strong className="tabular font-display text-lg font-semibold text-accent">
                 {item.value}
               </strong>
@@ -346,23 +346,23 @@ function PdvQualityPanel() {
         <div className="flex justify-between text-[11px] tabular text-deep-muted" aria-hidden>
           <span>0</span><span>5</span><span>10</span><span>15 itens</span>
         </div>
-        <p className="text-xs leading-relaxed text-deep-muted">
+        <p className="text-xs lg:text-sm leading-relaxed text-deep-muted">
           Leitura: escopo de testes planejado, ainda sem execução.
         </p>
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-deep/60 px-4 py-4">
-        <span className="text-sm text-deep-muted">Dimensões das regras</span>
+        <span className="text-sm lg:text-base text-deep-muted">Dimensões das regras</span>
         <strong className="tabular font-display text-2xl font-semibold text-accent">06</strong>
       </div>
-      <p className="mt-auto pt-5 text-xs leading-relaxed text-deep-muted">
+      <p className="mt-auto pt-5 text-xs lg:text-sm leading-relaxed text-deep-muted">
         Categoria, sabor, copo, gelo, tamanho e modalidade. Contagens do estudo: cenários e verificações propostos, sem taxa de sucesso aferida.
       </p>
       <a
         href="https://bertat2c.github.io/pdv.html"
         target="_blank"
         rel="noreferrer"
-        className="mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+        className="mt-3 inline-flex w-fit items-center gap-2 text-sm lg:text-base font-semibold text-accent underline-offset-4 hover:underline"
       >
         Ver estudo de caso <ArrowUpRight className="size-4" aria-hidden />
       </a>
