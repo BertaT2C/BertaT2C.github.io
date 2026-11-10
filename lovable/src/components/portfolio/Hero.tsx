@@ -14,21 +14,22 @@ export function Hero() {
           <div className="min-w-0 text-center">
             <p className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-semibold uppercase tracking-[0.09em] text-accent lg:text-base">
               <span className="hidden h-px w-7 shrink-0 bg-accent sm:block" aria-hidden />
-              Analista de Negócios Sênior · Product Owner · Analista de Produtos
+              <span>Analista de Negócios Sênior · Product Owner · Analista de Produtos</span>
               <span className="hidden h-px w-7 shrink-0 bg-accent sm:block" aria-hidden />
+              <span className="basis-full normal-case tracking-normal">Transformação Digital e Processos</span>
             </p>
             <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
               Da necessidade de negócio à{" "}
               <span className="text-accent">solução em tecnologia</span>.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-[1.375rem]">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-2xl">
               Transformo necessidades de negócio em <strong className="font-semibold text-accent">processos claros,
               requisitos bem definidos</strong> e soluções digitais orientadas a valor.
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-deep-muted sm:text-lg lg:text-xl">
               Conecto pessoas, operações e tecnologia em projetos de <strong className="font-semibold text-deep-foreground">energia,
               seguros, consultoria e indústria</strong>, do Discovery à validação das entregas,
-              com foco em produtos digitais, automação e melhoria contínua.
+              com foco na evolução de produtos, automação e melhoria contínua.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Button asChild variant="hero" size="xl">
