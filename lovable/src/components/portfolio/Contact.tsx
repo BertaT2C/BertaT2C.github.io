@@ -49,7 +49,7 @@ export function Contact() {
               <Linkedin className="size-5" />
             </span>
             <span className="flex-1">
-              <span className="block text-xs lg:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="block text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wider text-muted-foreground">
                 LinkedIn
               </span>
               <span className="block font-medium">/in/bertabatista</span>
@@ -62,7 +62,7 @@ export function Contact() {
               <Mail className="size-5" />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block text-xs lg:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="block text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wider text-muted-foreground">
                 E-mail
               </span>
               <span className="block truncate font-medium">{EMAIL}</span>
@@ -82,7 +82,7 @@ export function Contact() {
               <MessageCircle className="size-5" />
             </span>
             <span className="flex-1">
-              <span className="block text-xs lg:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="block text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wider text-muted-foreground">
                 WhatsApp
               </span>
               <span className="tabular block font-medium">(15) 99181-4440</span>
@@ -92,7 +92,7 @@ export function Contact() {
         </Reveal>
       </div>
 
-      <footer className="mt-20 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm lg:text-base text-muted-foreground md:flex-row">
+      <footer className="mt-20 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm md:text-base lg:text-lg text-muted-foreground md:flex-row">
         <p>© {new Date().getFullYear()} Berta Batista · Product Owner & Análise de Negócios</p>
         <a href="#inicio" className="font-medium hover:text-foreground">
           Voltar ao topo ↑
@@ -112,7 +112,7 @@ export function WhatsAppFab() {
       className="group fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-whatsapp p-3.5 text-whatsapp-foreground shadow-lift transition-all duration-300 hover:pr-5"
     >
       <MessageCircle className="size-5" />
-      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm lg:text-base font-semibold transition-all duration-300 group-hover:max-w-40">
+      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm md:text-base lg:text-lg font-semibold transition-all duration-300 group-hover:max-w-40">
         Vamos conversar?
       </span>
     </a>

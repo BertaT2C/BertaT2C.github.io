@@ -53,12 +53,12 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-10 2xl:px-12">
         <a href="#inicio" className="flex items-center gap-3 text-deep-foreground">
-          <span className="flex size-9 items-center justify-center rounded-md bg-accent font-display text-sm lg:text-base font-bold text-accent-foreground">
+          <span className="flex size-9 items-center justify-center rounded-md bg-accent font-display text-sm md:text-base lg:text-lg font-bold text-accent-foreground">
             BB
           </span>
           <span className="leading-tight">
             <span className="block font-display text-[0.95rem] font-semibold">Berta Batista</span>
-            <span className="block text-xs lg:text-sm text-deep-muted">Análise de Negócios · Produto</span>
+            <span className="block text-xs md:text-sm lg:text-base text-deep-muted">Análise de Negócios · Produto</span>
           </span>
         </a>
 
@@ -68,7 +68,7 @@ export function Header() {
               key={l.id}
               href={"href" in l ? l.href : `#${l.id}`}
               className={cn(
-                "relative py-2 text-sm lg:text-base font-medium transition-colors",
+                "relative py-2 text-sm md:text-base lg:text-lg font-medium transition-colors",
                 active === l.id ? "text-deep-foreground" : "text-deep-muted hover:text-deep-foreground",
               )}
             >

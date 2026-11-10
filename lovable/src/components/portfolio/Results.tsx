@@ -29,21 +29,21 @@ export function Results() {
           >
             <div className="max-w-2xl">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-xs lg:text-sm font-extrabold uppercase tracking-[0.15em] text-accent">
+                <span className="text-xs md:text-sm lg:text-base font-extrabold uppercase tracking-[0.15em] text-accent">
                   Portfólio em evolução
                 </span>
-                <span className="rounded-full border border-accent/50 px-3 py-1 text-xs lg:text-sm text-accent">
+                <span className="rounded-full border border-accent/50 px-3 py-1 text-xs md:text-sm lg:text-base text-accent">
                   Em breve: vídeos das evoluções
                 </span>
               </div>
               <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-accent sm:text-3xl">
                 Veja o que mudou.
               </h3>
-              <p className="mt-3 max-w-xl text-sm lg:text-base leading-relaxed text-deep-muted">
+              <p className="mt-3 max-w-xl text-sm md:text-base lg:text-lg leading-relaxed text-deep-muted">
                 Conheça as mudanças implementadas, as próximas melhorias e novos insights, os vídeos em preparação e o processo de gestão de mudanças.
               </p>
             </div>
-            <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm lg:text-base font-bold text-accent-foreground transition-colors group-hover:bg-accent/90">
+            <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm md:text-base lg:text-lg font-bold text-accent-foreground transition-colors group-hover:bg-accent/90">
               Acompanhe as mudanças <ArrowUpRight className="size-4" aria-hidden />
             </span>
           </a>
@@ -57,7 +57,7 @@ export function Results() {
 
         <Reveal className="mt-10">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
-            <div className="text-sm lg:text-base text-muted-foreground" aria-live="polite">
+            <div className="text-sm md:text-base lg:text-lg text-muted-foreground" aria-live="polite">
               <span className="tabular font-display font-bold text-primary">
                 {String(activeIndex + 1).padStart(2, "0")}
               </span>
@@ -112,37 +112,37 @@ export function Results() {
             <article key={current.slug} className="card-in overflow-hidden rounded-2xl">
               <div className="border-b bg-secondary/40 px-5 py-6 sm:px-8">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="tabular text-xs lg:text-sm font-bold uppercase tracking-[0.18em] text-primary">
+                  <span className="tabular text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.18em] text-primary">
                     Caso {current.number} · {current.tag}
                   </span>
-                  <span className="rounded-full border border-primary/20 bg-card px-3 py-1 text-xs lg:text-sm font-semibold text-primary">
+                  <span className="rounded-full border border-primary/20 bg-card px-3 py-1 text-xs md:text-sm lg:text-base font-semibold text-primary">
                     {activeIndex + 1} / {total}
                   </span>
                 </div>
                 <h3 className="mt-3 max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground sm:text-3xl">
                   {current.title}
                 </h3>
-                <p className="mt-3 max-w-3xl text-sm lg:text-base leading-relaxed text-muted-foreground sm:text-base">
+                <p className="mt-3 max-w-3xl text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground sm:text-base">
                   {current.summary}
                 </p>
               </div>
 
               <div className="grid gap-8 p-5 sm:p-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
                 <div className="flex flex-col">
-                  <p className="text-xs lg:text-sm font-bold uppercase tracking-wider text-primary">Desafio de negócio</p>
+                  <p className="text-xs md:text-sm lg:text-base font-bold uppercase tracking-wider text-primary">Desafio de negócio</p>
                   <p className="mt-3 font-display text-lg font-semibold leading-relaxed text-foreground">{current.question}</p>
-                  <p className="mt-7 text-xs lg:text-sm font-bold uppercase tracking-wider text-primary">Etapas e entregáveis</p>
+                  <p className="mt-7 text-xs md:text-sm lg:text-base font-bold uppercase tracking-wider text-primary">Etapas e entregáveis</p>
                   <ol className="mt-3 flex flex-wrap gap-2">
                     {current.flow.map((step, index) => (
-                      <li key={index} className="rounded-md border bg-muted/60 px-3 py-2 text-xs lg:text-sm font-medium">
+                      <li key={index} className="rounded-md border bg-muted/60 px-3 py-2 text-xs md:text-sm lg:text-base font-medium">
                         {step}
                       </li>
                     ))}
                   </ol>
-                  <p className="mt-7 text-xs lg:text-sm font-bold uppercase tracking-wider text-primary">Valor para a operação</p>
+                  <p className="mt-7 text-xs md:text-sm lg:text-base font-bold uppercase tracking-wider text-primary">Valor para a operação</p>
                   <ul className="mt-3 space-y-3">
                     {current.highlights.slice(0, 2).map((line, index) => (
-                      <li key={index} className="flex gap-3 text-sm lg:text-base leading-relaxed text-muted-foreground">
+                      <li key={index} className="flex gap-3 text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground">
                         <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
                         {line}
                       </li>
@@ -151,7 +151,7 @@ export function Results() {
                 </div>
 
                 <div className="flex min-w-0 flex-col">
-                  <p className="text-xs lg:text-sm font-bold uppercase tracking-wider text-primary">
+                  <p className="text-xs md:text-sm lg:text-base font-bold uppercase tracking-wider text-primary">
                     {current.slug === "pdv" ? "Escopo de validação" : current.slug === "processos-rpa" ? "Solução implementada" : "Indicadores do estudo"}
                   </p>
                   <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -160,7 +160,7 @@ export function Results() {
                         key={metric.label}
                         className="flex min-h-24 flex-col justify-between rounded-xl border border-border bg-muted/45 p-4"
                       >
-                        <span className="text-sm lg:text-base leading-snug text-muted-foreground">{metric.label}</span>
+                        <span className="text-sm md:text-base lg:text-lg leading-snug text-muted-foreground">{metric.label}</span>
                         <strong className="tabular mt-2 font-display text-xl font-semibold text-primary sm:text-2xl">
                           {metric.value}
                         </strong>
@@ -168,13 +168,13 @@ export function Results() {
                     ))}
                   </div>
                   {current.metricsNote && (
-                    <p className="mt-4 text-xs lg:text-sm leading-relaxed text-muted-foreground">{current.metricsNote}</p>
+                    <p className="mt-4 text-xs md:text-sm lg:text-base leading-relaxed text-muted-foreground">{current.metricsNote}</p>
                   )}
                   <div className="mt-auto flex flex-wrap gap-4 pt-8">
                     <button
                       type="button"
                       onClick={() => setPreview(current)}
-                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm lg:text-base font-semibold text-primary-foreground hover:bg-primary/90"
+                      className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm md:text-base lg:text-lg font-semibold text-primary-foreground hover:bg-primary/90"
                     >
                       <Eye className="size-4" aria-hidden /> Pré-visualizar
                     </button>
@@ -182,7 +182,7 @@ export function Results() {
                       href={current.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg border px-5 py-3 text-sm lg:text-base font-semibold text-primary hover:bg-secondary"
+                      className="inline-flex items-center gap-2 rounded-lg border px-5 py-3 text-sm md:text-base lg:text-lg font-semibold text-primary hover:bg-secondary"
                     >
                       Estudo completo <ArrowUpRight className="size-4" aria-hidden />
                     </a>
@@ -201,7 +201,7 @@ export function Results() {
                 aria-current={activeIndex === index ? "true" : undefined}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  "tabular grid size-10 place-items-center rounded-full border text-xs lg:text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                  "tabular grid size-10 place-items-center rounded-full border text-xs md:text-sm lg:text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                   activeIndex === index
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground hover:border-primary hover:text-primary",
@@ -211,7 +211,7 @@ export function Results() {
               </button>
             ))}
           </div>
-          <p className="mt-3 text-center text-xs lg:text-sm text-muted-foreground">
+          <p className="mt-3 text-center text-xs md:text-sm lg:text-base text-muted-foreground">
             Use as setas, os números dos casos ou deslize no celular para navegar.
           </p>
         </Reveal>

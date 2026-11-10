@@ -42,7 +42,7 @@ export function Projects() {
                 aria-selected={isActive}
                 onClick={() => setGroup(g.id)}
                 className={cn(
-                  "flex items-center gap-2 rounded-md px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200",
+                  "flex items-center gap-2 rounded-md px-3 py-2 text-sm md:text-base lg:text-lg font-medium transition-colors duration-200",
                   isActive
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground",
@@ -51,7 +51,7 @@ export function Projects() {
                 {g.label}
                 <span
                   className={cn(
-                    "tabular text-xs lg:text-sm",
+                    "tabular text-xs md:text-sm lg:text-base",
                     isActive ? "text-accent" : "text-muted-foreground/70",
                   )}
                 >
@@ -72,7 +72,7 @@ export function Projects() {
               className="card-in group relative flex flex-col rounded-xl border bg-card p-6 shadow-soft transition-all duration-300 hover:border-primary/50 hover:shadow-lift"
               style={{ animationDelay: `${idx * 60}ms` }}
             >
-              <div className="flex items-center justify-between gap-3 text-xs lg:text-sm">
+              <div className="flex items-center justify-between gap-3 text-xs md:text-sm lg:text-base">
                 <span className="tabular font-semibold uppercase tracking-wider text-muted-foreground">
                   Caso {p.number}
                 </span>
@@ -81,7 +81,7 @@ export function Projects() {
                 </span>
               </div>
               <h3 className="mt-5 text-xl font-semibold">{p.title}</h3>
-              <p className="mt-2 flex-1 text-[0.95rem] lg:text-[1.0625rem] leading-relaxed text-muted-foreground">
+              <p className="mt-2 flex-1 text-base lg:text-xl leading-relaxed text-muted-foreground">
                 {p.summary}
               </p>
 
@@ -90,13 +90,13 @@ export function Projects() {
                   <span className="tabular shrink-0 whitespace-nowrap font-display text-lg font-semibold text-primary">
                     {kpi.value}
                   </span>
-                  <span className="text-xs lg:text-sm leading-snug text-muted-foreground">{kpi.label}</span>
+                  <span className="text-xs md:text-sm lg:text-base leading-snug text-muted-foreground">{kpi.label}</span>
                 </div>
               )}
 
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {p.skills.slice(0, 3).map((s) => (
-                  <span key={s} className="rounded border px-2 py-0.5 text-xs lg:text-sm text-muted-foreground">
+                  <span key={s} className="rounded border px-2 py-0.5 text-xs md:text-sm lg:text-base text-muted-foreground">
                     {s}
                   </span>
                 ))}
@@ -105,7 +105,7 @@ export function Projects() {
               <div className="mt-5 flex items-center gap-4 border-t pt-4">
                 <button
                   onClick={() => setSelected(p)}
-                  className="flex items-center gap-2 text-sm lg:text-base font-semibold text-primary after:absolute after:inset-0 after:rounded-xl after:content-['']"
+                  className="flex items-center gap-2 text-sm md:text-base lg:text-lg font-semibold text-primary after:absolute after:inset-0 after:rounded-xl after:content-['']"
                 >
                   <Eye className="size-4" /> Pré-visualizar
                 </button>
@@ -113,7 +113,7 @@ export function Projects() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="relative z-10 ml-auto flex items-center gap-1 text-sm lg:text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className="relative z-10 ml-auto flex items-center gap-1 text-sm md:text-base lg:text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Estudo completo
                   <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -124,7 +124,7 @@ export function Projects() {
         })}
       </div>
 
-      <Reveal className="mt-10 rounded-lg border border-dashed bg-muted/50 p-5 text-sm lg:text-base leading-relaxed text-muted-foreground">
+      <Reveal className="mt-10 rounded-lg border border-dashed bg-muted/50 p-5 text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground">
         <strong className="text-foreground">Nota de confidencialidade.</strong> Por questões de NDA,
         alguns projetos foram anonimizados ou recriados com cenários e indicadores ilustrativos. O
         objetivo é demonstrar raciocínio estratégico, metodologia e capacidade de execução; métricas

@@ -15,7 +15,7 @@ export function SectionHeading({ index, eyebrow, title, children, tone = "light"
     <div className="max-w-2xl">
       <p
         className={cn(
-          "flex items-center gap-3 text-xs lg:text-sm font-semibold uppercase tracking-[0.2em]",
+          "flex items-center gap-3 text-xs md:text-sm lg:text-base font-semibold uppercase tracking-[0.2em]",
           deep ? "text-accent" : "text-primary",
         )}
       >
@@ -25,7 +25,7 @@ export function SectionHeading({ index, eyebrow, title, children, tone = "light"
       </p>
       <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-[2.75rem]">{title}</h2>
       {children && (
-        <p className={cn("mt-4 text-lg leading-relaxed", deep ? "text-deep-muted" : "text-muted-foreground")}>
+        <p className={cn("mt-4 text-lg leading-relaxed lg:text-xl", deep ? "text-deep-muted" : "text-muted-foreground")}>
           {children}
         </p>
       )}
