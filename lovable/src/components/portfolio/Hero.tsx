@@ -24,13 +24,12 @@ export function Hero() {
               <span className="text-accent">solução em tecnologia</span>.
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-justify [hyphens:auto] text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-2xl">
-              Transformo necessidades de negócio em <strong className="font-semibold text-accent">processos claros,
-              requisitos bem definidos</strong> e soluções digitais orientadas a valor.
+              Transformo necessidades de negócio em <strong className="font-semibold text-accent">processos compreensíveis,
+              requisitos bem definidos e soluções digitais orientadas a valor</strong>.
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-justify [hyphens:auto] text-base leading-relaxed text-deep-muted sm:text-lg lg:text-xl">
-              Conecto pessoas, operações e tecnologia em projetos de <strong className="font-semibold text-deep-foreground">energia,
-              seguros, consultoria e indústria</strong>, do Discovery à validação das entregas,
-              com foco na evolução de produtos, automação e melhoria contínua.
+              Minha experiência conecta pessoas, operações e tecnologia em iniciativas de <strong className="font-semibold text-deep-foreground">Discovery,
+              evolução de produtos, automação e melhoria contínua</strong>.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Button asChild variant="hero" size="xl">

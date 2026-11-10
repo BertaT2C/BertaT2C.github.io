@@ -43,13 +43,13 @@ export function CompanyCarousel() {
       }}
     >
       <div className="company-orbit-stage" aria-live={paused || reducedMotion ? "polite" : "off"}>
-        <div className="company-orbit-ring" style={{ transform: `translateZ(-180px) rotateY(${-position * 360 / count}deg)` }}>
+        <div className="company-orbit-ring" style={{ transform: `translateZ(-300px) rotateY(${-position * 360 / count}deg)` }}>
           {careerCompanies.map((company, index) => {
             const distance = Math.min((index - active + count) % count, (active - index + count) % count);
             const enlarged = ["Toyota Boshoku", "Automec", "T2C Group", "Bradesco Seguros"].includes(company.name);
             return (
               <div key={company.name} className={`company-orbit-card ${company.dark ? "company-logo-card-dark" : ""}`}
-                style={{ transform: `rotateY(${index * 360 / count}deg) translateZ(180px)`, opacity: distance === 0 ? 1 : distance === 1 ? 0.55 : 0, visibility: distance <= 1 ? "visible" : "hidden" }}
+                style={{ transform: `rotateY(${index * 360 / count}deg) translateZ(300px)`, opacity: distance === 0 ? 1 : distance === 1 ? 0.55 : 0, visibility: distance <= 1 ? "visible" : "hidden" }}
                 role="group" aria-roledescription="slide" aria-hidden={index !== active}
                 aria-label={`${index + 1} de ${count}: ${company.name}`}>
                 <img src={company.logo} alt={company.name} className={enlarged ? "h-[52px] w-[136px] object-contain" : "h-7 w-[110px] object-contain"} />
