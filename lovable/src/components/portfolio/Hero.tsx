@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { careerCompanies } from "@/data/companies";
+import { CompanyCarousel } from "./CompanyCarousel";
 import { heroChart, whatsappSuccess } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
@@ -54,17 +54,7 @@ export function Hero() {
               alt="Foto de Berta Batista"
               className="size-56 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-64 lg:size-72 xl:size-80"
             />
-            <div className="w-full">
-              <p className="text-center text-sm font-medium leading-snug text-deep-muted">Empresas e projetos da minha trajetória</p>
-              <ul className="mt-3 grid grid-cols-2 gap-2" aria-label="Empresas da trajetória profissional">
-                {careerCompanies.map((company) => (
-                  <li key={company.name} className={`flex min-h-16 flex-col items-center justify-center gap-1 rounded-lg border border-deep-line px-3 py-2 ${company.dark ? "bg-deep-raised" : "bg-white"}`} title={company.context ?? company.name}>
-                    <img src={company.logo} alt={company.name} className="h-9 w-full object-contain" />
-                    {company.context && <span className={`text-center text-[11px] leading-tight ${company.dark ? "text-deep-muted" : "text-slate-600"}`}>{company.context}</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <CompanyCarousel />
           </Reveal>
         </div>
 
