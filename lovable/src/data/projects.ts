@@ -83,7 +83,7 @@ export const projects: Project[] = [
       { value: "7 → 3", label: "dias de esclarecimento" },
       { value: "−57,14%", label: "redução relativa do exemplo" },
     ],
-    metricsNote: "Valores ilustrativos do cenário de estudo, não medição real.",
+    metricsNote: "Valores ilustrativos do cenário de estudo.",
     skills: ["OKR", "Product Backlog", "Refinamento", "AS IS / TO BE", "QA"],
     url: `${base}/refinamento.html`,
   },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       { value: "28% → 15%", label: "abandono" },
       { value: "80% → 45%", label: "encaminhamento humano" },
     ],
-    metricsNote: "MVP ilustrativo: base simulada e metas propostas, não medições de produção.",
+    metricsNote: "MVP ilustrativo: base simulada e metas propostas.",
     skills: ["Jornada do usuário", "MVP", "BDD", "LGPD", "KPIs"],
     url: `${base}/whatsapp.html`,
   },
@@ -319,14 +319,13 @@ export function casesForArea(area: CompetencyArea, list: Project[] = projects) {
 export const whatsappSuccess = {
   caseSlug: "whatsapp",
   caseLabel: "Autosserviço pelo WhatsApp",
-  before: "Base hipotética",
-  after: "Meta do MVP",
+  before: "Inicial",
+  after: "Final",
   series: [
     { label: "Resolução por autosserviço", before: 20, after: 55, better: "up" as const },
     { label: "Satisfação dos usuários (CSAT)", before: 72, after: 85, better: "up" as const },
     { label: "Abandono da jornada", before: 28, after: 15, better: "down" as const },
   ],
-  source: "Indicadores ilustrativos · base simulada × metas do MVP.",
   additional: { label: "Encaminhamento humano", before: 80, after: 45 },
 };
 

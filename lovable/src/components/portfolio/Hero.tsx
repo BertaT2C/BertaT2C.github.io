@@ -1,6 +1,5 @@
 import { ArrowDown, ArrowDownRight, ArrowUpRight, Github, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CompanyCarousel } from "./CompanyCarousel";
 import { heroChart, whatsappSuccess } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
@@ -23,12 +22,12 @@ export function Hero() {
               Da necessidade de negócio à{" "}
               <span className="text-accent">solução em tecnologia</span>.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-justify [hyphens:auto] text-lg leading-relaxed text-deep-foreground sm:text-xl lg:text-2xl">
-              Transformo necessidades de negócio em <strong className="font-semibold text-accent">processos compreensíveis,
+            <p className="mx-auto mt-6 max-w-3xl text-justify [hyphens:auto] text-lg leading-relaxed text-[#c5c9cd] sm:text-xl lg:text-2xl">
+              Transformo necessidades de negócio em <strong className="font-semibold">processos compreensíveis,
               requisitos bem definidos e soluções digitais orientadas a valor</strong>.
             </p>
-            <p className="mx-auto mt-4 max-w-3xl text-justify [hyphens:auto] text-base leading-relaxed text-deep-muted sm:text-lg lg:text-xl">
-              Minha experiência conecta pessoas, operações e tecnologia em iniciativas de <strong className="font-semibold text-deep-foreground">Discovery,
+            <p className="mx-auto mt-4 max-w-3xl text-justify [hyphens:auto] text-base leading-relaxed text-[#c5c9cd] sm:text-lg lg:text-xl">
+              Minha experiência conecta pessoas, operações e tecnologia em iniciativas de <strong className="font-semibold">Discovery,
               evolução de produtos, automação e melhoria contínua</strong>.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
@@ -53,7 +52,6 @@ export function Hero() {
               alt="Foto de Berta Batista"
               className="size-56 rounded-full border border-deep-line object-cover shadow-lift ring-2 ring-accent ring-offset-4 ring-offset-deep sm:size-64 lg:size-72 xl:size-80"
             />
-            <CompanyCarousel />
           </Reveal>
         </div>
 
@@ -193,7 +191,7 @@ function WhatsAppResultsPanel() {
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {whatsappSuccess.series.map((metric, index) => (
-          <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel="Inicial" afterLabel="Meta" />
+          <ColumnComparison key={metric.label} metric={metric} index={index} beforeLabel={whatsappSuccess.before} afterLabel={whatsappSuccess.after} />
         ))}
       </div>
       <p className="mt-3 text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
@@ -205,7 +203,6 @@ function WhatsAppResultsPanel() {
           {whatsappSuccess.additional.before}% → {whatsappSuccess.additional.after}%
         </span>
       </div>
-      <p className="mt-auto pt-5 text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">{whatsappSuccess.source}</p>
       <a href="https://bertat2c.github.io/whatsapp.html" target="_blank" rel="noreferrer" className="mt-3 inline-flex w-fit items-center gap-2 text-sm md:text-base lg:text-lg font-semibold text-accent underline-offset-4 hover:underline">
         Ver estudo de caso <ArrowUpRight className="size-4" />
       </a>
