@@ -187,7 +187,7 @@ function WhatsAppResultsPanel() {
           <MessageCircle aria-hidden className="size-4" /> Canais digitais
         </p>
         <h2 className="mt-2 font-display text-xl font-semibold leading-tight sm:text-2xl">Autosserviço pelo WhatsApp</h2>
-        <p className="mt-2 text-sm md:text-base lg:text-lg text-deep-muted">Atendimento direto pelo WhatsApp, com cenário inicial simulado e metas propostas para o MVP.</p>
+        <p className="mt-2 text-sm md:text-base lg:text-lg text-deep-muted">Atendimento pelo WhatsApp: comparação dos cenários inicial e final simulados para o MVP.</p>
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {whatsappSuccess.series.map((metric, index) => (
@@ -195,7 +195,7 @@ function WhatsAppResultsPanel() {
         ))}
       </div>
       <p className="mt-3 text-xs md:text-sm lg:text-base leading-relaxed text-deep-muted">
-        Leitura: metas simuladas de mais autosserviço e menos abandono.
+        Leitura: comparação dos cenários de autosserviço e abandono.
       </p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-deep/60 px-4 py-4">
         <span className="text-sm md:text-base lg:text-lg text-deep-muted">{whatsappSuccess.additional.label}</span>
