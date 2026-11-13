@@ -162,6 +162,28 @@ header nav:not(.hidden) a:hover{background:#eebf4c;color:#183b2b}
 .pc-status{font-size:14px;line-height:1.7;color:#c6d4c9;margin-top:22px}.pc-whatsapp>a{margin-top:auto;padding-top:22px;font-size:16px;color:#e9bf50;font-weight:600;text-decoration:none}.pc-whatsapp>a:hover{text-decoration:underline}
 #pc-oracle{scroll-margin-top:100px}
 @media(max-width:760px){.pc-whatsapp{padding:22px}.pc-whatsapp h2{font-size:23px}.pc-whatsapp>p{font-size:16px}.pc-preview{width:calc(100% - 24px);gap:8px 16px;justify-content:center;flex-wrap:wrap}.pc-preview span{flex-basis:100%;text-align:center}}
+</style><style id="menu-tablet-visible">
+/* Exibir navegação completa também em janelas intermediárias. */
+@media(min-width:640px){
+ header>div:first-child{flex-wrap:wrap}
+ header nav.hidden{display:flex!important;flex-wrap:wrap;justify-content:center;gap:8px}
+ header button[aria-label="Abrir menu"],header button[aria-label="Fechar menu"]{display:none!important}
+ header nav:not(.hidden){display:none!important}
+}
+@media(min-width:640px) and (max-width:1199px){
+ header>div:first-child{gap:10px;min-height:76px;padding-top:10px;padding-bottom:12px}
+ header nav.hidden{flex-basis:100%;gap:7px}
+ header nav.hidden a{font-size:14px;min-height:44px;padding:8px 11px}
+ #inicio>div.relative{padding-top:205px}
+}
+@media(min-width:640px) and (max-width:760px){
+ header nav.hidden{gap:5px}header nav.hidden a{font-size:12px;padding:8px 7px}#inicio>div.relative{padding-top:180px}
+}
+@media(min-width:1200px){
+ header>div:first-child{flex-wrap:nowrap}
+ header nav.hidden{flex-basis:auto}
+ header nav.hidden a{font-size:15px;padding:11px 13px}
+}
 </style></head>
 <body>
   <div id="root"></div>
